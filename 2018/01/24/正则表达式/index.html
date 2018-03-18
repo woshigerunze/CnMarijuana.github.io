@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-正则表达式," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="定义​        正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑。 特点 灵活性、逻辑性和功能性强 阅读性较差 通过正则表达式可以简化对字符串的操作">
+<meta name="keywords" content="-正则表达式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式">
+<meta property="og:url" content="https://cnmarijuana.github.io/2018/01/24/正则表达式/index.html">
+<meta property="og:site_name" content="JUST">
+<meta property="og:description" content="定义​        正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑。 特点 灵活性、逻辑性和功能性强 阅读性较差 通过正则表达式可以简化对字符串的操作">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-12T03:59:34.501Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式">
+<meta name="twitter:description" content="定义​        正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑。 特点 灵活性、逻辑性和功能性强 阅读性较差 通过正则表达式可以简化对字符串的操作">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cnmarijuana.github.io/2018/01/24/正则表达式/"/>
+
+
+
+
+
+  <title>正则表达式 | JUST</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JUST</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/01/24/正则表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CnMarijuana">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facivon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">正则表达式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-24T15:59:55+08:00">
+                2018-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>​        正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑。</p>
+<h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><ul>
+<li>灵活性、逻辑性和功能性强</li>
+<li>阅读性较差</li>
+<li>通过正则表达式可以简化对字符串的操作</li>
+</ul>
+<a id="more"></a>
+<h1 id="Java中与正则表达式相关的类"><a href="#Java中与正则表达式相关的类" class="headerlink" title="Java中与正则表达式相关的类"></a>Java中与正则表达式相关的类</h1><p>包名java.util.regex中有两个类，分别是表示正则表达式编译形式的Pattern类和匹配器Matcher类。</p>
+<h2 id="Pattern类"><a href="#Pattern类" class="headerlink" title="Pattern类"></a>Pattern类</h2><p>Pattern类用于创建一个正则表达式，在<a href="http://tool.oschina.net/apidocs/apidoc?api=jdk-zh" target="_blank" rel="noopener">Java文档</a>中详细记录了Java支持的正则表达式语法规则，封装了用于操作正则表达式的字段和方法。</p>
+<h3 id="主要方法"><a href="#主要方法" class="headerlink" title="主要方法"></a>主要方法</h3><ol>
+<li><p>Pattern类不对外暴露构造函数，使用Pattern.complie(String regex)方法创建对象。</p>
+</li>
+<li><p>String patten()：返回此对象在其中编译过此模式的正则表达式。其实就是compile方法中的参数regex字符串。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String regex = <span class="string">"a*b"</span>;</span><br><span class="line">Pattern p = Pattern.compile(regex);</span><br><span class="line">System.out.println(p.pattern());</span><br><span class="line"><span class="comment">//输出结果为a*b</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>Matcher matcher(CharSequence input)：创建匹配给定输入与此模式的匹配器，在下一部分中一起演示。</li>
+</ol>
+<h2 id="Matcher类"><a href="#Matcher类" class="headerlink" title="Matcher类"></a>Matcher类</h2><p>​        Matcher类通过正则对象的mathcer方法与字符串关联，用于创建一个对指定字符串操作的匹配器对象，然后通过Matcher类的方法对匹配的字符串进行操作。</p>
+<h3 id="主要方法-1"><a href="#主要方法-1" class="headerlink" title="主要方法"></a>主要方法</h3><ol>
+<li><p>Mathcer类不对外暴露构造函数，通过Pattern类的matcher方法获取匹配器对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String regex = <span class="string">"a*b"</span>;</span><br><span class="line">Pattern p = Pattern.compile(regex);</span><br><span class="line">Matcher m = p.matcher(<span class="string">"aaaab"</span>);</span><br><span class="line"><span class="comment">//官方文档示例中这段代码意为将正则类p与字符串aaaab关联</span></span><br><span class="line"><span class="comment">//而后就可以使用Matcher类的方法匹配正则表达式和字符串了</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Pattern pattern()：返回与该匹配器对应的正则类。</p>
+</li>
+<li><p>三个匹配函数：</p>
+<ul>
+<li><p>boolean matches()：检验关联的正则对象和字符串是否<strong>完全匹配</strong>，匹配返回true，不匹配返回fasle。</p>
+</li>
+<li><p>boolean lookingat()：<strong>每次</strong>都从<strong>第一个字符</strong>开始检验是否<strong>部分匹配</strong>。</p>
+</li>
+<li><p>boolean find()：<strong>每次</strong>都从<strong>当前位置</strong>开始检验是否匹配，匹配成功将移动下次匹配的位置。</p>
+<p>关于这三个函数的特点和区别另起篇幅介绍。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="主要应用"><a href="#主要应用" class="headerlink" title="主要应用"></a>主要应用</h1><p>​        多亏了String类强大的功能，在多数情况下我们使用正则操作字符串时不用依次构造正则类、匹配器类，而是使用String类封装好的函数，比如匹配和替换。</p>
+<h2 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h2><p>​        检查给定字符串是否符合指定规则，通过String类的matches方法可以实现。（实际String类的matches方法是调用了Pattern类的matches方法）</p>
+<p>以检验输入的字符串是否为正确的电话号码为例：</p>
+<h3 id="不使用正则表达式"><a href="#不使用正则表达式" class="headerlink" title="不使用正则表达式"></a>不使用正则表达式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Boolean <span class="title">CheckNum</span><span class="params">(String str)</span></span></span><br><span class="line"><span class="function"><span class="comment">//CheckNum用于检验输入的字符串是否为正确的电话号码，正确返回true，错误返回false</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (str.length() != <span class="number">11</span>)<span class="comment">//十一位电话号码</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//假定电话号码前两位中，第一位比定是1，第二位有3、5、8三种情况</span></span><br><span class="line">	<span class="keyword">if</span> (!str.startsWith(<span class="string">"1"</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">  	<span class="keyword">if</span>(!(str.startsWith(<span class="string">"3"</span>, <span class="number">1</span>)||str.startsWith(<span class="string">"5"</span>,<span class="number">1</span>)||str.startsWith(<span class="string">"8"</span>,<span class="number">1</span>)))</span><br><span class="line"> 	&#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  	&#125;</span><br><span class="line">  	<span class="comment">//直接将字符串转换为Long对象，如果抛出异常说明字符串中有除数字之外的字符</span></span><br><span class="line">	<span class="keyword">try</span></span><br><span class="line">	&#123;</span><br><span class="line">		Long i = Long.parseLong(str);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (NumberFormatException e)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​       看以看到，即便使用了很多已封装好的库函数来简化操作，检验一个字符串是否符合要求仍然不是一个轻松的工作。</p>
+<h3 id="使用正则表达式"><a href="#使用正则表达式" class="headerlink" title="使用正则表达式"></a>使用正则表达式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">CheckNumWithRE</span><span class="params">(String str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    String regex = <span class="string">"1[358][0-9]&#123;9&#125;"</span>;<span class="comment">//先给定正则表达式</span></span><br><span class="line">	<span class="keyword">return</span> str.matches(regex);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">本例中的正则表达式regex的规则：</span></span><br><span class="line"><span class="comment">1. 第一个1表示要被匹配的字符串第一位必须为1</span></span><br><span class="line"><span class="comment">2. [358]表示要被匹配的字符串第二位必须为3、5或8中的一个</span></span><br><span class="line"><span class="comment">3. [0-9]&#123;9&#125;表示要被匹配的字符串接下来九位必须是0-9中任意的数字</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>对比不使用正则表达式的写法，首先代码行数上大大减小，其次更改正则表达式相比更改代码更加方便灵活。</p>
+<h2 id="切割"><a href="#切割" class="headerlink" title="切割"></a>切割</h2><p>​       将给定的字符串按要求切割为多个字符串，通过String类的split方法实现。</p>
+<p>以输入一句英语，将每个单词截取出来储存进一个字符串数组为例。</p>
+<ul>
+<li><p>理想状况下每两个单词间都有一个空格，此时可以用空格为正则表达式切割字符串。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String[] CutString(String str)</span><br><span class="line">&#123;</span><br><span class="line">	String[] words = str.split(<span class="string">" "</span>);</span><br><span class="line">	<span class="keyword">return</span> words;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试用例：hello world test</span></span><br><span class="line"><span class="comment">//结果：数组words中三个元素分别为hello world 和 test</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当有些单词间的空格不止一个时，就需要在指定正则表达式的时候使用数量词修饰。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String[] CutString(String str)</span><br><span class="line">&#123;</span><br><span class="line">    String[] words = str.split(<span class="string">" +"</span>);</span><br><span class="line">    <span class="keyword">return</span> words;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试用例：hello     world   test</span></span><br><span class="line"><span class="comment">//结果：数组words中三个元素分别为hello world 和 test</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><p>​        将指定字符串中部分字符替换为目标字符，使用String类的replaceAll方法实现。（实际String类的replaceAll方法是调用了Pattern类的replaceAll方法）</p>
+<ul>
+<li>将给定的字符串中空格换为逗号</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">Replace</span><span class="params">(String str)</span><span class="comment">//将空格替换为逗号</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	String s = str.replaceAll(<span class="string">" "</span>, <span class="string">","</span>);</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试用例：see you soon</span></span><br><span class="line"><span class="comment">//结果：see,you,soon</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>将给定的11位电话号码（字符串）中间四位替换为*以达到信息保密的目的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">Replace</span><span class="params">(String str)</span><span class="comment">//将空格替换为逗号</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	String regex = <span class="string">"(\\d&#123;3&#125;)\\d&#123;4&#125;(\\d&#123;4&#125;)"</span>;</span><br><span class="line">	String replacement = <span class="string">"$1****$2"</span>;</span><br><span class="line">	String s = str.replaceAll(regex, replacement);</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试用例：13800000000</span></span><br><span class="line"><span class="comment">//结果：138****0000</span></span><br></pre></td></tr></table></figure>
+<h2 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h2><p>​       从指定字符串中按要求获取字符。</p>
+<p>以从一句话中找出所有三个字母的英文单词为例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.将正则封装为对象</span></span><br><span class="line">String regex = <span class="string">"\\b[a-z]&#123;3&#125;\\b"</span>;</span><br><span class="line">Pattern p = Pattern.compile(regex);</span><br><span class="line"><span class="comment">// 2.与字符串关联创造匹配器</span></span><br><span class="line">String input = <span class="string">"see you again"</span>;</span><br><span class="line">Matcher m = p.matcher(input);</span><br><span class="line"><span class="comment">// 3.使用Matcher对象的方法对字符串进行操作</span></span><br><span class="line"><span class="keyword">while</span> (m.find())</span><br><span class="line">&#123;</span><br><span class="line">	System.out.println(m.group());<span class="comment">// 获取匹配的子序列</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出结果为：</span></span><br><span class="line"><span class="comment">//see</span></span><br><span class="line"><span class="comment">//you</span></span><br></pre></td></tr></table></figure>
+<p># </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/正则表达式/" rel="tag"># -正则表达式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/08/Hello-Hexo/" rel="next" title="Hello Hexo">
+                <i class="fa fa-chevron-left"></i> Hello Hexo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/03/简单的爬虫程序/" rel="prev" title="简单的爬虫程序">
+                简单的爬虫程序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/facivon.jpg"
+                alt="CnMarijuana" />
+            
+              <p class="site-author-name" itemprop="name">CnMarijuana</p>
+              <p class="site-description motion-element" itemprop="description">夜来一笑寒灯下，始是金丹换骨时。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/CnMarijuana" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:justitacsl@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特点"><span class="nav-number">2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中与正则表达式相关的类"><span class="nav-number">3.</span> <span class="nav-text">Java中与正则表达式相关的类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pattern类"><span class="nav-number">3.1.</span> <span class="nav-text">Pattern类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主要方法"><span class="nav-number">3.1.1.</span> <span class="nav-text">主要方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matcher类"><span class="nav-number">3.2.</span> <span class="nav-text">Matcher类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主要方法-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">主要方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主要应用"><span class="nav-number">4.</span> <span class="nav-text">主要应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配"><span class="nav-number">4.1.</span> <span class="nav-text">匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不使用正则表达式"><span class="nav-number">4.1.1.</span> <span class="nav-text">不使用正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用正则表达式"><span class="nav-number">4.1.2.</span> <span class="nav-text">使用正则表达式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切割"><span class="nav-number">4.2.</span> <span class="nav-text">切割</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换"><span class="nav-number">4.3.</span> <span class="nav-text">替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取"><span class="nav-number">4.4.</span> <span class="nav-text">获取</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CnMarijuana</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

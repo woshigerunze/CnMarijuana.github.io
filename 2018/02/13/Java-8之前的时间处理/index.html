@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最近在自己瞎折腾，有一个需求是计算当前日期到指定日期有多少天，用于实现纪念日或倒计时的功能。查阅资料后发现Java 8之前的时间日期处理很是麻烦而且被频频吐槽，以至于后来在Java 8中推出了一个专门的time包。虽然学习编程最忌守旧，但是老版本的处理方式在Java 8 或以上版本中并没有废除并且还有很多项目仍在使用，所以我们还是很有必要学习老版本的api。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 8之前的时间处理">
+<meta property="og:url" content="https://cnmarijuana.github.io/2018/02/13/Java-8之前的时间处理/index.html">
+<meta property="og:site_name" content="JUST">
+<meta property="og:description" content="最近在自己瞎折腾，有一个需求是计算当前日期到指定日期有多少天，用于实现纪念日或倒计时的功能。查阅资料后发现Java 8之前的时间日期处理很是麻烦而且被频频吐槽，以至于后来在Java 8中推出了一个专门的time包。虽然学习编程最忌守旧，但是老版本的处理方式在Java 8 或以上版本中并没有废除并且还有很多项目仍在使用，所以我们还是很有必要学习老版本的api。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-16T03:43:55.398Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 8之前的时间处理">
+<meta name="twitter:description" content="最近在自己瞎折腾，有一个需求是计算当前日期到指定日期有多少天，用于实现纪念日或倒计时的功能。查阅资料后发现Java 8之前的时间日期处理很是麻烦而且被频频吐槽，以至于后来在Java 8中推出了一个专门的time包。虽然学习编程最忌守旧，但是老版本的处理方式在Java 8 或以上版本中并没有废除并且还有很多项目仍在使用，所以我们还是很有必要学习老版本的api。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cnmarijuana.github.io/2018/02/13/Java-8之前的时间处理/"/>
+
+
+
+
+
+  <title>Java 8之前的时间处理 | JUST</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JUST</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/02/13/Java-8之前的时间处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CnMarijuana">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facivon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java 8之前的时间处理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-13T13:19:55+08:00">
+                2018-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近在自己瞎折腾，有一个需求是计算当前日期到指定日期有多少天，用于实现纪念日或倒计时的功能。查阅资料后发现Java 8之前的时间日期处理很是麻烦而且被频频吐槽，以至于后来在Java 8中推出了一个专门的time包。虽然学习编程最忌守旧，但是老版本的处理方式在Java 8 或以上版本中并没有废除并且还有很多项目仍在使用，所以我们还是很有必要学习老版本的api。</p>
+<a id="more"></a>
+<h1 id="日历类Calendar"><a href="#日历类Calendar" class="headerlink" title="日历类Calendar"></a>日历类Calendar</h1><p>Calendar是一个使用单例设计模式的抽象类，封装了如YEAR、MONTH、DATE、SUNDAY（一个星期的七天）和JANUARY（一年的十二个月）等诸多日历字段，并提供了一些操作字段的方法。</p>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><p>Calendar是典型的单例设计模式，构造函数不对外暴露，使用getInstance()方法获得日历对象。</p>
+<ul>
+<li>static Calendar getInstance(); 使用默认时区和语言环境获得一个日历，此外还有多个重载用于获得指定语言环境、时区下的日历对象。</li>
+</ul>
+<h2 id="主要方法"><a href="#主要方法" class="headerlink" title="主要方法"></a>主要方法</h2><h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><p>int get(int field);   返回给定日历字段的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Calendar cal = Calendar.getInstance();</span><br><span class="line"><span class="comment">//调用get函数获取日历对象的年、月、日字段</span></span><br><span class="line"><span class="comment">//get函数传入的参数为Calendar封装好的字段</span></span><br><span class="line">String days = cal.get(Calendar.YEAR)+<span class="string">"年"</span></span><br><span class="line">                +cal.get(Calendar.MONTH)+<span class="string">"月"</span>+cal.get(Calendar.DATE)+<span class="string">"日"</span>;</span><br><span class="line"><span class="comment">//输出检验</span></span><br><span class="line">System.out.println(<span class="string">"今天是："</span>);</span><br><span class="line">System.out.println(days);</span><br></pre></td></tr></table></figure>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><ul>
+<li>void set(int field, int value);   将给定的日历字段设置为给定值</li>
+<li>void set还有诸如set(int year, int month, int date)等多个重载用于设定日历字段</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cal.set(Calendar.YEAR,<span class="number">2017</span>);<span class="comment">//将cal对象表示的时间的年份设置为2017年</span></span><br><span class="line"></span><br><span class="line">cal.set(<span class="number">2017</span>,Calendar.FEBRUARY,<span class="number">24</span>);<span class="comment">//将cal对象表示的时间设置为2017年2月24日</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//可以将这两句代码分别插入上一段的1、2行之间进行测试</span></span><br><span class="line"><span class="comment">//值得一提的是，Calendar类中将一月JANUARY字段的值定义为0，FEBRUARY的值定义为1</span></span><br><span class="line"><span class="comment">//所以在set函数的参数中使用月份时整数0表示1月，1表示二月并以此类推</span></span><br><span class="line"><span class="comment">//推荐使用Calendar.FEBRUARY等字段以提高代码可读性</span></span><br></pre></td></tr></table></figure>
+<h3 id="add"><a href="#add" class="headerlink" title="add"></a>add</h3><ul>
+<li>void add(int field, int amount);   根据日历的规则，为给定的日历字段添加或减去指定的时间量。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Calendar cal = Calendar.getInstance();</span><br><span class="line"><span class="comment">//调用get函数获取日历对象的年、月、日字段</span></span><br><span class="line"><span class="comment">//get函数传入的参数为Calendar封装好的字段</span></span><br><span class="line">String days = cal.get(Calendar.YEAR)+<span class="string">"年"</span></span><br><span class="line">                +cal.get(Calendar.MONTH)+<span class="string">"月"</span>+cal.get(Calendar.DATE)+<span class="string">"日"</span>;</span><br><span class="line"><span class="comment">//输出检验</span></span><br><span class="line">System.out.println(<span class="string">"今天是："</span>);</span><br><span class="line">System.out.println(days);</span><br><span class="line"></span><br><span class="line">cal.add(Calendar.MONTH,<span class="number">1</span>);</span><br><span class="line">String nextMonth = cal.get(Calendar.YEAR)+<span class="string">"年"</span></span><br><span class="line">        +cal.get(Calendar.MONTH)+<span class="string">"月"</span>+cal.get(Calendar.DATE)+<span class="string">"日"</span>;</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"一个月后是："</span>);</span><br><span class="line">System.out.println(nextMonth);</span><br></pre></td></tr></table></figure>
+<h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><ul>
+<li>long getTimeInMillis();   返回此 Calendar 的时间值，以毫秒为单位。</li>
+</ul>
+<h1 id="日期类Date"><a href="#日期类Date" class="headerlink" title="日期类Date"></a>日期类Date</h1><p>Date类是自Java诞生就有的类，也是少数槽点较多的类之一，自Calendar诞生后Date中大多数方法都被取代，但是要使用日期格式化类按要求获取日期和时间，Date类还是必不可少的。</p>
+<h2 id="构造方法-1"><a href="#构造方法-1" class="headerlink" title="构造方法"></a>构造方法</h2><ul>
+<li>Date();   分配 Date 对象并初始化此对象，以表示分配它的时间（精确到毫秒）</li>
+<li>Date(long time);   分配Date对象并初始化此对象，以表示自从协调世界时以来的指定的毫秒数</li>
+</ul>
+<h2 id="主要方法-1"><a href="#主要方法-1" class="headerlink" title="主要方法"></a>主要方法</h2><ul>
+<li>boolean after(Date when);   测试此日期是否在指定日期之后</li>
+<li>boolean before(Date when);   测试此日期是否在指定日期之前</li>
+<li>long getTime();   返回此 Date对象对协调世界时相差的毫秒数</li>
+<li>Date parse(String text);   根据指定的字符串生成一个Date对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Date nowdays = <span class="keyword">new</span> Date();</span><br><span class="line">System.out.println(nowdays);</span><br><span class="line"><span class="comment">//输出结果为Tue Feb 13 11:18:33 CST 2018</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先用Calendar获取一个指定时间的毫秒值</span></span><br><span class="line">Calendar calendar = Calendar.getInstance();</span><br><span class="line">calendar.set(<span class="number">2017</span>,Calendar.FEBRUARY,<span class="number">24</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line"><span class="comment">//用指定日期的毫秒值初始化Date对象并输出检验</span></span><br><span class="line">Date day = <span class="keyword">new</span> Date(calendar.getTimeInMillis());</span><br><span class="line">System.out.println(day);</span><br><span class="line"><span class="comment">//输出结果Fri Feb 24 00:00:00 CST 2017</span></span><br></pre></td></tr></table></figure>
+<h1 id="日期格式化类"><a href="#日期格式化类" class="headerlink" title="日期格式化类"></a>日期格式化类</h1><p>Java作为当前最火热的编程语言之一，在日期时间处理的功能上必定要考虑到不同时区、不同习惯导致的语言和习惯差别。为了解决这个问题，在java.text包中提供了DateFormat和SimpleDateFormat两个类。</p>
+<h2 id="DateFormat"><a href="#DateFormat" class="headerlink" title="DateFormat"></a>DateFormat</h2><p>DateFormat用于根据要求格式化或标准化日期和时间对象，其提供了多个类似的方法以获得基于默认或给定语言环境和多种格式化风格的默认日期/时间 Formatter。使用DateFormat时一般先获取到格式化器，然后通过format方法传入Date对象将数据格式化为字符串。</p>
+<h3 id="获取格式化器"><a href="#获取格式化器" class="headerlink" title="获取格式化器"></a>获取格式化器</h3><ul>
+<li>static DateFormat getDateInstance();   获取默认情况下格式化日期的实例对象</li>
+<li>static DateFormat getTimeInstance();   获取默认情况下格式化时间的实例对象</li>
+<li>static DateFormat getDateTimeInstance();   获取默认情况下格式化日期和时间的实例对象</li>
+<li>以上前两个个方法还分别有单个参数的（指定风格）、两个参数的（指定风格和语言环境）的重载；第三个方法还有两个参数（指定风格）、三个参数（指定风格和语言环境）的重载；所以DateFormat共有九个方法可以获取格式化器</li>
+</ul>
+<h3 id="格式化Date对象"><a href="#格式化Date对象" class="headerlink" title="格式化Date对象"></a>格式化Date对象</h3><ul>
+<li>String format(Date date);   将一个 Date 格式化为日期/时间字符串</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Date date = <span class="keyword">new</span> Date();</span><br><span class="line">DateFormat df = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//默认风格的日期格式化器</span></span><br><span class="line">df = DateFormat.getDateInstance();</span><br><span class="line">System.out.println(df.format(date));</span><br><span class="line"></span><br><span class="line"><span class="comment">//SHORT风格的日期格式化器</span></span><br><span class="line">df = DateFormat.getDateInstance(DateFormat.SHORT);</span><br><span class="line">System.out.println(df.format(date));</span><br><span class="line"></span><br><span class="line"><span class="comment">//两次输出结果</span></span><br><span class="line"><span class="comment">//2018年2月13日</span></span><br><span class="line"><span class="comment">//2018/2/13</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Date date = <span class="keyword">new</span> Date();</span><br><span class="line">DateFormat df = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//默认风格的时间格式化器(中文、中国风格)</span></span><br><span class="line">df = DateFormat.getTimeInstance();</span><br><span class="line">System.out.println(df.format(date));</span><br><span class="line"></span><br><span class="line"><span class="comment">//美式英语、美国风格的日期格式化器</span></span><br><span class="line">df = DateFormat.getTimeInstance(DateFormat.SHORT,<span class="keyword">new</span> Locale(<span class="string">"en_us"</span>,<span class="string">"as"</span>));</span><br><span class="line">System.out.println(df.format(date));</span><br><span class="line"></span><br><span class="line"><span class="comment">//两次输出结果</span></span><br><span class="line"><span class="comment">//下午12:12:44</span></span><br><span class="line"><span class="comment">//12:12:44 CST</span></span><br></pre></td></tr></table></figure>
+<h2 id="SimpleDateFormat"><a href="#SimpleDateFormat" class="headerlink" title="SimpleDateFormat"></a>SimpleDateFormat</h2><p>顾名思义，SimpleDateFormat是一个很简便的日期格式化类。它是DateFormat的子类，重写了format方法，使用时可以通过获取格式化器对象，此格式化器对象用正则表达式的方式格式化文本。</p>
+<h3 id="构造方法-2"><a href="#构造方法-2" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
+<li>SimpleDateFormat();   用默认的模式和默认语言环境的日期格式符号构造格式化器</li>
+</ul>
+<ul>
+<li><p>SimpleDateFormat(String pattern);   用给定的模式构造格式化器</p>
+<h3 id="其他方法-1"><a href="#其他方法-1" class="headerlink" title="其他方法"></a>其他方法</h3></li>
+<li><p>String format(Date date);   将一个 Date 格式化为日期/时间字符串</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Date date = <span class="keyword">new</span> Date();</span><br><span class="line">SimpleDateFormat sdf = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy年MM月dd日hh时mm分"</span>);</span><br><span class="line">System.out.println(sdf.format(date));</span><br><span class="line"><span class="comment">//输出结果</span></span><br><span class="line"><span class="comment">//2018年02月13日12时53分</span></span><br><span class="line"></span><br><span class="line">sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy/MM/dd"</span>);</span><br><span class="line">System.out.println(sdf.format(date));</span><br><span class="line"><span class="comment">//输出结果</span></span><br><span class="line"><span class="comment">//2018/02/13</span></span><br></pre></td></tr></table></figure>
+<h3 id="正则规则"><a href="#正则规则" class="headerlink" title="正则规则"></a>正则规则</h3><p>SimpleDateFormat是利用正则表达式来格式化日期的，在文档中将其称之为“模式字母”，在常用的模式字母中，除月份用M分钟用m外其他皆为小写的单词首字母。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/03/简单的爬虫程序/" rel="next" title="简单的爬虫程序">
+                <i class="fa fa-chevron-left"></i> 简单的爬虫程序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/18/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/facivon.jpg"
+                alt="CnMarijuana" />
+            
+              <p class="site-author-name" itemprop="name">CnMarijuana</p>
+              <p class="site-description motion-element" itemprop="description">夜来一笑寒灯下，始是金丹换骨时。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/CnMarijuana" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:justitacsl@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#日历类Calendar"><span class="nav-number">1.</span> <span class="nav-text">日历类Calendar</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造方法"><span class="nav-number">1.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要方法"><span class="nav-number">1.2.</span> <span class="nav-text">主要方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">1.2.1.</span> <span class="nav-text">get</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set"><span class="nav-number">1.2.2.</span> <span class="nav-text">set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#add"><span class="nav-number">1.2.3.</span> <span class="nav-text">add</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他方法"><span class="nav-number">1.2.4.</span> <span class="nav-text">其他方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日期类Date"><span class="nav-number">2.</span> <span class="nav-text">日期类Date</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造方法-1"><span class="nav-number">2.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要方法-1"><span class="nav-number">2.2.</span> <span class="nav-text">主要方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日期格式化类"><span class="nav-number">3.</span> <span class="nav-text">日期格式化类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DateFormat"><span class="nav-number">3.1.</span> <span class="nav-text">DateFormat</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取格式化器"><span class="nav-number">3.1.1.</span> <span class="nav-text">获取格式化器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化Date对象"><span class="nav-number">3.1.2.</span> <span class="nav-text">格式化Date对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SimpleDateFormat"><span class="nav-number">3.2.</span> <span class="nav-text">SimpleDateFormat</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造方法-2"><span class="nav-number">3.2.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他方法-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">其他方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则规则"><span class="nav-number">3.2.3.</span> <span class="nav-text">正则规则</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CnMarijuana</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
