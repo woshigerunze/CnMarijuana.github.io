@@ -91,7 +91,7 @@
 <meta property="og:image" content="https://i.loli.net/2017/12/10/5a2d407c8cdc0.png">
 <meta property="og:image" content="https://i.loli.net/2017/12/10/5a2d4071a990f.png">
 <meta property="og:image" content="https://i.loli.net/2018/03/03/5a997d3629dc3.png">
-<meta property="og:updated_time" content="2018-03-31T03:09:51.979Z">
+<meta property="og:updated_time" content="2018-04-02T15:06:27.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello Hexo">
 <meta name="twitter:description" content="​        hexo是一个快速、简洁且高效的博客框架，支持Marddown，可以将支持的类型的文件转换成静态网页。网上有很多高质量的hexo教程，但是考虑到专家盲点，大家在自己搭建博客的时候总是会遇到一些无法预料的问题，于是我决定与大家分享搭建博客的过程。  Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。   专家盲点是指">
@@ -368,7 +368,7 @@
 <p><img src="https://i.loli.net/2017/12/10/5a2d400be151f.png" alt="node配置演示"></p>
 <h3 id="配置环境变量（可选操作）"><a href="#配置环境变量（可选操作）" class="headerlink" title="配置环境变量（可选操作）"></a>配置环境变量（可选操作）</h3><p>Node默认安装模块的位置在C:\Users\Administrator\AppData\Roaming\npm文件夹中，如果需要更换可通过更改环境变量的方式。参照<a href="http://www.jianshu.com/p/03a76b2e7e00" target="_blank" rel="noopener">Node.js安装及环境配置</a>。</p>
 <p>在更改了默认的安装位置后可再次用上面两行命令检查是否配置成功，配置环境变量是搭建博客过程中最容易出错的地方，这一步可以多换几个路径检查。</p>
-<h1 id="申请Github仓库"><a href="#申请Github仓库" class="headerlink" title="申请Github仓库"></a>申请Github仓库</h1><h2 id="注册Github账号"><a href="#注册Github账号" class="headerlink" title="注册Github账号"></a>注册Github账号</h2><p>打开<a href="https://github.com/" target="_blank" rel="noopener">Github</a>创建账号即可，建议与本地配置Git的时候使用的名字和邮箱相同。</p>
+<h1 id="申请Github仓库"><a href="#申请Github仓库" class="headerlink" title="申请Github仓库"></a>申请Github仓库</h1><h2 id="注册Github账号"><a href="#注册Github账号" class="headerlink" title="注册Github账号"></a>注册Github账号</h2><p>打开<a href="https://github.com/" target="_blank" rel="noopener">Github</a>创建账号即可，建议与本地配置Git的时候使用的名字和邮箱相同。不要忘记去您的邮箱验证邮箱地址。</p>
 <h2 id="创建和配置代码仓库"><a href="#创建和配置代码仓库" class="headerlink" title="创建和配置代码仓库"></a>创建和配置代码仓库</h2><ol>
 <li><p>登陆Github后依次点击右上角”+”，New repository，然后设置仓库名和仓库属性，点击Create reopsitory即可。</p>
 </li>
@@ -391,7 +391,7 @@
 <li>如果在每个路径下都能正常输出hexo的版本信息，说明hexo安装成功并且Node.js和npm的设置正确。</li>
 <li>如果仅在指定路径下能正常输出hexo的版本信息，说明hexo安装成功但是Node.js和npm的设置出现问题。</li>
 </ul>
-<h2 id="创建博客根目录"><a href="#创建博客根目录" class="headerlink" title="创建博客根目录"></a>创建博客根目录</h2><p>打开一个新的cmd窗口，跳转到您想要的路径，输入如下命令。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &lt;folder&gt;是指定的博客根目录（folder为您指定的文件夹名）</span></span><br><span class="line">$ hexo init folder</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装完成之后进入博客目录下</span></span><br><span class="line">$ <span class="built_in">cd</span> folder</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装扩展插件</span></span><br><span class="line">$ npm install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装Git支持插件</span></span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建博客根目录"><a href="#创建博客根目录" class="headerlink" title="创建博客根目录"></a>创建博客根目录</h2><p>打开一个新的cmd窗口，跳转到您想要的路径，输入如下命令。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &lt;folder&gt;是指定的博客根目录（folder为您指定的文件夹名）</span></span><br><span class="line">$ hexo init folder</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装完成之后进入博客目录下</span></span><br><span class="line">$ <span class="built_in">cd</span> folder</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装Git支持插件</span></span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
 <p>笔者的博客本地文件目录为E:\myBlog，在输入hexo init myBlog后hexo帮我创建成功的。</p>
 <h2 id="配置博客文件"><a href="#配置博客文件" class="headerlink" title="配置博客文件"></a>配置博客文件</h2><p>在您上一步创建好的文件夹中，应该有一个名为：_config.yml的文件，用记事本打开后进行编辑。</p>
 <p><strong>1. Site设置</strong>，从配置文件的第四行开始。 </p>
@@ -419,6 +419,7 @@
 <h3 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h3><p>如果上一步没有报错的话，继续输入。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line"><span class="comment">#或者简写</span></span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></p>
 <p>当命令行显示“Hexo is running at <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>. Press Ctrl+C to stop.”时在浏览器地址栏中输入<a href="http://localhost:4000/即可预览博客。" target="_blank" rel="noopener">http://localhost:4000/即可预览博客。</a></p>
 <h3 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h3><p>折腾了这么久，终于要将写好的博客上传到网络，不过首先请您确保之前的步骤都没有出现问题。<br>同样在命令行窗口输入如下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line"><span class="comment">#或者简写</span></span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p>
+<p>第一次上传时会有一个来自github的弹框需要您输入github的账号和密码，正确输入即可。如果遇到错误代码为0的问题，可以尝试更新git。</p>
 <h3 id="写一篇新文章"><a href="#写一篇新文章" class="headerlink" title="写一篇新文章"></a>写一篇新文章</h3><p>当然，我们搭建博客是为了展示自己写的文章的，不是为了展示默认文章，现在我就教您如何写一篇新文章。</p>
 <ul>
 <li>使用hexo命令</li>
@@ -430,6 +431,7 @@
 </ul>
 <p>两种方法中我更推荐第一种，因为hexo会帮您在name.md文件中添加一些标记，以便于您在博客中对文章进行分类和归档等。日后您写好新的文章也可以按照相同方式生成本地文件后上传文件。</p>
 <hr>
+<p>注意：整个安装程序、搭建博客和上传博客的过程中，您的防火墙软件可能会不断提示您有程序请求联网，请不要拒绝。</p>
 <p>OK，大功告成，祝贺您拥有了自己搭建的个人博客。本教程为博客搭建入门教程，您可以根据自己的需求做进一步改进，如更换主题、添加评论功能甚至自己写一个主题等，详情请查看<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官方文档</a>。</p>
 <p>如果您觉得这篇教程对您有帮助，希望可以分享给您的朋友们。</p>
 <p>如果您在搭建博客的过程中遇到什么难题，可以通过邮箱联系我，很高兴可以帮助到您。</p>
