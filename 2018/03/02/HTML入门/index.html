@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HTML是HyperText Markup Language的缩写，原义为超文本标记语言。HTML是网页的框架，可以理解为人体的脊柱，网页上的资源包括字符串、媒体文件和超链接等都是通过HTML代码指定和标记的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML入门">
+<meta property="og:url" content="https://cnmarijuana.github.io/2018/03/02/HTML入门/index.html">
+<meta property="og:site_name" content="JUST">
+<meta property="og:description" content="HTML是HyperText Markup Language的缩写，原义为超文本标记语言。HTML是网页的框架，可以理解为人体的脊柱，网页上的资源包括字符串、媒体文件和超链接等都是通过HTML代码指定和标记的。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-02T14:59:25.515Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML入门">
+<meta name="twitter:description" content="HTML是HyperText Markup Language的缩写，原义为超文本标记语言。HTML是网页的框架，可以理解为人体的脊柱，网页上的资源包括字符串、媒体文件和超链接等都是通过HTML代码指定和标记的。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cnmarijuana.github.io/2018/03/02/HTML入门/"/>
+
+
+
+
+
+  <title>HTML入门 | JUST</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JUST</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/03/02/HTML入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CnMarijuana">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facivon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T22:54:47+08:00">
+                2018-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端基础/" itemprop="url" rel="index">
+                    <span itemprop="name">前端基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>HTML是HyperText Markup Language的缩写，原义为超文本标记语言。HTML是网页的框架，可以理解为人体的脊柱，网页上的资源包括字符串、媒体文件和超链接等都是通过HTML代码指定和标记的。</p>
+<a id="more"></a>
+<h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><ol>
+<li><p>由标签来定义的语言，代码都是由标签组成；</p>
+</li>
+<li><p>不区分大小写；</p>
+</li>
+<li><p>HTML文档主要由四个主要标记构成，这四个主要标记分别是&lt;!doctype&gt;、&lt;html&gt;、&lt;head&gt;、&lt;body&gt;。</p>
+<ul>
+<li><p>&lt;!doctype&gt;文档类型声明，用于告知浏览器使用哪一种HTML规范；</p>
+</li>
+<li><p>&lt;html&gt;所有的HTML文档都是以&lt;html&gt;开头、&lt;/html&gt;结束，并没有实际性的功能；</p>
+</li>
+<li><p>&lt;head&gt;用于给网页添加一些辅助或者属性的信息；</p>
+</li>
+<li><p>&lt;body&gt;内部为网页内容。</p>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--这些语句为网页添加辅助信息--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--这些语句是网页的内容--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="lt-head-gt-内部标签"><a href="#lt-head-gt-内部标签" class="headerlink" title="&lt;head&gt;内部标签"></a>&lt;head&gt;内部标签</h1><h2 id="lt-title-gt"><a href="#lt-title-gt" class="headerlink" title="&lt;title&gt;"></a>&lt;title&gt;</h2><p>用于指定网页标题，该标签内容会在浏览器上显示</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>网页标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="lt-meta-gt"><a href="#lt-meta-gt" class="headerlink" title="&lt;meta&gt;"></a>&lt;meta&gt;</h2><p>该标签提供关于HTML文档的元数据，不会在用户浏览网页时显示，但是对于机器是可读的。通常位于&lt;head&gt;内&lt;title&gt;之前。</p>
+<p>&lt;meta&gt;的主要属性有：</p>
+<ul>
+<li>网页编码格式charset选择网页内容的编码格式</li>
+<li><p>name属性与对应的值（可选操作）：</p>
+<ul>
+<li><p>网页说明Description用于描述网页的主要内容和主题</p>
+</li>
+<li><p>网页关键字Keywords用于描述网页内容的关键字</p>
+</li>
+<li><p>编写网页用到的工具Genkerator用于说明编写网页时使用的工具</p>
+</li>
+<li><p>作者Author用于说明网页制作者</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"Description"</span> <span class="attr">content</span>=<span class="string">"这是学习HTML时写的网页"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"Keywords"</span> <span class="attr">content</span>=<span class="string">"学习、HTML"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"Genkerator"</span> <span class="attr">content</span>=<span class="string">"vs code"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"Author"</span> <span class="attr">content</span>=<span class="string">"cMarijuana"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>http-equiv</p>
+<ul>
+<li>网页自动跳转Refresh，也可用于实现自动刷新</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Refresh"</span> <span class="attr">content</span>=<span class="string">"5;URL=https://www.baidu.com/"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--设置在浏览网页时五秒钟后跳转至百度--&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="lt-body-gt"><a href="#lt-body-gt" class="headerlink" title="&lt;body&gt;"></a>&lt;body&gt;</h1><p>&lt;body&gt;的主要属性有：</p>
+<ul>
+<li><p>页边距margin</p>
+<ul>
+<li>topmarigin</li>
+<li>lefemarigin</li>
+<li>rightmarigin</li>
+<li><p>bottommarigin  </p>
+<p>这四个属性用于设置网页的页边距</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">topmargin</span>=<span class="string">"50"</span> <span class="attr">leftmargin</span>=<span class="string">"50"</span> <span class="attr">rightmargin</span>=<span class="string">"50"</span> <span class="attr">bottommargin</span>=<span class="string">"50"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>文字颜色text  该属性用于设置网页中所有文字的默认颜色，这一属性可以对网页中所有未单独设置颜色的文本生效。</p>
+</li>
+<li><p>超链接颜色link  设置网页中所有超链接的颜色（默认情况下未访问的超链接是蓝色，访问过的为暗红色），同样对未单独定义过颜色的超链接生效。</p>
+</li>
+<li><p>网页背景色bgcolor  设置网页背景色。</p>
+</li>
+<li><p>网页背景图background  设置网页背景图。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">text</span>=<span class="string">"#B58A8B"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--颜色是我随便选的--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">link</span>=<span class="string">"#B58A8B"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--颜色是我随便选的--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">bgcolor</span>=<span class="string">"#866D6D"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--颜色是我随便选的--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">background</span>=<span class="string">"test.jpg"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="网页文本处理"><a href="#网页文本处理" class="headerlink" title="网页文本处理"></a>网页文本处理</h1><h2 id="网页文本中的特殊字符"><a href="#网页文本中的特殊字符" class="headerlink" title="网页文本中的特殊字符"></a>网页文本中的特殊字符</h2><ol>
+<li>HTML文本在被浏览器解析时空格和回车会被无视</li>
+<li>在HTML语法中有特殊含义的字符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">特殊字符</th>
+<th style="text-align:center">空格</th>
+<th style="text-align:center">&amp;</th>
+<th style="text-align:center">&lt;</th>
+<th style="text-align:center">&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">HTML代码</td>
+<td style="text-align:center">&amp;nbsp;</td>
+<td style="text-align:center">&amp;amp;</td>
+<td style="text-align:center">&amp;lt;</td>
+<td style="text-align:center">&amp;gt;</td>
+</tr>
+</tbody>
+</table>
+<p>其他更多特殊字符可以浏览<a href="http://tool.oschina.net/commons?type=2" target="_blank" rel="noopener">HTML转义字符对照表</a>。</p>
+<h2 id="段落处理"><a href="#段落处理" class="headerlink" title="段落处理"></a>段落处理</h2><ul>
+<li>强制换行标签&lt;br/&gt;</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是第一行<span class="tag">&lt;<span class="name">br</span>/&gt;</span>这是第二行</span><br></pre></td></tr></table></figure>
+<ul>
+<li>段落&lt;p&gt;</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第一段文本<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第二段文本<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>段落对齐方式  </li>
+</ul>
+<p>段落&lt;p&gt;标签的align属性可以用于设置该段文本的对齐方式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>这一段文本左对齐<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span>剧中对齐<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>右对齐<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="文字处理-lt-font-gt-标签"><a href="#文字处理-lt-font-gt-标签" class="headerlink" title="文字处理&lt;font&gt;标签"></a>文字处理&lt;font&gt;标签</h2><p>&lt;font&gt;标签已经成为不推荐使用的标签之一，在最新的HTML5规范中推荐使用CSS和&lt;span&gt;结合来控制字体样式。但是考虑到该标签依然被众多主流浏览器支持，所以我们还是要学习它的语法。</p>
+<ul>
+<li>设置文字<ul>
+<li>字体face</li>
+<li>大小size</li>
+<li>颜色color</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span>=<span class="string">"黑体"</span>&gt;</span>这一段文字是黑体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">"+1"</span>&gt;</span>这一段文字为+1大小<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"#AD1417"</span>&gt;</span>这还是我随便选得颜色<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>修饰文字<ul>
+<li>加粗&lt;b&gt;标签或者&lt;strong&gt;</li>
+<li>倾斜&lt;i&gt;标签或者&lt;em&gt;</li>
+<li>下划线标签&lt;u&gt;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>这是一段加粗的文字<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stong</span>&gt;</span>这也是一段加粗的文字<span class="tag">&lt;/<span class="name">stong</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span>&gt;</span>这是一段倾斜的文字<span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span>这也是一段倾斜的文字<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">u</span>&gt;</span>这段文字有下划线<span class="tag">&lt;/<span class="name">u</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>上下标<ul>
+<li>上标&lt;sup&gt;</li>
+<li>下标&lt;sub&gt;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">勾股定理：C=A<span class="tag">&lt;<span class="name">sup</span>&gt;</span>2<span class="tag">&lt;/<span class="name">sup</span>&gt;</span>+B<span class="tag">&lt;<span class="name">sup</span>&gt;</span>2<span class="tag">&lt;/<span class="name">sup</span>&gt;</span></span><br><span class="line">水的化学式：H<span class="tag">&lt;<span class="name">sub</span>&gt;</span>2<span class="tag">&lt;/<span class="name">sub</span>&gt;</span>O</span><br></pre></td></tr></table></figure>
+<h2 id="格式化文本"><a href="#格式化文本" class="headerlink" title="格式化文本"></a>格式化文本</h2><ul>
+<li>多级标题</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h6</span>&gt;</span>六级标题<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>水平线&lt;hr/&gt;</p>
+<ul>
+<li>水平线颜色color</li>
+<li>水平线宽高width</li>
+<li>水平线对齐方式align</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这段文字下有一条默认属性的水平线<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这段文字下有一个宽度为百分之三十、左对齐的水平线<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span> <span class="attr">width</span>=<span class="string">"30%"</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这段文字下有一条蓝色水平线<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span> <span class="attr">color</span>=<span class="string">#525EE3/</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="滚动文本-lt-marquee-gt"><a href="#滚动文本-lt-marquee-gt" class="headerlink" title="滚动文本&lt;marquee&gt;"></a>滚动文本&lt;marquee&gt;</h2><ul>
+<li>设置文本滚动方向</li>
+<li>设置文本滚动速度</li>
+<li>设置文本滚动方式</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">marquee</span> <span class="attr">direction</span>=<span class="string">"right"</span> <span class="attr">scrollamount</span>=<span class="string">"1"</span>&gt;</span>从左至右以速度1滚动<span class="tag">&lt;/<span class="name">marquee</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">marquee</span> <span class="attr">onMouseOver</span>=<span class="string">"stop()"</span> <span class="attr">onMouseOut</span>=<span class="string">"start()"</span>&gt;</span>鼠标悬停至此停止滚动<span class="tag">&lt;/<span class="name">marquee</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="超链接-lt-a-gt"><a href="#超链接-lt-a-gt" class="headerlink" title="超链接&lt;a&gt;"></a>超链接&lt;a&gt;</h1><h2 id="href属性"><a href="#href属性" class="headerlink" title="href属性"></a>href属性</h2><p>用于指定超链接的目的地。</p>
+<h3 id="网页超链接"><a href="#网页超链接" class="headerlink" title="网页超链接"></a>网页超链接</h3><ul>
+<li>设置网页超链接的方式</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span>&gt;</span>百度一下<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置网页超链接的打开方式target属性<br>  | 标签值   |   _blank   |      _self |     new      |<br>  | ——– | :——–: | ———: | :———-: |<br>  | 对应方式 | 新窗口打开 | 当前页打开 | 新浏览器打开 |</li>
+</ul>
+<h3 id="设置图片超链接"><a href="#设置图片超链接" class="headerlink" title="设置图片超链接"></a>设置图片超链接</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"imgs/1.jpg"</span>&gt;</span>插入图片<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="邮箱超链接"><a href="#邮箱超链接" class="headerlink" title="邮箱超链接"></a>邮箱超链接</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:abc@139.com"</span>&gt;</span>联系我们<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--打开电脑上可以解析邮箱协议的软件并新建邮件，以abc@139为收件人--&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="超链接实现在网页内的跳转"><a href="#超链接实现在网页内的跳转" class="headerlink" title="超链接实现在网页内的跳转"></a>超链接实现在网页内的跳转</h2><ol>
+<li>利用name属性在页面内设置锚点</li>
+<li>利用href属性实现跳转</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">top</span>&gt;</span>顶部<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"1.jpg"</span> <span class="attr">height</span>=<span class="string">"1000"</span> <span class="attr">width</span>=<span class="string">"600"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">middle</span>&gt;</span>中部<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"1.jpg"</span> <span class="attr">height</span>=<span class="string">"1000"</span> <span class="attr">width</span>=<span class="string">"600"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#top"</span>&gt;</span>回到顶部<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#middle"</span>&gt;</span>回到中部<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--图片1.jpg并不存在，只是为了使网页内容足够翻页，方便演示页面内的跳转--&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/13/Java-8之前的时间处理/" rel="next" title="Java 8之前的时间处理">
+                <i class="fa fa-chevron-left"></i> Java 8之前的时间处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/facivon.jpg"
+                alt="CnMarijuana" />
+            
+              <p class="site-author-name" itemprop="name">CnMarijuana</p>
+              <p class="site-description motion-element" itemprop="description">夜来一笑寒灯下，始是金丹换骨时。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/CnMarijuana" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:justitacsl@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lt-head-gt-内部标签"><span class="nav-number">2.</span> <span class="nav-text">&lt;head&gt;内部标签</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-title-gt"><span class="nav-number">2.1.</span> <span class="nav-text">&lt;title&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-meta-gt"><span class="nav-number">2.2.</span> <span class="nav-text">&lt;meta&gt;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lt-body-gt"><span class="nav-number">3.</span> <span class="nav-text">&lt;body&gt;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网页文本处理"><span class="nav-number">4.</span> <span class="nav-text">网页文本处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网页文本中的特殊字符"><span class="nav-number">4.1.</span> <span class="nav-text">网页文本中的特殊字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#段落处理"><span class="nav-number">4.2.</span> <span class="nav-text">段落处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字处理-lt-font-gt-标签"><span class="nav-number">4.3.</span> <span class="nav-text">文字处理&lt;font&gt;标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式化文本"><span class="nav-number">4.4.</span> <span class="nav-text">格式化文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滚动文本-lt-marquee-gt"><span class="nav-number">4.5.</span> <span class="nav-text">滚动文本&lt;marquee&gt;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#超链接-lt-a-gt"><span class="nav-number">5.</span> <span class="nav-text">超链接&lt;a&gt;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#href属性"><span class="nav-number">5.1.</span> <span class="nav-text">href属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网页超链接"><span class="nav-number">5.1.1.</span> <span class="nav-text">网页超链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置图片超链接"><span class="nav-number">5.1.2.</span> <span class="nav-text">设置图片超链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#邮箱超链接"><span class="nav-number">5.1.3.</span> <span class="nav-text">邮箱超链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超链接实现在网页内的跳转"><span class="nav-number">5.2.</span> <span class="nav-text">超链接实现在网页内的跳转</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CnMarijuana</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
