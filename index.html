@@ -82,7 +82,7 @@
 <meta name="description" content="夜来一笑寒灯下，始是金丹换骨时。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="JUST">
-<meta property="og:url" content="https://git.coding.net/CnMarijuana/JUST_BLOG.git/index.html">
+<meta property="og:url" content="https://cnmarijuana.github.io/index.html">
 <meta property="og:site_name" content="JUST">
 <meta property="og:description" content="夜来一笑寒灯下，始是金丹换骨时。">
 <meta property="og:locale" content="zh-Hans">
@@ -118,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="https://git.coding.net/CnMarijuana/JUST_BLOG.git/"/>
+  <link rel="canonical" href="https://cnmarijuana.github.io/"/>
 
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://git.coding.net/CnMarijuana/JUST_BLOG.git/2018/04/07/Java运行环境的配置/">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/04/21/Servlet基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CnMarijuana">
@@ -281,7 +281,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/07/Java运行环境的配置/" itemprop="url">Java运行环境的配置</a></h1>
+                <a class="post-title-link" href="/2018/04/21/Servlet基础/" itemprop="url">Servlet基础</a></h1>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-07T15:25:04+08:00">
-                2018-04-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T10:16:42+08:00">
+                2018-04-21
               </time>
             
 
@@ -316,8 +316,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
                   </a>
                 </span>
 
@@ -334,8 +334,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/07/Java运行环境的配置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/07/Java运行环境的配置/" itemprop="commentCount"></span>
+                <a href="/2018/04/21/Servlet基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/21/Servlet基础/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,7 +365,56 @@
       
         
           
-            
+            <h1 id="Servlet-简介"><a href="#Servlet-简介" class="headerlink" title="Servlet 简介"></a>Servlet 简介</h1><blockquote>
+<p>Java Servlet 是运行在 Web 服务器或应用服务器上的程序，它是作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中间层。</p>
+</blockquote>
+<p>Servlet 其实就是一个在服务器端运行的小 Java 程序，可以接受 HTTP 请求并做出相应的响应，是使用 Java 进行Web开发的基石之一。借助 Servlet 可以更方便的实现动态的 Web 资源。严格来说，Servlet 只是 <code>javax.servlet</code> 包中的<strong>接口</strong>，是<strong>规范</strong>；一般将实现了 Servlet 接口的 Java 程序也称之为 Servlet 。</p>
+<h2 id="Servlet-的特点"><a href="#Servlet-的特点" class="headerlink" title="Servlet 的特点"></a>Servlet 的特点</h2><ul>
+<li>Servlet 是利用Java提供的API实现的，因此它具有Java语言的优点，跨平台、灵活易拓展等；</li>
+<li>Servlet 通过多线程技术实现高效处理；</li>
+<li>Servlet 采用了 Java 的安全框架，再加上容器提供的安全保障，Servlet 的安全性可靠。</li>
+</ul>
+<h2 id="Servlet-运行过程"><a href="#Servlet-运行过程" class="headerlink" title="Servlet 运行过程"></a>Servlet 运行过程</h2><p>Servlet 处理 HTTP 请求的流程如下（也叫Servlet的生命周期）：</p>
+<ol>
+<li>在 Web 容器启动或者第一次收到客户端请求时创建 Servlet；</li>
+<li>服务器调用 Servlet 的 init() 方法初始化；</li>
+<li>服务器调用 Servlet 的 service() 方法完成对客户端请求的响应和处理；</li>
+<li>当 Web 容器关闭时，服务器调用 Servlet 的destory() 方法对占用资源进行释放； </li>
+</ol>
+<p><img src="/2018/04/21/Servlet基础/./Servlet基础/Servlet生命周期.png" alt="Servlet生命周期实例"></p>
+<h1 id="Servlet-开发"><a href="#Servlet-开发" class="headerlink" title="Servlet 开发"></a>Servlet 开发</h1><p>如果想在自己的 Web 应用中使用 Servlet，有两个步骤，分别是编写自己的 Servlet 实现类的代码和配置 Servlet。</p>
+<p>##实现 Servlet</p>
+<p>使用 IDEA 新建一个 Web 项目，在 src 目录下新建一个 servlet 包，然后在包中添加一个名为 ServletTEST 的类，这里我选择了直接实现 Servlet 接口来完成演示代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletTEST</span> <span class="keyword">implements</span> <span class="title">Servlet</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig servletConfig)</span> <span class="keyword">throws</span> ServletException</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"init..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServletConfig <span class="title">getServletConfig</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse)</span> </span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"servlet..."</span>);</span><br><span class="line">        servletResponse.getWriter().write(<span class="string">"First Servlet"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getServletInfo</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"destory..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##编写配置文件</p>
+<p>Web 项目的配置文件在 WEB-INF 文件夹中，是一个名为 web 的 xml 文档，添加与前面的 Servlet有关的配置信息后 web.xml的内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span><br><span class="line">         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span><br><span class="line">         version=&quot;4.0&quot;&gt;</span><br><span class="line">    &lt;servlet&gt;</span><br><span class="line">        &lt;servlet-name&gt;ServletTEST&lt;/servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;Servlet.ServletTEST&lt;/servlet-class&gt;</span><br><span class="line">    &lt;/servlet&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;ServletTEST&lt;/servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;/test&lt;/url-pattern&gt;</span><br><span class="line">    &lt;/servlet-mapping&gt;</span><br><span class="line">&lt;/web-app&gt;</span><br></pre></td></tr></table></figure>
+<p>仔细观察可以发现 Servlet 的配置方式：</p>
+<ul>
+<li>\&lt;servlet> 和 \&lt;servlet-mapping> 一一对应，都有一个用于指定 Servlet 名称的 \&lt;servlet-name>，除此之外：\&lt;servlet> 标签有用于指定包结构的 \&lt;servlet-class> ，\&lt;servlet-mapping> 有用于指定虚拟路径的 \&lt;url-mapping> ； </li>
+<li>\&lt;servlet-name> 的值是 Servlet 的名称，通常写实现类的类名，相互对应的两个父标签中 \&lt;servlet-name> 子标签的值应该是相同的，另外这里如果不写类名也不会出现错误（两个 \&lt;servlet-name> 的值依然相同），Web 服务器不是通过类名去寻找或加载 Servlet；</li>
+<li>\&lt;servlet-class> 的值是 Servlet 的包结构，使用该标签说明后服务器才可以找到正确的 .java 文件并通过反射的方式创建、加载正确的 Servlet；</li>
+<li>\&lt;url-pattern> 的值是虚拟路径，例如在本例中，项目开始运行之后在浏览器地址栏输入<code>localhost:8080/test</code> ，ServletTEST 实例就会被创建，并且网页中内容是 “First Servlet” 。</li>
+</ul>
+<p>#Servlet API</p>
+<p>Servlet API 中接口和类虽然繁多，但是都有规律可循，再加上篇幅所限，本文中不会详细介绍每一个方法。如果您有疑惑，可以查阅 Java EE 的文档。</p>
+<p>##Servlet 接口</p>
+<p>前面已经说过，Servlet 是 <code>javax.servlet</code> 包中的接口，对实现类进行了规范。 Servlet 接口中有五个方法，分别是对应初始化的 init() 、处理请求的 service() 和消亡时的 destory() ，以及用于获取 Servlet 相关信息的 getServletinfo() 和 getServletConfig()。</p>
+<p>Servlet 接口规定了实现类应该遵守什么样的规范以及实现类的生命周期，但是在实际开发过程中我们自定义的 Servlet 通常是继承 HttpServlet 或者 GenericServlet 两个类。</p>
+<p>##ServletConfig</p>
+<p>ServletConfig 是位于 <code>javax.servlet</code> 包中的接口，代表当前 Servlet 对象的配置信息（既 web.xml 中的内容），每一个 Servlet 都有且仅有一个 ServletConfig对象。</p>
+<p>ServletConfig 提供了四个方法用于获取配置信息。</p>
+<p>##GenericServlet 和 HttpServlet</p>
+<p>###GenericServlet</p>
+<p>一个实现了 Servlet 和 ServletConfig 接口的抽象类，实现了出了service() 之外的所有方法。自定义 Servlet 对象时，可以通过继承 GenericServlet 来简化代码。</p>
+<p>###HttpServlet</p>
+<p>HttpServlet 仍然是一个抽象类，并且已经实现了 service() 方法，并且针对 HTTP 1.1 中的七种请求类型添加了相应的方法：doGet()、doPost()、doPut() 等。</p>
+<p>###HttpServletRequset 和 HttpServletResponse</p>
+<p>这两个类分别实现了 ServletRequset 和 ServletResponse 两个接口，是对 HTTP 请求报文和响应报文的封装，方便获取报文中的信息或编辑报文。</p>
+<h2 id="Servlet-API-的体系结构"><a href="#Servlet-API-的体系结构" class="headerlink" title="Servlet API 的体系结构"></a>Servlet API 的体系结构</h2><p><img src="/2018/04/21/Servlet基础/./Servlet基础/Servlet API的体系结构.png" alt="Servlet的体系结构"></p>
+<p>图中绿色的部份为接口、蓝色的部份为类（其实 GernericServlet 和 HttpServlet 都是抽象类）。</p>
+<p>我认为 Servlet API 的体系结构之所以是这样的，是 Java 制定者们的野心所致，如果有一天 HTTP 协议不再是主流的网络传输协议，开发者们依然可以使用 <code>javax.servlet</code> 包中的接口和类来开发 Servlet。</p>
+
           
         
       
@@ -413,7 +462,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://git.coding.net/CnMarijuana/JUST_BLOG.git/2018/03/24/JavaScript基础语法/">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/03/24/JavaScript基础语法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CnMarijuana">
@@ -569,7 +618,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://git.coding.net/CnMarijuana/JUST_BLOG.git/2018/03/23/JavaScript基础/">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/03/23/JavaScript基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CnMarijuana">
@@ -728,7 +777,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://git.coding.net/CnMarijuana/JUST_BLOG.git/2018/03/13/层叠样式表CSS/">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/03/13/层叠样式表CSS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CnMarijuana">
@@ -887,7 +936,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://git.coding.net/CnMarijuana/JUST_BLOG.git/2018/03/02/HTML入门/">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/03/02/HTML入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CnMarijuana">
@@ -1043,7 +1092,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://git.coding.net/CnMarijuana/JUST_BLOG.git/2018/02/13/Java-8之前的时间处理/">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/02/13/Java-8之前的时间处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CnMarijuana">
@@ -1199,7 +1248,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://git.coding.net/CnMarijuana/JUST_BLOG.git/2018/02/03/简单的爬虫程序/">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/02/03/简单的爬虫程序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CnMarijuana">
@@ -1356,7 +1405,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://git.coding.net/CnMarijuana/JUST_BLOG.git/2018/01/24/正则表达式/">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/01/24/正则表达式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CnMarijuana">
@@ -1517,7 +1566,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://git.coding.net/CnMarijuana/JUST_BLOG.git/2017/12/08/Hello-Hexo/">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2017/12/08/Hello-Hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CnMarijuana">
@@ -1727,7 +1776,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1738,7 +1787,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
