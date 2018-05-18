@@ -304,6 +304,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -343,7 +365,98 @@
       
         
           
-            
+            <h1 id="List-接口"><a href="#List-接口" class="headerlink" title="List 接口"></a>List 接口</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
+<li>存入和取出的顺序一致；</li>
+<li>元素都含有角标索引；</li>
+<li>元素可以重复。</li>
+</ol>
+<h1 id="List-接口的实现类"><a href="#List-接口的实现类" class="headerlink" title="List 接口的实现类"></a>List 接口的实现类</h1><h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><p>该类是实现了 List 接口的大小可变的数组，实现了所有可选列表操作，并且可以储存包括 null 在内的所有元素。</p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
+<li>ArrayList()：构造一个默认长度的空列表（默认长度为10）；</li>
+<li>ArrayList(Collection&lt;? extends E&gt; c)：构造一个包含指定 collection 的元素的列表，排列顺序与原来的 collection 相同。</li>
+<li>ArryList(int initialCapacity)：构造一个指定长度的空列表。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList MyArray = <span class="keyword">new</span> ArrayList();</span><br></pre></td></tr></table></figure>
+<h3 id="常见方法"><a href="#常见方法" class="headerlink" title="常见方法"></a>常见方法</h3><p>按照对元素的添加、删除、修改和获取多种不同的功能将常用的方法分类介绍。</p>
+<h4 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h4><ul>
+<li>boolean add(Object obj)：将一个对象添加到容器中，添加成功返回 ture，失败返回 false；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设此时MyArray是上例中创建的对象</span></span><br><span class="line">MyArray.add(<span class="string">"just1"</span>);</span><br><span class="line">MyArray.add(<span class="string">"just2"</span>);</span><br><span class="line">MyArray.add(<span class="string">"just3"</span>);</span><br><span class="line">System.out.println(MyArray);<span class="comment">//输出[just1, just2, just3]</span></span><br><span class="line"><span class="comment">//之所以输出的内容是这样的因为 MyArray 对象的 toString() 方法自动调用</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>boolean addAll(collection coll)：将另一个容器中所有对象都添加的容器中，同样的失败时返回 false；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设此时MyArray中储存了"just1","just2","just3"三个字符串类的对象</span></span><br><span class="line">Collection MyArray_2 = <span class="keyword">new</span> ArrayList();</span><br><span class="line">MyArray_2.addAll(MyArray);</span><br><span class="line">System.out.println(MyArray_2);<span class="comment">//输出[just1, just2, just3]</span></span><br></pre></td></tr></table></figure>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><ul>
+<li>void clear()：删除容器中所有对象；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设此时MyArray中储存了"just1","just2","just3"三个字符串类的对象</span></span><br><span class="line">MyArray.clear();</span><br><span class="line">System.out.println(MyArray);<span class="comment">//输出[]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>boolean remove(Object obj)：删除指定对象；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设此时gather_1中储存了"just1","just2","just3"三个字符串类的对象</span></span><br><span class="line">MyArray.remove(<span class="string">"just3"</span>);</span><br><span class="line">System.out.println(MyArray);<span class="comment">//[just1, just2]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>boolean removeAll(collection coll)：删除两个容器中相同对象，保留不同的对象；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设此时MyArray中储存了"just1","just2","just3"三个字符串类的对象</span></span><br><span class="line"><span class="comment">//假设此时MyArray中储存了"just2","just4","just5"三个字符串类的对象</span></span><br><span class="line">MyArray.removeAll(MyArray_2);</span><br><span class="line">System.out.println(MyArray_1);<span class="comment">//输出[just1, just3]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>boolean retainAll(collection coll)：保留两个容器中相同对象，删除不同对象；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设此时MyArray中储存了"just1","just2","just3"三个字符串类的对象</span></span><br><span class="line"><span class="comment">//假设此时MyArray_2中储存了"just2","just4","just5"三个字符串类的对象</span></span><br><span class="line">gather_1.retainAll(MyArray_2);</span><br><span class="line">System.out.println(MyArray);<span class="comment">//输出[just2]</span></span><br></pre></td></tr></table></figure>
+<h4 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h4><ul>
+<li>boolean ifEmpty()：集合为空返回true；<br> boolean    contains(Object o)：如果此 collection 包含指定的元素，则返回true。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设此时MyArray中储存了"just1","just2","just3"三个字符串类的对象</span></span><br><span class="line"><span class="keyword">boolean</span> m = MyArray.isEmpty();<span class="comment">//m值为false</span></span><br><span class="line"><span class="keyword">boolean</span> n = MyArray.contains(<span class="string">"just4"</span>);<span class="comment">//n值为false</span></span><br></pre></td></tr></table></figure>
+<h4 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h4><ul>
+<li>int size()：返回容器长度</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设此时MyArray中储存了"just1","just2","just3"三个字符串类的对象</span></span><br><span class="line">System.out.println(MyArray.size())</span><br><span class="line"><span class="comment">//输出为3</span></span><br></pre></td></tr></table></figure>
+<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><p>该类是实现了 List 接口的链表。除了实现 List 接口外，LinkedList 类还为在列表的开头及结尾 get、remove 和 insert 元素提供了统一的命名方法。这些操作允许将链接列表用作堆栈、队列或双端队列。</p>
+<h3 id="构造方法-1"><a href="#构造方法-1" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
+<li>LinkedList()：构造一个空列表；</li>
+<li>LinkedList(Collection&lt;? extends E&gt; c)：构造一个包含指定 collection 中的元素的列表，这些元素按其 collection 的迭代器返回的顺序排列。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LinkedList MyList = <span class="keyword">new</span> LinkedList();</span><br></pre></td></tr></table></figure>
+<h3 id="常见方法-1"><a href="#常见方法-1" class="headerlink" title="常见方法"></a>常见方法</h3><p>同样按照对元素的添加、删除、修改和获取多种不同的功能将常用的方法分类介绍。</p>
+<h4 id="添加-1"><a href="#添加-1" class="headerlink" title="添加"></a>添加</h4><ul>
+<li>void add(int index, E element)：在指定位置（index）添加指定元素（element）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MyList.add(<span class="string">"just1"</span>);</span><br><span class="line">MyList.add(<span class="string">"just2"</span>);</span><br><span class="line">MyList.add(<span class="string">"just3"</span>);</span><br><span class="line">System.out.println(MyList);</span><br><span class="line"><span class="comment">//第一次输出[just1, just2, just3]</span></span><br><span class="line">MyList.add(<span class="number">2</span>, <span class="string">"Test"</span>);</span><br><span class="line">System.out.println(MyList);</span><br><span class="line"><span class="comment">//第二次输出[just1, just2, Test, just3]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>boolean addAll(int index, Collection&lt;? extends E&gt; e)：在指定位置插入另一个 collection 集合所有元素</li>
+</ul>
+<h4 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h4><ul>
+<li>Object remove(int index)：删除并返回指定位置元素</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String str = (String) MyList.remove(<span class="number">1</span>);</span><br><span class="line">System.out.println(MyList);</span><br><span class="line"><span class="comment">//第一次输出[just1, just3]</span></span><br><span class="line">System.out.println(str);</span><br><span class="line"><span class="comment">//第二次输出just2</span></span><br></pre></td></tr></table></figure>
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><ul>
+<li>Object set(int index, E element)：将指定位置（index）的元素换为element，并返回原来的元素  </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设MyList是储存了"just1"、"just2"、"just3"的集合</span></span><br><span class="line">String str = (String) MyList.set(<span class="number">1</span>, <span class="string">"test"</span>);</span><br><span class="line">System.out.println(MyList);</span><br><span class="line"><span class="comment">//输出[just1, test, just3]</span></span><br><span class="line">System.out.println(str);</span><br><span class="line"><span class="comment">//输出just2</span></span><br></pre></td></tr></table></figure>
+<h4 id="获取-1"><a href="#获取-1" class="headerlink" title="获取"></a>获取</h4><ul>
+<li>Object get(int index)：返回指定位置的元素  </li>
+<li>int Indexof(E element)：返回指定元素的位置，如果不包含指定元素返回-1  </li>
+<li>int lastIndexof(E element)：返回此列表中最后出现的指定元素的索引；如果列表不包含此元素，则返回 -1。</li>
+<li>List SubList(int start, int end)：返回列表的子列表，包含start位置的元素不包含end位置元素</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设MyList是储存了"just1"、"just2"、"just3"的集合</span></span><br><span class="line">System.out.println(MyList);</span><br><span class="line"><span class="comment">//输出[just1, test, just3]</span></span><br><span class="line">MyList = MyList.subList(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">System.out.println(MyList);</span><br><span class="line"><span class="comment">//输出[just1, just2]</span></span><br></pre></td></tr></table></figure>
+<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><p>迭代器 Iterable 是 Java 提供的用于方便数据依次获取的接口，可以使用该类进行<strong>增强 for 循环（foreach 语句）</strong>的目标，不过篇总结中暂时不会出现有关增强 for 循环的内容，具体内容会在以后的部分介绍。</p>
+<h2 id="获取迭代器对象"><a href="#获取迭代器对象" class="headerlink" title="获取迭代器对象"></a>获取迭代器对象</h2><ul>
+<li>Iterator\&lt;E> iterator()：返回按适当顺序在列表的元素上进行迭代的迭代器。</li>
+</ul>
+<p>该方法是在 List 接口中定义的，所以 ArrayList 和 LinkedList 类都已经实现了对应方法，可以直接使用。</p>
+<h2 id="使用迭代器"><a href="#使用迭代器" class="headerlink" title="使用迭代器"></a>使用迭代器</h2><p>迭代器的方法十分简单，有两个比较重要的：</p>
+<ul>
+<li>boolean hasNext()：如果仍有元素可以迭代，则返回 true。</li>
+<li>E next()：返回迭代的下一个元素。</li>
+</ul>
+<p>本例代码的功能为遍历 MyList 集合的每一个元素，当找到 “just2” 这个元素时将其替换为 “just9”，最后输出。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Iterator it = MyList.iterator();</span><br><span class="line"><span class="keyword">while</span> (it.hasNext())</span><br><span class="line">&#123;</span><br><span class="line">	Object obj = it.next();	<span class="comment">//next() 函数返回类型为源迭代器的泛型约束</span></span><br><span class="line">	<span class="keyword">if</span>(obj.equals(<span class="string">"just2"</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		MyList.add(<span class="string">"just9"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(MyList);</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出[just1, just9, just3]</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong> </p>
+<ul>
+<li>本文中的迭代器是位于 java.lang 包中的，而 Java SE 中不止这一个名为 Iterator 的接口，所以导包时请额外注意。</li>
+<li>如果使用本例代码中的方式来操作迭代器，不能在循环体中多次调用 next() 方法，该方法每次都用都会返回至下一个元素，有可能导致您的代码得不到期望的结果。</li>
+</ul>
+
           
         
       
