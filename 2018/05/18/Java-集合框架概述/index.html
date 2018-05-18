@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="夜来一笑寒灯下，始是金丹换骨时。">
+<meta name="description" content="概述集合是 Java 中比较重要的内容，是用于储存的容器，实质上是一套用于储存对象的容器。集合框架中的类总结有以下几个特点：  储存对象的容器； 集合长度是可变的； 集合中不能储存基本数据类型； 所有集合类都位于 java.util 包下。  集合框架由于集合容器内部的数据结构不同，有多种集合容器，抽取共性后就形成了集合框架，而集合框架的顶层就是 collection 或 Map 接口。下面是一张">
 <meta name="keywords" content="集合框架">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 集合框架概述">
 <meta property="og:url" content="https://cnmarijuana.github.io/2018/05/18/Java-集合框架概述/index.html">
 <meta property="og:site_name" content="JUST">
-<meta property="og:description" content="夜来一笑寒灯下，始是金丹换骨时。">
+<meta property="og:description" content="概述集合是 Java 中比较重要的内容，是用于储存的容器，实质上是一套用于储存对象的容器。集合框架中的类总结有以下几个特点：  储存对象的容器； 集合长度是可变的； 集合中不能储存基本数据类型； 所有集合类都位于 java.util 包下。  集合框架由于集合容器内部的数据结构不同，有多种集合容器，抽取共性后就形成了集合框架，而集合框架的顶层就是 collection 或 Map 接口。下面是一张">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-18T14:39:20.666Z">
+<meta property="og:image" content="https://cnmarijuana.github.io/2018/05/18/Java-集合框架概述/集合框架.png">
+<meta property="og:updated_time" content="2018-05-18T14:44:19.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 集合框架概述">
-<meta name="twitter:description" content="夜来一笑寒灯下，始是金丹换骨时。">
+<meta name="twitter:description" content="概述集合是 Java 中比较重要的内容，是用于储存的容器，实质上是一套用于储存对象的容器。集合框架中的类总结有以下几个特点：  储存对象的容器； 集合长度是可变的； 集合中不能储存基本数据类型； 所有集合类都位于 java.util 包下。  集合框架由于集合容器内部的数据结构不同，有多种集合容器，抽取共性后就形成了集合框架，而集合框架的顶层就是 collection 或 Map 接口。下面是一张">
+<meta name="twitter:image" content="https://cnmarijuana.github.io/2018/05/18/Java-集合框架概述/集合框架.png">
 
 
 
@@ -362,7 +364,23 @@
       
 
       
-        
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>集合是 Java 中比较重要的内容，是用于储存的容器，实质上是一套用于储存对象的容器。集合框架中的类总结有以下几个特点：</p>
+<ol>
+<li>储存对象的容器；</li>
+<li>集合长度是可变的；</li>
+<li>集合中不能储存基本数据类型；</li>
+<li>所有集合类都位于 <strong>java.util</strong> 包下。</li>
+</ol>
+<h1 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h1><p>由于集合容器内部的数据结构不同，有多种集合容器，抽取共性后就形成了集合框架，而集合框架的顶层就是 collection 或 Map 接口。下面是一张集合框架的示意图：</p>
+<p><img src="/2018/05/18/Java-集合框架概述/集合框架.png" alt="Java 集合框架"></p>
+<p><strong>注：</strong></p>
+<ul>
+<li>最顶层的 Iterable 是一个迭代器接口，也是 Java 集合框架中比较重要的内容，后面也会详细介绍。</li>
+<li>Collection 和 Map 两个顶层接口；</li>
+<li>代表不同数据类型的子接口 List、Set 和 Queue；</li>
+<li>多个实现类，分别是对不同接口的实现，是我们要学习的主要内容。</li>
+</ul>
+
       
     </div>
     
@@ -479,8 +497,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -560,6 +587,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合框架"><span class="nav-number">2.</span> <span class="nav-text">集合框架</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
