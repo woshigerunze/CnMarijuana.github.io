@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="集合框架," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Set接口 一个不包含重复元素的 collection。 更确切地讲，set 不包含满足 e1.equals(e2) 的元素对 e1 和 e2，并且最多包含一个 null 元素。   Set 接口主要有以下几个特点：  元素不能重复  不保证有序  继承了Collection的方法   Set 接口的实现类Set 接口也是继承自 collection 接口，所以和 List 有很多共通的方法，这里">
+<meta name="keywords" content="集合框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Set 接口和实现类">
+<meta property="og:url" content="https://cnmarijuana.github.io/2018/05/19/Set-接口和实现类/index.html">
+<meta property="og:site_name" content="JUST">
+<meta property="og:description" content="Set接口 一个不包含重复元素的 collection。 更确切地讲，set 不包含满足 e1.equals(e2) 的元素对 e1 和 e2，并且最多包含一个 null 元素。   Set 接口主要有以下几个特点：  元素不能重复  不保证有序  继承了Collection的方法   Set 接口的实现类Set 接口也是继承自 collection 接口，所以和 List 有很多共通的方法，这里">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-19T03:41:25.858Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Set 接口和实现类">
+<meta name="twitter:description" content="Set接口 一个不包含重复元素的 collection。 更确切地讲，set 不包含满足 e1.equals(e2) 的元素对 e1 和 e2，并且最多包含一个 null 元素。   Set 接口主要有以下几个特点：  元素不能重复  不保证有序  继承了Collection的方法   Set 接口的实现类Set 接口也是继承自 collection 接口，所以和 List 有很多共通的方法，这里">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cnmarijuana.github.io/2018/05/19/Set-接口和实现类/"/>
+
+
+
+
+
+  <title>Set 接口和实现类 | JUST</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cbaecec45a8bc626bf2f6e12b3650a68";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JUST</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/05/19/Set-接口和实现类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CnMarijuana">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facivon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Set 接口和实现类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-19T11:40:23+08:00">
+                2018-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/19/Set-接口和实现类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/19/Set-接口和实现类/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h1><blockquote>
+<p>一个不包含重复元素的 collection。 更确切地讲，set 不包含满足 e1.equals(e2) 的元素对 e1 和 e2，并且最多包含一个 null 元素。 </p>
+</blockquote>
+<p>Set 接口主要有以下几个特点：</p>
+<ol>
+<li><p>元素不能重复</p>
+</li>
+<li><p>不保证有序</p>
+</li>
+<li><p>继承了Collection的方法</p>
+</li>
+</ol>
+<h1 id="Set-接口的实现类"><a href="#Set-接口的实现类" class="headerlink" title="Set 接口的实现类"></a>Set 接口的实现类</h1><p>Set 接口也是继承自 collection 接口，所以和 List 有很多共通的方法，这里就不再详细介绍了，本篇总结主要介绍 Set 接口和它的实现类与 List 接口不同的地方。</p>
+<h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><p>此类实现 Set 接口，由哈希表（实际上是一个 HashMap 实例）支持。</p>
+<h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><ul>
+<li>一种数据结构，利用特定的算法（类的hashCode方法）对元素进行计算决定储存的位置；  </li>
+<li><p>哈希表判断两个元素是否相同的过程：</p>
+<ol>
+<li>判断两个元素的哈希值是否相同（hashCode方法的返回值），如果相同进行第二步，不同表示两个元素非相同元素；</li>
+<li>判断两个元素的内容是否相同(equals方法)。</li>
+</ol>
+</li>
+</ul>
+<h3 id="用HashSet储存元素"><a href="#用HashSet储存元素" class="headerlink" title="用HashSet储存元素"></a>用HashSet储存元素</h3><ul>
+<li><p>Java 类库中的类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HashSet&lt;String&gt; hs = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line">hs.add(<span class="string">"just1"</span>);</span><br><span class="line">hs.add(<span class="string">"just3"</span>);</span><br><span class="line">hs.add(<span class="string">"just2"</span>);</span><br><span class="line">hs.add(<span class="string">"just4"</span>);</span><br><span class="line">hs.add(<span class="string">"just1"</span>);</span><br><span class="line">System.out.println(hs);</span><br><span class="line"><span class="comment">//输出[just4, just1, just2, just3]</span></span><br><span class="line"><span class="comment">//可以看出储存顺序与输入顺序并不相同并且仅有一个just1元素</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义类</p>
+</li>
+</ul>
+<p>在哈希表中储存自定义类时，需要复写 hashCode() 和 equals() 方法，便于hashSet判断是否为相同元素。</p>
+<p>以自定义一个 Person 对象为例，该对象中有表示姓名的 String 成员和年龄 的 int 成员。</p>
+<p><strong>Person 类</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> <span class="comment">//实际上哈希码就是通过特定的算法计算而来</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name.hashCode() + age * <span class="number">40</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Person)</span><br><span class="line">        &#123;</span><br><span class="line">            Person other = (Person) obj;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.name.equals(other.getName()) &amp;&amp; <span class="keyword">this</span>.age == other.getAge())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">" @ "</span>+ <span class="string">"name:"</span> + <span class="keyword">this</span>.name + <span class="string">" age:"</span> + <span class="keyword">this</span>.age + <span class="string">" @ "</span>;</span><br><span class="line">        <span class="comment">//两端加两个 @ 方便辨认</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Person 类中复写 equals() 和 hashCode() 方法是为了可以让 HashSet 对象可以正常储存 Person 对象。复写 toString() 方法是为了方便输出查看结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HashSet hashSet = <span class="keyword">new</span> HashSet();</span><br><span class="line">hashSet.add(<span class="keyword">new</span> Person(<span class="string">"张三"</span>, <span class="number">20</span>));</span><br><span class="line">hashSet.add(<span class="keyword">new</span> Person(<span class="string">"李四"</span>, <span class="number">24</span>));</span><br><span class="line">hashSet.add(<span class="keyword">new</span> Person(<span class="string">"王五"</span>, <span class="number">22</span>));</span><br><span class="line"></span><br><span class="line">System.out.println(hashSet);</span><br><span class="line"><span class="comment">//输出结果为 [ @ name:李四 age:24 @ ,  @ name:张三 age:20 @ ,  @ name:王五 age:22 @ ]</span></span><br><span class="line"><span class="comment">//此处的结果可能会和 jdk 版本以及其他的因素相关</span></span><br><span class="line"><span class="comment">//如果您简单的修改 Person 类的 hashCode() 方法也有可能导致此时输出结果不同</span></span><br></pre></td></tr></table></figure>
+<p>可以看出输入的顺序和储存的顺序并不相同。</p>
+<h3 id="子类LinkedHashSet"><a href="#子类LinkedHashSet" class="headerlink" title="子类LinkedHashSet"></a>子类LinkedHashSet</h3><blockquote>
+<p>具有可预知迭代顺序的 Set 接口的哈希表和链接列表实现。此实现与 HashSet 的不同之外在于，后者维护着一个运行于所有条目的双重链接列表。此链接列表定义了迭代顺序，即按照将元素插入到 set 中的顺序（<em>插入顺序</em>）进行迭代。注意，插入顺序<em>不</em> 受在 set 中<em>重新插入的</em> 元素的影响。 </p>
+</blockquote>
+<p>即为：LinkedHashSet 的哈希算法决定了该容器的元素可以<strong>确定储存顺序（非与输入顺序相同）</strong>，是一个使用哈希表的双重链表。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LinkedHashSet link = <span class="keyword">new</span> LinkedHashSet();</span><br><span class="line">link.add(<span class="keyword">new</span> Person(<span class="string">"张三"</span>, <span class="number">20</span>));</span><br><span class="line">link.add(<span class="keyword">new</span> Person(<span class="string">"李四"</span>, <span class="number">24</span>));</span><br><span class="line">link.add(<span class="keyword">new</span> Person(<span class="string">"王五"</span>, <span class="number">22</span>));</span><br><span class="line"></span><br><span class="line">System.out.println(link);</span><br><span class="line"><span class="comment">//[ @ name:张三 age:20 @ ,  @ name:李四 age:24 @ ,  @ name:王五 age:22 @ ]</span></span><br><span class="line"><span class="comment">//Person 对象是上例中的</span></span><br><span class="line"><span class="comment">//可以发现输出顺序与输入顺序相同，当然这意味着输入顺序和存储顺序也相同，</span></span><br><span class="line"><span class="comment">//但是请明白这个例子只是十分简单的演示，并不一定会触发更多的复杂情况</span></span><br></pre></td></tr></table></figure>
+<h2 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h2><p>一个可以根据<em>字典顺序</em>存储输入元素的集合，或者也可以根据创建该对象时提供的 <em>Comparator</em> 排序。</p>
+<ul>
+<li><em>字典顺序</em>：也叫自然顺序，比如在字典中 abandon 在 a 之后一样；</li>
+<li><em>Comparator</em>：强制给某个 collection 对象进行整体排序的<strong>比较函数</strong>，来自于同名接口。</li>
+</ul>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
+<li><p>TreeSet()：构造一个根据默认字典顺序排序的容器</p>
+</li>
+<li><p>TreeSet(Comparator&lt;? super E&gt; comparator)：构造一个根据指定比较器进行排序的容器</p>
+<h3 id="简单演示"><a href="#简单演示" class="headerlink" title="简单演示"></a>简单演示</h3></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TreeSet ts = <span class="keyword">new</span> TreeSet();</span><br><span class="line">ts.add(<span class="string">"abc"</span>);</span><br><span class="line">ts.add(<span class="string">"nba"</span>);</span><br><span class="line">ts.add(<span class="string">"lpl"</span>);</span><br><span class="line">System.out.println(ts);</span><br><span class="line"><span class="comment">//[abc, lpl, nba]</span></span><br><span class="line"><span class="comment">//可以看出并非按照输入顺序储存，而是字典顺序</span></span><br></pre></td></tr></table></figure>
+<h3 id="储存自定义类"><a href="#储存自定义类" class="headerlink" title="储存自定义类"></a>储存自定义类</h3><p>有两种方法可以让 TreeSet 能按顺序储存 Person 类。</p>
+<h4 id="让元素具有比较功能"><a href="#让元素具有比较功能" class="headerlink" title="让元素具有比较功能"></a>让元素具有比较功能</h4><p>使自定义类实现Comparable接口，以便于容器进行比较排序。以之前的 Person 类为例，先实现 Comperable 接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Person类实现Comparable接口的方法：</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Person other)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.age - other.age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">TreeSet&lt;Person&gt; ts = <span class="keyword">new</span> TreeSet&lt;Person&gt;();</span><br><span class="line">ts.add(<span class="keyword">new</span> Person(<span class="string">"张三"</span>, <span class="number">24</span>));</span><br><span class="line">ts.add(<span class="keyword">new</span> Person(<span class="string">"李四"</span>, <span class="number">22</span>));</span><br><span class="line">ts.add(<span class="keyword">new</span> Person(<span class="string">"王五"</span>, <span class="number">20</span>));</span><br><span class="line">Iterator it = ts.iterator();</span><br><span class="line"><span class="keyword">while</span> (it.hasNext())</span><br><span class="line">&#123;</span><br><span class="line">	Person p = (Person) it.next();</span><br><span class="line">	System.out.println(p.getName()+<span class="string">"\t"</span>+p.getAge());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出结果：</span></span><br><span class="line"><span class="comment">//王五	20</span></span><br><span class="line"><span class="comment">//李四	22</span></span><br><span class="line"><span class="comment">//张三	24</span></span><br><span class="line"><span class="comment">//按年龄顺序排序</span></span><br></pre></td></tr></table></figure>
+<h4 id="让容器具有比较功能"><a href="#让容器具有比较功能" class="headerlink" title="让容器具有比较功能"></a>让容器具有比较功能</h4><p>写一个自定义比较器（Comparator 的实现类），利用TreeSet(Comparator&lt;? super E&gt; comparator) 构造函数创建容器</p>
+<p>  利用Comparator接口创建比较器<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ComparatorDemo</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Person</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Person o1, Person o2)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> num = o1.getAge() - o2.getAge();</span><br><span class="line">		<span class="keyword">if</span> (num != <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> num;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> o1.getName().compareTo(o2.getName());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>   利用构造函数创建具备比较功能的容器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">TreeSet ts = <span class="keyword">new</span> TreeSet(<span class="keyword">new</span> ComparatorDemo());</span><br><span class="line">ts.add(<span class="keyword">new</span> Person(<span class="string">"张三"</span>, <span class="number">24</span>));</span><br><span class="line">ts.add(<span class="keyword">new</span> Person(<span class="string">"李四"</span>, <span class="number">20</span>));</span><br><span class="line">ts.add(<span class="keyword">new</span> Person(<span class="string">"王五"</span>, <span class="number">20</span>));</span><br><span class="line">Iterator it = ts.iterator();</span><br><span class="line"><span class="keyword">while</span> (it.hasNext())</span><br><span class="line">&#123;</span><br><span class="line">	Person p = (Person) it.next();</span><br><span class="line">	System.out.println(p.getName()+<span class="string">"\t"</span>+p.getAge());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//李四	20</span></span><br><span class="line"><span class="comment">//王五	20</span></span><br><span class="line"><span class="comment">//张三	24</span></span><br></pre></td></tr></table></figure>
+<h2 id="区别辨析"><a href="#区别辨析" class="headerlink" title="区别辨析"></a>区别辨析</h2><p>HashSet 和 TreeSet 是 Set 接口的实现类，因此都具有 Set 接口的特点，同时又都有各自的特点。</p>
+<ul>
+<li>相同点<ul>
+<li>单列集合，元素不可重复 </li>
+</ul>
+</li>
+<li>不同点<ul>
+<li>HashSet无序，TreeSet有序 </li>
+<li>存储时保证数据唯一性依据不同：HashSet 通过 equals() 和 hashcode() 方法，而 TreeSet 通过 compareTo 方法。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="CnMarijuana 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/集合框架/" rel="tag"># 集合框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/19/List-接口的实现类/" rel="next" title="List 接口的实现类">
+                <i class="fa fa-chevron-left"></i> List 接口的实现类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/facivon.jpg"
+                alt="CnMarijuana" />
+            
+              <p class="site-author-name" itemprop="name">CnMarijuana</p>
+              <p class="site-description motion-element" itemprop="description">夜来一笑寒灯下，始是金丹换骨时。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/CnMarijuana" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:justitacsl@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Set接口"><span class="nav-number">1.</span> <span class="nav-text">Set接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Set-接口的实现类"><span class="nav-number">2.</span> <span class="nav-text">Set 接口的实现类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashSet"><span class="nav-number">2.1.</span> <span class="nav-text">HashSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希表"><span class="nav-number">2.1.1.</span> <span class="nav-text">哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用HashSet储存元素"><span class="nav-number">2.1.2.</span> <span class="nav-text">用HashSet储存元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子类LinkedHashSet"><span class="nav-number">2.1.3.</span> <span class="nav-text">子类LinkedHashSet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TreeSet"><span class="nav-number">2.2.</span> <span class="nav-text">TreeSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造方法"><span class="nav-number">2.2.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单演示"><span class="nav-number">2.2.2.</span> <span class="nav-text">简单演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#储存自定义类"><span class="nav-number">2.2.3.</span> <span class="nav-text">储存自定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#让元素具有比较功能"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">让元素具有比较功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#让容器具有比较功能"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">让容器具有比较功能</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区别辨析"><span class="nav-number">2.3.</span> <span class="nav-text">区别辨析</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CnMarijuana</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'hqYcnoD47j859fuaa7J8ekI9-gzGzoHsz',
+        appKey: 'J224xGFSYJ8UPxjYJY5y9Cu3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
