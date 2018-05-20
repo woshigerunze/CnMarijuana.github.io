@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="XML,Java," />
+  <meta name="keywords" content="XML,Java API," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="DOM解析">
-<meta name="keywords" content="XML,Java">
+<meta name="description" content="DOM解析JAXP 为 使用 Java 程序使用 DOM 方式解析 XML 文档提供了解决方案，这篇总结的主要内容是如何使用 JAXP 来解析 XML。">
+<meta name="keywords" content="XML,Java API">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAXP之DOM">
 <meta property="og:url" content="https://cnmarijuana.github.io/2018/05/20/JAXP之DOM/index.html">
 <meta property="og:site_name" content="JUST">
-<meta property="og:description" content="DOM解析">
+<meta property="og:description" content="DOM解析JAXP 为 使用 Java 程序使用 DOM 方式解析 XML 文档提供了解决方案，这篇总结的主要内容是如何使用 JAXP 来解析 XML。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-20T12:43:45.409Z">
+<meta property="og:updated_time" content="2018-05-20T12:58:15.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAXP之DOM">
-<meta name="twitter:description" content="DOM解析">
+<meta name="twitter:description" content="DOM解析JAXP 为 使用 Java 程序使用 DOM 方式解析 XML 文档提供了解决方案，这篇总结的主要内容是如何使用 JAXP 来解析 XML。">
 
 
 
@@ -362,7 +362,8 @@
       
 
       
-        <h1 id="DOM解析"><a href="#DOM解析" class="headerlink" title="DOM解析"></a>DOM解析</h1><a id="more"></a>
+        <h1 id="DOM解析"><a href="#DOM解析" class="headerlink" title="DOM解析"></a>DOM解析</h1><p>JAXP 为 使用 Java 程序使用 DOM 方式解析 XML 文档提供了解决方案，这篇总结的主要内容是如何使用 JAXP 来解析 XML。</p>
+<a id="more"></a>
 <p>为了方便演示，先创建一个简单的 xml 文件 “test.xml” ：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">student</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>张三<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">age</span>&gt;</span>18<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">student</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">student</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>李四<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">age</span>&gt;</span>20<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">student</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">student</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">name</span>&gt;</span>王五<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">age</span>&gt;</span>22<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">student</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong>解析和操作步骤如下：</strong></p>
@@ -455,7 +456,7 @@
           
             <a href="/tags/XML/" rel="tag"># XML</a>
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/Java-API/" rel="tag"># Java API</a>
           
         </div>
       
