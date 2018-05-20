@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="XML," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="XML 简介xml 全称为 Extensible Markup Language，意味可拓展标记型语言。作为标记型语言，xml 也依靠标签来组成文档，它与 html 主要有以下几点不同：  xml 的标签没有预定义，使用时需要自定义标签，而 html 的标签都是预定义好的； xml 被设计为传输和储存数据，旨在传输信息，关注点是数据的内容； html 被设计为显示数据，旨在显示信息，关注点是数据的">
+<meta name="keywords" content="XML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XML 和 DTD 约束简介">
+<meta property="og:url" content="https://cnmarijuana.github.io/2018/05/20/XML-和-DTD-约束简介/index.html">
+<meta property="og:site_name" content="JUST">
+<meta property="og:description" content="XML 简介xml 全称为 Extensible Markup Language，意味可拓展标记型语言。作为标记型语言，xml 也依靠标签来组成文档，它与 html 主要有以下几点不同：  xml 的标签没有预定义，使用时需要自定义标签，而 html 的标签都是预定义好的； xml 被设计为传输和储存数据，旨在传输信息，关注点是数据的内容； html 被设计为显示数据，旨在显示信息，关注点是数据的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-20T12:32:28.582Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XML 和 DTD 约束简介">
+<meta name="twitter:description" content="XML 简介xml 全称为 Extensible Markup Language，意味可拓展标记型语言。作为标记型语言，xml 也依靠标签来组成文档，它与 html 主要有以下几点不同：  xml 的标签没有预定义，使用时需要自定义标签，而 html 的标签都是预定义好的； xml 被设计为传输和储存数据，旨在传输信息，关注点是数据的内容； html 被设计为显示数据，旨在显示信息，关注点是数据的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cnmarijuana.github.io/2018/05/20/XML-和-DTD-约束简介/"/>
+
+
+
+
+
+  <title>XML 和 DTD 约束简介 | JUST</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cbaecec45a8bc626bf2f6e12b3650a68";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JUST</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/05/20/XML-和-DTD-约束简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CnMarijuana">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facivon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">XML 和 DTD 约束简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T20:25:07+08:00">
+                2018-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/20/XML-和-DTD-约束简介/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/20/XML-和-DTD-约束简介/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="XML-简介"><a href="#XML-简介" class="headerlink" title="XML 简介"></a>XML 简介</h1><p>xml 全称为 Extensible Markup Language，意味可拓展标记型语言。作为标记型语言，xml 也依靠标签来组成文档，它与 html 主要有以下几点不同：</p>
+<ul>
+<li>xml 的标签没有预定义，使用时需要自定义标签，而 html 的标签都是预定义好的；</li>
+<li>xml 被设计为传输和储存数据，旨在传输信息，关注点是数据的内容；</li>
+<li>html 被设计为显示数据，旨在显示信息，关注点是数据的外观。</li>
+</ul>
+<a id="more"></a>
+<h1 id="XML的应用"><a href="#XML的应用" class="headerlink" title="XML的应用"></a>XML的应用</h1><p>xml的主要应用如下：</p>
+<ul>
+<li>xml 用于在不同系统和设备之间进行数据的传输；</li>
+<li>xml 用来表示有关系的数据；</li>
+<li>xml 经常用在程序的配置文件中。</li>
+</ul>
+<h1 id="XML的语法"><a href="#XML的语法" class="headerlink" title="XML的语法"></a>XML的语法</h1><p>xml 的文档都是储存在后缀名为 xml 的文件中的，使用记事本等普通的文本编辑器即可查看或编辑 xml 文档。普通浏览器就带有解析xml文本的功能，您可以使用常用的浏览器来检测并改进您自己的 xml 文档。</p>
+<h2 id="文档声明"><a href="#文档声明" class="headerlink" title="文档声明"></a>文档声明</h2><p>与 html 相同，xml 也有文档声明，需要在文档声明的中告知解析器该文档是 xml 类型的文档，使用的 xml 版本和编码格式。</p>
+<ul>
+<li>version：xml 版本，一般情况下使用 1.0；</li>
+<li>encoding：该文档的编码格式；<ul>
+<li>gbk：汉字内码扩展规范，后缀 2312 表示简体中文，2310 繁体字符；</li>
+<li>utf-8：一种针对 Unicode 的可变长度字符编码，又称万国码；</li>
+<li>ISO-8859-1：对欧洲使用语言支持的编码表。</li>
+</ul>
+</li>
+<li>standalone：该文件是否独立；<ul>
+<li>yes：该文档独立，不能引用外部的 DTD 文件（下面介绍DTD）；</li>
+<li>no：该文档非独立，可以引用外部的 DTD 文件。</li>
+</ul>
+</li>
+<li>文档声明<strong>必须</strong>写在整个文档的第一行第一列（之前不会有换行和空格）。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong>如果您使用记事本软件编辑xml文档并将编码方式指明为utf-8，在保存文件时需要点击“另存为”然后将编码方式更改为 utf-8，因为记事本的默认编码方式是ANSI。</p>
+<h2 id="定义标签"><a href="#定义标签" class="headerlink" title="定义标签"></a>定义标签</h2><h3 id="标签基本语法"><a href="#标签基本语法" class="headerlink" title="标签基本语法"></a>标签基本语法</h3><ul>
+<li>与 html 相同，一个 xml 文档必须有且仅有一个根标签，其他所有标签都是该标签的子标签，根标签名并无要求，如<code>&lt;label&gt;&lt;/label&gt;</code>;</li>
+<li>xml 标签必须正确结束：<ul>
+<li>标签内有内容时：<code>&lt;label&gt;...&lt;/label&gt;</code>;</li>
+<li>标签内无内容时可以采取自闭标签的格式：<code>&lt;label/&gt;</code>。</li>
+</ul>
+</li>
+<li>xml 标签允许嵌套并且必须正确嵌套：<ul>
+<li>正确嵌套：<code>&lt;Flabel&gt;&lt;Clabel&gt;&lt;/Clabel&gt;&lt;/Flabel&gt;</code>;</li>
+<li>错误嵌套：<code>&lt;Flabel&gt;&lt;Clabel&gt;&lt;/Flabel&gt;</code>。</li>
+</ul>
+</li>
+<li>xml 文档解析器不会忽略空格和换行，因此下面两段 xml 代码是不同的。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>...<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">	...</span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="标签定义语法"><a href="#标签定义语法" class="headerlink" title="标签定义语法"></a>标签定义语法</h3><ul>
+<li>xml 标签对英文字母的大小写敏感，<code>&lt;a&gt;</code>和<code>&lt;A&gt;</code>不是同一个标签；</li>
+<li>xml 标签运行使用中文字符做标签名（但是并不推荐）；</li>
+<li>标签名不能以数字和下划线开头；</li>
+<li>标签名不能以 xml、XML 字母组合等开头；</li>
+<li>标签名不能包含空格和冒号。</li>
+</ul>
+<h3 id="定义属性"><a href="#定义属性" class="headerlink" title="定义属性"></a>定义属性</h3><ul>
+<li>一个标签上可以有多个属性但是属性名不能相同；</li>
+<li>属性名和属性值之间用 “=” 相连，属性值包含在引号（单双皆可）内；</li>
+<li>属性名的命名规范和标签的命名规范相同。</li>
+</ul>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><ul>
+<li>与 html 相同，xml 的注释语法为<code>&lt;!--注释--&gt;</code>；</li>
+<li>xml 解析器并不会忽略注释代码，所以与 html 相比有一些不同之处：<ul>
+<li>xml 注释不允许嵌套；</li>
+<li>xml 注释不能出现在文档第一行，第一行第一列必须是文档声明。</li>
+</ul>
+</li>
+</ul>
+<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>如果需要将一个特殊的字符储存在 xml 的数据中（通常是 xml 语法中有特殊规则的字符），不能将其直接写入，否则会被解析器错误解析。而想要添加这些特殊字符时，需要使用特殊的转移字符。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">特殊字符</th>
+<th style="text-align:center">&lt;</th>
+<th style="text-align:center">&gt;</th>
+<th style="text-align:center">&amp;</th>
+<th style="text-align:center">&apos;</th>
+<th style="text-align:center">&quot;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">转移字符</td>
+<td style="text-align:center">&amp;lt;</td>
+<td style="text-align:center">&amp;gt;</td>
+<td style="text-align:center">&amp;amp;</td>
+<td style="text-align:center">&amp;apos;</td>
+<td style="text-align:center">&amp;quot;</td>
+</tr>
+</tbody>
+</table>
+<h1 id="CDATA区"><a href="#CDATA区" class="headerlink" title="CDATA区"></a>CDATA区</h1><p>在 xml 文档中的一般区域内（PCDATA区，Parsed Character Data），如<code>&lt;label&gt;测试文本&lt;/label&gt;</code>中“测试文本”四个字也会被解析器解析，但是 CDATA 区段（CDATA section）中的文本会被解析器忽略，所以 CDATA 区中的特殊字符也会被当作普通的文本解析。故下面两段文档其实是相同的：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">out</span>&gt;</span>1000&amp;lt;2000<span class="tag">&lt;/<span class="name">out</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">out</span>&gt;</span>&lt;![CDATA[1000&lt;2000]]&gt;<span class="tag">&lt;/<span class="name">out</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>由于浏览器并不是专业的解析工具，而且 xml 被解析也不是为了显示数据，所以在浏览器中打开并解析这两段 xml 文档时可能外观不同（ Edge 和 IE 会如实显示CDATA区的内容，Firefox 显示的是相同的），但是其作用是相同的。</p>
+<h1 id="XML约束"><a href="#XML约束" class="headerlink" title="XML约束"></a>XML约束</h1><p>先观察这段 xml 文档，我们可以发现<code>&lt;Mon&gt;</code>标签不太适合放在<code>&lt;weekend&gt;</code>标签中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">weekend</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Stu</span>&gt;</span>周六<span class="tag">&lt;/<span class="name">Stu</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Sun</span>&gt;</span>周日<span class="tag">&lt;/<span class="name">Sun</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Mon</span>&gt;</span>周一<span class="tag">&lt;/<span class="name">Mon</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">weekend</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>虽然 XML 的标签可以在命名规则允许下自定义，但有时候我们仍然需要对标签的名称规定书写规范，将其称之为XML 的约束。目前常用的约束方式有 DTD（document type definition 文档类型定义）和 Schema，下面主要介绍 DTD 约束方式。</p>
+<h2 id="DTD约束使用方式"><a href="#DTD约束使用方式" class="headerlink" title="DTD约束使用方式"></a>DTD约束使用方式</h2><h3 id="创建并编写DTD文件"><a href="#创建并编写DTD文件" class="headerlink" title="创建并编写DTD文件"></a>创建并编写DTD文件</h3><ol>
+<li>创建一个后缀名为 dtd 的文本文件，使用普通的文本编辑器即可打开编辑；</li>
+<li>xml 文档中有多少种元素（标签），就在dtd文档中写多少个约束列表（<code>&lt;!ELEMENT 元素名 xxxx&gt;</code>）；</li>
+<li>根据元素的类型在dtd文档中分别编辑对应的约束列表：<ul>
+<li>简单元素（无子标签的元素）：<code>&lt;!ELEMENT 元素名 约束规则&gt;</code>；</li>
+<li>复杂元素（有子标签的元素）：<code>&lt;!ELEMENT 元素名 (子元素列表)&gt;</code>。</li>
+</ul>
+</li>
+</ol>
+<p>先观察下列两段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ELEMENT weekend (Stu,Sun)&gt;</span><br><span class="line">&lt;!ELEMENT Stu (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT Sun (#PCDATA)&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--保存为test.dtd文件，与下一段代码放置在同一个目录下--&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE weekend SYSTEM "test.dtd"&gt;</span></span><br><span class="line"><span class="comment">&lt;!--使用导入外部dtd的方式关联dtd和xml文件，下面详细介绍--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">weekend</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Stu</span>&gt;</span>周六<span class="tag">&lt;/<span class="name">Stu</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Sun</span>&gt;</span>周日<span class="tag">&lt;/<span class="name">Sun</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Mon</span>&gt;</span>周一<span class="tag">&lt;/<span class="name">Mon</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">weekend</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在添加了 dtd 约束并规定了子标签的种类后，&lt;Mon&gt; 标签毫无疑问是错误的，但是如果您使用普通的文本编辑器或者浏览器来解析检验这段代码，可能不会收到错误提示，毕竟它们不是专业工具，这里我使用了 IDEA 来测试，新建一个 Java 项目，将两个文档都保存到 src 目录下时 &lt;Mon&gt; 标签所在行会直接报错。</p>
+<h3 id="关联DTD和xml"><a href="#关联DTD和xml" class="headerlink" title="关联DTD和xml"></a>关联DTD和xml</h3><ul>
+<li>引入外部 dtd 文件：<code>&lt;!DOCTYPE 根标签名 SYSTEM &quot;dtd文件路径&quot;&gt;</code>；</li>
+<li>在xml文件内部编写 dtd 文档 ：<code>&lt;!DOCTYPE 根标签名 [元素列表]&gt;</code>；</li>
+<li>使用网络上的 dtd 文件：<code>&lt;!DOCTYPE 根标签名 PUBLIC &quot;名称&quot; &quot;URL链接&quot;&gt;</code>。</li>
+</ul>
+<p>在上例基础上对第二种引入方式详细解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE weekend [</span><br><span class="line">        &lt;!ELEMENT weekend (Stu,Sun)&gt;</span><br><span class="line">        &lt;!ELEMENT Stu (#PCDATA)&gt;</span><br><span class="line">        &lt;!ELEMENT Sun (#PCDATA)&gt;</span><br><span class="line">]&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="元素约束"><a href="#元素约束" class="headerlink" title="元素约束"></a>元素约束</h2><p>其实上面已经提到了部份 DTD 约束 XML 标签的方式，下面对于约束规则做详细总结：</p>
+<ul>
+<li>简单元素的约束规则：<ul>
+<li>(#PCDATA)：表示该元素中内容为字符串；</li>
+<li>EMPTY：表示该元素中不能有内容；</li>
+<li>ANY：表示该元素中可有任意内容。</li>
+</ul>
+</li>
+<li>复杂元素的子标签修饰符：<ul>
+<li>+：表示该子标签至少出现一次；</li>
+<li>?：表示该子标签出现零次或者一次；</li>
+<li>*：表示该子标签可出现任意次；</li>
+<li>无修饰表示只能出现一次。</li>
+</ul>
+</li>
+<li>复杂元素的子标签列表中的间隔符号：<ul>
+<li>,：两个标签的顺序与列表中顺序相同；</li>
+<li>|：两个标签只能出现其中一个<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ELEMENT person (name,age,address+,like*,man|woman)&gt;</span><br><span class="line">&lt;!ELEMENT name (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT age (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT address (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT like ANY&gt;</span><br><span class="line">&lt;!ELEMENT man EMPTY&gt;</span><br><span class="line">&lt;!ELEMENT woman EMPTY&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--</span><br><span class="line">在使用这个约束文档约束的xml文档中：</span><br><span class="line">name和age只能出现一次且其内容为字符串；</span><br><span class="line">address至少出现一次且其内容为字符串；</span><br><span class="line">like可出现任意次且内容不限定；</span><br><span class="line">并且前四个标签只能按照name、age、address、like的顺序排列</span><br><span class="line">man或者woman只能二选一。</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="属性约束"><a href="#属性约束" class="headerlink" title="属性约束"></a>属性约束</h2><p>dtd 可以对标签和内容进行约束，当然也可以对标签的属性进行约束。其语法格式为<code>&lt;!ATTLIST 标签名 属性名 属性类型 属性约束&gt;</code>。</p>
+<ul>
+<li>属性类型：<ul>
+<li>CDATA：字符串类型；</li>
+<li>ID：由字母和下划线开头组成的字符串，但是一个XML文档中只能出现一次；</li>
+<li>枚举：表示该属性值只能从指定的范围中选择且只能选择一个。</li>
+</ul>
+</li>
+<li>属性约束：<ul>
+<li>#REQUIRED：表示该属性必须存在且存在一次；</li>
+<li>#IMPLIED：表示该属性可有可无；</li>
+<li>#FIXED：表示该属性为固定值；</li>
+<li>默认值：表示该属性如果不指明属性值就会使用默认值做属性值。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ELEMENT book (title,author,keywords*)&gt;</span><br><span class="line">&lt;!ATTLIST book id ID #REQUIRED&gt;</span><br><span class="line">&lt;!ATTLIST book price CDATA &quot;10$&quot;&gt;</span><br><span class="line">&lt;!ELEMENT title (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT author EMPTY&gt;</span><br><span class="line">&lt;!ATTLIST author name CDATA #REQUIRED&gt;</span><br><span class="line">&lt;!ATTLIST author gender (man|woman) #IMPLIED&gt;</span><br><span class="line">&lt;!ELEMENT keywords (#PCDATA)&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--</span><br><span class="line">在这段代码约束的xml文档中：</span><br><span class="line">    1.根标签必须为&lt;book&gt;且其属性id为ID类型的属性，必须出现</span><br><span class="line">    2.子标签&lt;title&gt;只能出现一次且内容是字符串</span><br><span class="line">    3.子标签&lt;author&gt;的属性：</span><br><span class="line">        name属性的值为字符串且必须存在一次</span><br><span class="line">        gender属性的值为枚举，只能从man和woman中选择</span><br><span class="line">    4.子标签&lt;keywords&gt;可出现任意次数</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="定义和使用实体"><a href="#定义和使用实体" class="headerlink" title="定义和使用实体"></a>定义和使用实体</h2><p>可以在 dtd 文档中定义实体，并在 xml 文档中使用。</p>
+<ul>
+<li>定义实体：<code>&lt;!ENTITY 实体名 实体值&gt;</code>；</li>
+<li>使用实体：<code>&amp;实体名;</code>。</li>
+</ul>
+<p>比如可以将某个特定的日期在dtd文档中定义，然后在xml文档中直接使用实体名，当xml文档被解析时实体名会被替换成实体值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE test [</span><br><span class="line">        &lt;!ELEMENT test (a,b)&gt;</span><br><span class="line">        &lt;!ELEMENT a (#PCDATA)&gt;</span><br><span class="line">        &lt;!ELEMENT b (#PCDATA)&gt;</span><br><span class="line">        &lt;!ENTITY TEXT &quot;文本&quot;&gt;</span><br><span class="line">        ]&gt;</span><br><span class="line">&lt;test&gt;</span><br><span class="line">    &lt;a&gt;&amp;TEXT;&lt;/a&gt;</span><br><span class="line">    &lt;b&gt;文本&lt;/b&gt;</span><br><span class="line">&lt;/test&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--</span><br><span class="line">使用浏览器解析查看这段xml文档发现两个标签的内容都是“文本”二字</span><br><span class="line">xml文档中其中dtd的部分浏览器不会显示</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+<p>定义了实体的 dtd 文档最好编写在 xml 文档的内部（第二种关联方式），不然在浏览器中解析查看时会出现问题（ ie 直接将标签 \&lt;a> 显示为自闭标签 \&lt;a/> ，Firefox 提示“未定义的实体”）。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="CnMarijuana 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/XML/" rel="tag"># XML</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/19/Set-接口和实现类/" rel="next" title="Set 接口和实现类">
+                <i class="fa fa-chevron-left"></i> Set 接口和实现类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/20/XML-的解析方式/" rel="prev" title="XML 的解析方式">
+                XML 的解析方式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/facivon.jpg"
+                alt="CnMarijuana" />
+            
+              <p class="site-author-name" itemprop="name">CnMarijuana</p>
+              <p class="site-description motion-element" itemprop="description">夜来一笑寒灯下，始是金丹换骨时。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/CnMarijuana" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:justitacsl@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#XML-简介"><span class="nav-number">1.</span> <span class="nav-text">XML 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XML的应用"><span class="nav-number">2.</span> <span class="nav-text">XML的应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XML的语法"><span class="nav-number">3.</span> <span class="nav-text">XML的语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文档声明"><span class="nav-number">3.1.</span> <span class="nav-text">文档声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义标签"><span class="nav-number">3.2.</span> <span class="nav-text">定义标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标签基本语法"><span class="nav-number">3.2.1.</span> <span class="nav-text">标签基本语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签定义语法"><span class="nav-number">3.2.2.</span> <span class="nav-text">标签定义语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义属性"><span class="nav-number">3.2.3.</span> <span class="nav-text">定义属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">3.3.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊字符"><span class="nav-number">3.4.</span> <span class="nav-text">特殊字符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CDATA区"><span class="nav-number">4.</span> <span class="nav-text">CDATA区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XML约束"><span class="nav-number">5.</span> <span class="nav-text">XML约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DTD约束使用方式"><span class="nav-number">5.1.</span> <span class="nav-text">DTD约束使用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建并编写DTD文件"><span class="nav-number">5.1.1.</span> <span class="nav-text">创建并编写DTD文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联DTD和xml"><span class="nav-number">5.1.2.</span> <span class="nav-text">关联DTD和xml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素约束"><span class="nav-number">5.2.</span> <span class="nav-text">元素约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性约束"><span class="nav-number">5.3.</span> <span class="nav-text">属性约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义和使用实体"><span class="nav-number">5.4.</span> <span class="nav-text">定义和使用实体</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CnMarijuana</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'hqYcnoD47j859fuaa7J8ekI9-gzGzoHsz',
+        appKey: 'J224xGFSYJ8UPxjYJY5y9Cu3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
