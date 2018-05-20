@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTTP," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HTTP协议 超文本传输协议（HTTP，HyperText Transfer Protocol）是互联网上应用最为广泛的一种网络协议。  简介 超文本：表明通过 HTTP 可以传输的资源不止包括文本，这也是能在互联网上查看图片的基础； 传输：所谓“上网”，不过是将本地请求上传，服务器资源下载； 协议：客户端连接服务器后，如果想要获取服务器中的资源，需要遵守一定的通讯格式，HTTP 协议定义了客户端">
+<meta name="keywords" content="HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP协议概述">
+<meta property="og:url" content="https://cnmarijuana.github.io/2018/05/20/HTTP协议概述/index.html">
+<meta property="og:site_name" content="JUST">
+<meta property="og:description" content="HTTP协议 超文本传输协议（HTTP，HyperText Transfer Protocol）是互联网上应用最为广泛的一种网络协议。  简介 超文本：表明通过 HTTP 可以传输的资源不止包括文本，这也是能在互联网上查看图片的基础； 传输：所谓“上网”，不过是将本地请求上传，服务器资源下载； 协议：客户端连接服务器后，如果想要获取服务器中的资源，需要遵守一定的通讯格式，HTTP 协议定义了客户端">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-20T13:06:07.286Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP协议概述">
+<meta name="twitter:description" content="HTTP协议 超文本传输协议（HTTP，HyperText Transfer Protocol）是互联网上应用最为广泛的一种网络协议。  简介 超文本：表明通过 HTTP 可以传输的资源不止包括文本，这也是能在互联网上查看图片的基础； 传输：所谓“上网”，不过是将本地请求上传，服务器资源下载； 协议：客户端连接服务器后，如果想要获取服务器中的资源，需要遵守一定的通讯格式，HTTP 协议定义了客户端">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cnmarijuana.github.io/2018/05/20/HTTP协议概述/"/>
+
+
+
+
+
+  <title>HTTP协议概述 | JUST</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cbaecec45a8bc626bf2f6e12b3650a68";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JUST</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/05/20/HTTP协议概述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CnMarijuana">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facivon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTTP协议概述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T21:04:40+08:00">
+                2018-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/20/HTTP协议概述/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/20/HTTP协议概述/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><blockquote>
+<p>超文本传输协议（HTTP，HyperText Transfer Protocol）是互联网上应用最为广泛的一种网络协议。</p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>超文本：表明通过 HTTP 可以传输的资源不止包括文本，这也是能在互联网上查看图片的基础；</li>
+<li>传输：所谓“上网”，不过是将本地请求上传，服务器资源下载；</li>
+<li>协议：客户端连接服务器后，如果想要获取服务器中的资源，需要遵守一定的通讯格式，HTTP 协议定义了客户端和服务器的通讯格式。</li>
+</ul>
+<a id="more"></a>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>基于 TCP/IP 链接而建立；</li>
+<li>默认端口  80；</li>
+<li>基于请求和响应的模式。<ul>
+<li>先有请求，后有响应；</li>
+<li>没有请求无法响应。</li>
+</ul>
+</li>
+</ul>
+<p>#HTTP报文</p>
+<p>报文即为在 HTTP 协议规范下客户端访问服务器端资源时双方互相发送的内容，分为客户端发送给服务器的请求报文和服务器发送给客户端的响应报文。</p>
+<p>##请求报文</p>
+<p>HTTP 协议是先请求后响应，那我们当然也要先学习请求报文。为了简化演示代码，我使用了一个由 IDEA 创建的未做任何修改的 JavaWeb 项目、Tomcat 做本地服务器、Fidder 4 抓取 HTTP 请求报文的内容。</p>
+<blockquote>
+<p>Fidder 4 是一个专业的抓包工具，因为普通情况下我们是无法看到请求和应答的内容，需要借助抓包工具来实现。常见的抓包工具还有专供 IE 浏览器的 HttpWacth 插件和火狐浏览器的 Firebug 插件，但是前者免费版功能较少，而后者已经不能在最新的火狐浏览器上运行。如果您想在这方面钻研一番，我推荐您使用 Fidder 4。</p>
+</blockquote>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">http://localhost:8080/index.jsp</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Accept</span>: text/html, application/xhtml+xml, image/jxr, */*</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-Hans-CN,zh-Hans;q=0.5</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate</span><br><span class="line"><span class="attribute">Host</span>: localhost:8080</span><br><span class="line"><span class="attribute">Connection</span>: Keep-Alive</span><br><span class="line"><span class="attribute">Pragma</span>: no-cache</span><br><span class="line"><span class="attribute">Cookie</span>: JSESSIONID=DF55BC5219ABE0AB7B2A12F94762DF60</span><br></pre></td></tr></table></figure>
+<p>这段“代码”就是您在浏览器地址栏中输入 <code>http://localhost:8080/index.jsp</code> 浏览器发送给服务器的请求报文，分为请求行和请求头（POST 提交方式多了请求体内容）。</p>
+<p><strong>注：</strong>无论什么提交方式，HTTP 协议都规定请求头之后有一个空行。</p>
+<p>本例中使用 GET 提交方式，没有请求体，在介绍 GET 和 POST 提交方式的区别时再详细介绍请求体。</p>
+<h3 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h3><p>请求行用于描述客户端的请求方式、请求的资源名称，以及使用的 HTTP 协议版本号。是上面第一行的内容，格式为：<code>请求方式 资源路径 协议版本</code>；</p>
+<ul>
+<li>HTTP 协议中常用的请求方式有 GET 和 POST，此外还有 HEAD、OPTIONS、DELETE、TRACE、PUT、CONNECT；</li>
+<li>资源路径既为所请求资源的具体路径，一般情况下是 URL 链接；</li>
+<li>HTTP 协议的版本有 1.0 和 1.1，具体区别下面详细说明。</li>
+</ul>
+<p>###请求头</p>
+<p>请求头是第一行请求头之后空行之前的内容，是以键值对形式存在的内容，用于描述客户端请求哪台主机，以及客户端的一些环境信息等。</p>
+<p>由于之前打开的是一个很简单的无任何内容的网页，上面请求报文中请求头比较少，事实上请求头的内容有很多，可以分为六个种类：Cache、Client、Cookie/Login、Entity、Miscellaneous和Transport。Fidder 4会将请求头的内容按照这六种分类展示。</p>
+<p>####Cache</p>
+<ul>
+<li><code>If-Modified-Since</code>：对应的值为本地缓存的最后修改时间（精确到分），和Last-Modified一起使用控制缓存；</li>
+<li><code>If-None-Match</code>：对应的值为ETag（网站中每个资源都有对应的ETag，可以理解为一个ID），当用户请求某个资源时，如果本地的ETag（本地有ETag的条件是访问过该资源并且有缓存）和服务器端不同才会从服务器端下载，相同直接打开本地缓存。</li>
+</ul>
+<p>####Client</p>
+<ul>
+<li><code>Accept</code>   浏览器可以识别的资源类型；</li>
+<li><code>Accept-Language</code>   客户端语言；</li>
+<li><code>Accept-Encoding</code>   浏览器接收的编码方式，通常是压缩方式；</li>
+<li><code>User-Agent</code>：客户端使用的操作系统和浏览器名称版本；</li>
+</ul>
+<p>####Cookie/Login</p>
+<ul>
+<li><code>Cookie</code>：将cookie的值发送给服务器，可以说是最请求头最重要的内容之一；</li>
+</ul>
+<p>####Entity</p>
+<ul>
+<li><code>Content-Length</code>：发送给服务器的数据长度。</li>
+</ul>
+<p>####Miscellaneous</p>
+<ul>
+<li><code>Referer</code>：提供了Request的上下文信息的服务器，告诉服务器我是从哪个链接过来的，可以通过这个实现防止盗链的功能。</li>
+</ul>
+<p>####Transport</p>
+<ul>
+<li><code>Connection</code>：决定请求完成后客户端和服务器端的连接是否关闭；<ul>
+<li><code>keep-alive</code>：不关闭；</li>
+<li><code>close</code>：关闭。</li>
+</ul>
+</li>
+<li><code>Host</code>：请求的服务器地址。</li>
+</ul>
+<h2 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h2><p>下面这段响应报文是与之前的请求报文对应的：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">200</span></span><br><span class="line"><span class="attribute">Set-Cookie</span>: JSESSIONID=FD250BB7AC6189DA0D14186BA46B9DC1; Path=/; HttpOnly</span><br><span class="line"><span class="attribute">Content-Type</span>: text/html;charset=UTF-8</span><br><span class="line"><span class="attribute">Content-Length</span>: 90</span><br><span class="line"><span class="attribute">Date</span>: Tue, 10 Apr 2018 13:28:35 GMT</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;$Title$&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  $END$</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>响应报文同样分为响应行、响应头和响应体，同样的响应头和响应体之间也有一个空行。</p>
+<h3 id="响应行"><a href="#响应行" class="headerlink" title="响应行"></a>响应行</h3><p>响应行用于描述服务器对请求的处理结果。是响应报文中的第一行，内容是响应报文的 HTTP 版本和响应码，格式为<code>协议版本 响应码</code>。</p>
+<h4 id="响应码和对应的含义"><a href="#响应码和对应的含义" class="headerlink" title="响应码和对应的含义"></a>响应码和对应的含义</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">响应码</th>
+<th style="text-align:left">对应内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">100~199</td>
+<td style="text-align:left">表示成功接收请求，要求客户端继续提交下一次请求才能完成整个处理过程</td>
+</tr>
+<tr>
+<td style="text-align:center">200~299</td>
+<td style="text-align:left">表示成功接收请求并已完成整个处理过程，常用200</td>
+</tr>
+<tr>
+<td style="text-align:center">300~399</td>
+<td style="text-align:left">为完成请求，客户需进一步细化请求。常用302、307和304</td>
+</tr>
+<tr>
+<td style="text-align:center">400~499</td>
+<td style="text-align:left">客户端的请求有错误，常用404</td>
+</tr>
+<tr>
+<td style="text-align:center">500~599</td>
+<td style="text-align:left">服务器端出现错误，常用 500</td>
+</tr>
+</tbody>
+</table>
+<h3 id="响应头"><a href="#响应头" class="headerlink" title="响应头"></a>响应头</h3><p>第一行响应行之后、空行之前的内容，同样是以键值对形式存在的重要信息。</p>
+<p>响应头的内容同样分为六个部份。</p>
+<h4 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h4><ul>
+<li><code>Date</code>：生成报文的时间；</li>
+<li><code>Expires</code>：返回本地缓存的有效时间，如果客户端时间超过该时间，则不会使用本地缓存；</li>
+</ul>
+<ul>
+<li><code>Pragma</code>：只有一个对应值<code>no-cache</code>，请求头中有该内容时网页不会缓存；</li>
+<li><p><code>Cache-Control</code>：指定网页的缓存方式；</p>
+<ul>
+<li><p><code>Public</code> ：可以被任何缓存所缓存；</p>
+</li>
+<li><p><code>Private</code>：内容只缓存到私有缓存中；</p>
+</li>
+<li><p><code>no-cache</code>：所有内容都不会被缓存，该功能和Pragma重复，事实上Pragma是老版本中控制缓存的唯一方式，为了保证向下兼容在HTTP 1.1中保留了Pragma。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>####Cookie/Login</p>
+<ul>
+<li><code>Set-Cookie</code>：用于把cookie 发送到客户端浏览器， 每一个写入cookie都会生成一个Set-Cookie。</li>
+</ul>
+<h4 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h4><ul>
+<li><code>ETag</code>：和If-None-Match 配合使用；</li>
+<li><code>Last-Modified</code>：用于指示资源的最后修改日期和时间，和<code>If-Modified-Since</code>一起实现控制缓存的功能；</li>
+<li><code>Content-Type</code>：用于告知浏览器响应对象的类型和编码方式；</li>
+<li><code>Content-Length</code>：指明响应的实体正文的长度；</li>
+<li><code>Content-Encoding</code>：指明服务器使用的压缩方法（gzip，deflate）。</li>
+</ul>
+<h4 id="Miscellaneous"><a href="#Miscellaneous" class="headerlink" title="Miscellaneous"></a>Miscellaneous</h4><ul>
+<li><code>Server</code>：指明服务器的种类和版本。</li>
+</ul>
+<h4 id="Transport"><a href="#Transport" class="headerlink" title="Transport"></a>Transport</h4><ul>
+<li><code>Connection</code>：与请求头中的作用相同，属性值也相同。</li>
+</ul>
+<h4 id="Location"><a href="#Location" class="headerlink" title="Location"></a>Location</h4><ul>
+<li><code>Location</code>：用于重定向一个新的位置，包含新的URL。</li>
+</ul>
+<h3 id="响应体"><a href="#响应体" class="headerlink" title="响应体"></a>响应体</h3><p>真正展示在浏览器上的数据，在本例中是一个 jsp 网页（由IDEA自动创建）。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="CnMarijuana 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/20/JAXP之SAX/" rel="next" title="JAXP之SAX">
+                <i class="fa fa-chevron-left"></i> JAXP之SAX
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/20/ServletContext/" rel="prev" title="ServletContext">
+                ServletContext <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/facivon.jpg"
+                alt="CnMarijuana" />
+            
+              <p class="site-author-name" itemprop="name">CnMarijuana</p>
+              <p class="site-description motion-element" itemprop="description">夜来一笑寒灯下，始是金丹换骨时。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/CnMarijuana" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:justitacsl@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP协议"><span class="nav-number">1.</span> <span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求行"><span class="nav-number">1.2.1.</span> <span class="nav-text">请求行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应报文"><span class="nav-number">1.3.</span> <span class="nav-text">响应报文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#响应行"><span class="nav-number">1.3.1.</span> <span class="nav-text">响应行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#响应码和对应的含义"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">响应码和对应的含义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应头"><span class="nav-number">1.3.2.</span> <span class="nav-text">响应头</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Cache</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Entity"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">Entity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Miscellaneous"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">Miscellaneous</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Transport"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">Transport</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Location"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">Location</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应体"><span class="nav-number">1.3.3.</span> <span class="nav-text">响应体</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CnMarijuana</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'hqYcnoD47j859fuaa7J8ekI9-gzGzoHsz',
+        appKey: 'J224xGFSYJ8UPxjYJY5y9Cu3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

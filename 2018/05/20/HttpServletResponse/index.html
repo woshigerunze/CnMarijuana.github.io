@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java API," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HttpServletResponseHttpServletResponse （此后或简称 Response）对象表示服务器对客户端的响应，该对象是对响应报文的封装，包括响应行、响应头和响应体三部分。与 HttpServletRequest 对象相同，我们根据不同的功能来介绍这个该类的不同方法。">
+<meta name="keywords" content="Java API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HttpServletResponse">
+<meta property="og:url" content="https://cnmarijuana.github.io/2018/05/20/HttpServletResponse/index.html">
+<meta property="og:site_name" content="JUST">
+<meta property="og:description" content="HttpServletResponseHttpServletResponse （此后或简称 Response）对象表示服务器对客户端的响应，该对象是对响应报文的封装，包括响应行、响应头和响应体三部分。与 HttpServletRequest 对象相同，我们根据不同的功能来介绍这个该类的不同方法。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-20T13:13:45.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HttpServletResponse">
+<meta name="twitter:description" content="HttpServletResponseHttpServletResponse （此后或简称 Response）对象表示服务器对客户端的响应，该对象是对响应报文的封装，包括响应行、响应头和响应体三部分。与 HttpServletRequest 对象相同，我们根据不同的功能来介绍这个该类的不同方法。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cnmarijuana.github.io/2018/05/20/HttpServletResponse/"/>
+
+
+
+
+
+  <title>HttpServletResponse | JUST</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cbaecec45a8bc626bf2f6e12b3650a68";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JUST</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/05/20/HttpServletResponse/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CnMarijuana">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facivon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HttpServletResponse</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T21:09:20+08:00">
+                2018-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/20/HttpServletResponse/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/20/HttpServletResponse/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HttpServletResponse"><a href="#HttpServletResponse" class="headerlink" title="HttpServletResponse"></a>HttpServletResponse</h1><p>HttpServletResponse （此后或简称 Response）对象表示服务器对客户端的响应，该对象是对响应报文的封装，包括响应行、响应头和响应体三部分。与 HttpServletRequest 对象相同，我们根据不同的功能来介绍这个该类的不同方法。</p>
+<a id="more"></a>
+<p><strong>演示代码的框架：</strong></p>
+<ul>
+<li><strong>MyResServlet：</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyResServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>配置文件：</strong></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">version</span>=<span class="string">"4.0"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>MyResServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>Servlet.MyResServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>MyResServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/response<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="设置响应行"><a href="#设置响应行" class="headerlink" title="设置响应行"></a>设置响应行</h1><h2 id="设置响应码"><a href="#设置响应码" class="headerlink" title="设置响应码"></a>设置响应码</h2><p>希望您还记得 Http 协议中常见的响应码和它们对应的含义。</p>
+<ul>
+<li>void setStatus(int sc)：设置该响应的状态码，用于无错误的情况；</li>
+<li>void sendError(int sc)：使用指定状态代码并清除缓冲区将错误响应发送到客户端。</li>
+</ul>
+<p>我们模拟一个登陆的情况，如果输入了正确的用户名和密码，服务器返回客户端的响应报文中响应码就是代表操作完成且无错误的 202 ，如果输入了错误的，响应码就会变成表示页面丢失的 404 。先在项目的 Web 目录下新建一个名为 Html 的文件夹，然后在其中新建 login.html 文件。有必要说明的是，为了简化演示过程，目前并没有其他表示登陆成功或失败的界面，所以您需要抓包工具来抓取响应报文，然后查看响应码是否为我们设置好的。</p>
+<p><strong>登陆界面 login.html：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/response"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>输入用户名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>输入密码<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"2"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"登陆"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>MyResServlet 中 doPost() 方法：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String InputUsername = request.getParameter(<span class="string">"username"</span>);</span><br><span class="line">String InputPassword = request.getParameter(<span class="string">"password"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(InputUsername.equals(<span class="string">"admin"</span>)&amp;&amp;InputPassword.equals(<span class="string">"root"</span>))		</span><br><span class="line">    <span class="comment">//我们假设登陆的用户名和密码分别是admin和root</span></span><br><span class="line">&#123;</span><br><span class="line">    response.setStatus(<span class="number">202</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    response.sendError(<span class="number">404</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改内容后，启动服务器，在浏览器地址栏中输入 localhost:8080/Html/login.html 即可，如果输入的用户名和密码是正确的，会跳转至一个无任何内容的空白界面；如果输入错误，会跳转到一个 Tomcat 提供的 404 界面。</p>
+<h1 id="设置响应头"><a href="#设置响应头" class="headerlink" title="设置响应头"></a>设置响应头</h1><p>常用的有两个方法用于设置响应头：</p>
+<ul>
+<li>void setHeader(String name, String value)：根据给定名称和值<strong>设置</strong>响应头，如果已经设置了该头，新的值将重写以前的值；</li>
+<li>void addHeader(String name, String value)：根据给定的名称和值<strong>添加</strong>响应头，允许响应头有多个值。</li>
+</ul>
+<p>此外还有 value 参数的类型为 int 的函数和专用于日期时间的函数，这里不再详细说明。</p>
+<p>修改 MyResServlet 的 doGet 方法，启动服务器后直接在浏览器地址栏输入 localhost:8080/response 即可，之后使用抓包工具来查看验证。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">"Server"</span>,<span class="string">"Tomcat/9.0.7"</span>);</span><br><span class="line"></span><br><span class="line">response.addHeader(<span class="string">"test"</span>, <span class="string">"a"</span>);</span><br><span class="line">response.addHeader(<span class="string">"test"</span>,<span class="string">"b"</span>);</span><br></pre></td></tr></table></figure>
+<p>如果在这两个方法的 name 参数中传入并不存在的 Http 响应头名，依然会正常添加进响应报文中，不会报错。</p>
+<h1 id="设置响应体"><a href="#设置响应体" class="headerlink" title="设置响应体"></a>设置响应体</h1><p>当客户端收到响应报文，会把响应体中的内容解析后展示给用户，Response 提供了两个方法供我们向响应体中添加内容。</p>
+<ul>
+<li>ServletOutputStream getOutputStream()：返回一个字节输出流对象；</li>
+</ul>
+<ul>
+<li>PrintWriter getWriter()：返回一个字符输出流对象。</li>
+</ul>
+<p>这两个方法返回的输出流对象可以用来向响应体中添加自己想要的内容，浏览器会将这些内容<strong>解析后再呈现</strong>。</p>
+<p><strong>MyResServlet 中的 doGet() 方法：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PrintWriter writer = response.getWriter();</span><br><span class="line"></span><br><span class="line">writer.write(<span class="string">"&lt;h1&gt;First Title&lt;/h1&gt;"</span>);</span><br><span class="line">writer.write(<span class="string">"&lt;p&gt;The first paragraph&lt;/p&gt;"</span> +</span><br><span class="line">             <span class="string">"&lt;p&gt;The Second paragraph&lt;/p&gt;"</span>);</span><br></pre></td></tr></table></figure>
+<p>修改之后运行服务器，在浏览器地址栏输入 localhost:8080/response 即可查看。</p>
+<h1 id="常见案例"><a href="#常见案例" class="headerlink" title="常见案例"></a>常见案例</h1><p>介绍一些使用 Response 可以实现的功能。</p>
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><p>此处重定向是指让客户端重新跳转至目标网页，比如说在某个网站的登陆界面中，您输入了账户和密码点击了登陆的按钮，接下来会跳转到已登录界面或显示登陆失败的界面，这个过程就是一个重定向。重定向的主要有两个重点：</p>
+<ol>
+<li><p>响应码：响应报文中的响应码应告诉浏览器它应该进一步操作才可以将正确完整的网页展示给用户，浏览器才会对重定向的操作有所反应。</p>
+</li>
+<li><p>URL 地址：重定向是重新跳转至目标网页，那么一个新的 URL 地址肯定是必不可少的。</p>
+</li>
+</ol>
+<p>可以使用 setStatus() 设置响应码 和 setHeader() 设置 location 头的值来实现这个功能，也可以直接使用一个专门用于重定向的函数来实现：</p>
+<ul>
+<li>void sendRedirect(String location)：使用指定重定向位置 URL 将临时重定向响应发送到客户端。</li>
+</ul>
+<p>继续完善之前的登陆案例来演示，在 Html 目录下新建一个登陆成功的界面 success.html ，如果登陆成功跳转至该界面，失败留在登陆界面（其实是重新打开登陆界面）：</p>
+<p> <strong>登陆成功界面：success.html</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        alert("登陆成功");</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>MyResServlet 中 doPost() 方法：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String InputUsername = request.getParameter(<span class="string">"username"</span>);</span><br><span class="line">        String InputPassword = request.getParameter(<span class="string">"password"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(InputUsername.equals(<span class="string">"admin"</span>)&amp;&amp;InputPassword.equals(<span class="string">"root"</span>))</span><br><span class="line">&#123;</span><br><span class="line">    response.sendRedirect(<span class="string">"/Html/success.html"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    response.setStatus(<span class="number">302</span>);		<span class="comment">//如果注释了这行代码，不会正常重定向到登陆界面</span></span><br><span class="line">    response.setHeader(<span class="string">"location"</span>,<span class="string">"/Html/login.html"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改内容后，启动服务器，在浏览器地址栏中输入 localhost:8080/Html/login.html 即可。</p>
+<h2 id="禁用浏览器缓存"><a href="#禁用浏览器缓存" class="headerlink" title="禁用浏览器缓存"></a>禁用浏览器缓存</h2><p>浏览器缓存是浏览器对近期请求过的文档的储存，可以提高网页打开速度，改善用户体验等，但是有一些网站是不希望被缓存下来的，比如一些时效性极高的内容。我们可以通过设置响应报文中的三个头信息来禁用浏览器对当前网页的缓存。</p>
+<ul>
+<li>Pragma：老版本中用来控制缓存的头，仅有一个为“no-cache”的值；</li>
+<li>Cache-Control：Http 1.1 中控制缓存的头，当值为“no-cache”的时候含义为不缓存；</li>
+<li>Expires：当前资源的有效时间，如果客户端时间超过该时间，则不会使用本地缓存，因为是与协调世界时的毫秒差，如果仅是为了控制缓存，方便起见可以令它的值为 -1 。</li>
+</ul>
+<p>单看解释的话，这三个响应头单独任何一个都可以用来控制缓存，但是由于浏览器多种多样，各个浏览器支持的 Http 版本也不尽相同，最稳妥的办法还是把这三个头信息都加入响应报文。</p>
+<p><strong>MyResServlet 的 doGet() 方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置头信息来禁用浏览器缓存</span></span><br><span class="line">response.setHeader(<span class="string">"Pragma"</span>,<span class="string">"no-cache"</span>);</span><br><span class="line">response.setHeader(<span class="string">"Cache-Control"</span>, <span class="string">"no-cache"</span>);</span><br><span class="line">response.setDateHeader(<span class="string">"Expirs"</span>, -<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//在页面中输出当前时间，可以用来检测当前访问的是本地的浏览器缓存还是服务器端新发送的网页</span></span><br><span class="line">SimpleDateFormat format = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">String nowTime = format.format(<span class="keyword">new</span> Date());</span><br><span class="line"></span><br><span class="line">response.getWriter().write(nowTime);</span><br></pre></td></tr></table></figure>
+<h1 id="解决乱码"><a href="#解决乱码" class="headerlink" title="解决乱码"></a>解决乱码</h1><p>Request 解决乱码分为两种情况，依据分别是请求方式的不同，而 Response 解决乱码也分为两种情况，分别是向响应体中添加内容的输出流是字节流还是字符流。</p>
+<h2 id="字节流-ServletOutputStream"><a href="#字节流-ServletOutputStream" class="headerlink" title="字节流 ServletOutputStream"></a>字节流 ServletOutputStream</h2><p>首先请明确，字节流输出的内容不一定会出现乱码的情况，如果服务器端的默认编码和客户端浏览器的编码方式恰好相同就不会出现乱码情况。</p>
+<p>而如果出现了乱码的情况，有两个步骤来解决问题：</p>
+<ol>
+<li>通过响应头设置浏览器打开文件时应采用的编码；</li>
+<li>获取字符串的 Byte 数组时指定相同的编码方式。</li>
+</ol>
+<p><strong>MyResServlet 的 doGet() 方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//浏览器支持的编码方式可以在请求报文中获取</span></span><br><span class="line">response.setHeader(<span class="string">"Content-Type"</span>,<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line"></span><br><span class="line">ServletOutputStream output = response.getOutputStream();</span><br><span class="line"></span><br><span class="line">String content = <span class="string">"&lt;h1&gt;一级标题&lt;/h1&gt;"</span> +</span><br><span class="line">    <span class="string">"&lt;p&gt;第一段内容&lt;/p&gt;"</span> +</span><br><span class="line">    <span class="string">"&lt;p&gt;第二段内容&lt;/p&gt;"</span>;</span><br><span class="line"></span><br><span class="line">output.write(content.getBytes(<span class="string">"utf-8"</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="字符流-PrintWriter"><a href="#字符流-PrintWriter" class="headerlink" title="字符流 PrintWriter"></a>字符流 PrintWriter</h2><p>Response 的缓冲区默认编码为 ISO-8859-1，所以用字符流来输出中文时肯定会出现乱码的情况，需要</p>
+<p><strong>MyResServlet 的 doGet() 方法</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="CnMarijuana 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-API/" rel="tag"># Java API</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/20/HttpServletRequest/" rel="next" title="HttpServletRequest">
+                <i class="fa fa-chevron-left"></i> HttpServletRequest
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/facivon.jpg"
+                alt="CnMarijuana" />
+            
+              <p class="site-author-name" itemprop="name">CnMarijuana</p>
+              <p class="site-description motion-element" itemprop="description">夜来一笑寒灯下，始是金丹换骨时。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/CnMarijuana" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:justitacsl@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HttpServletResponse"><span class="nav-number">1.</span> <span class="nav-text">HttpServletResponse</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置响应行"><span class="nav-number">2.</span> <span class="nav-text">设置响应行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置响应码"><span class="nav-number">2.1.</span> <span class="nav-text">设置响应码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置响应头"><span class="nav-number">3.</span> <span class="nav-text">设置响应头</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置响应体"><span class="nav-number">4.</span> <span class="nav-text">设置响应体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见案例"><span class="nav-number">5.</span> <span class="nav-text">常见案例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重定向"><span class="nav-number">5.1.</span> <span class="nav-text">重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁用浏览器缓存"><span class="nav-number">5.2.</span> <span class="nav-text">禁用浏览器缓存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决乱码"><span class="nav-number">6.</span> <span class="nav-text">解决乱码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字节流-ServletOutputStream"><span class="nav-number">6.1.</span> <span class="nav-text">字节流 ServletOutputStream</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符流-PrintWriter"><span class="nav-number">6.2.</span> <span class="nav-text">字符流 PrintWriter</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CnMarijuana</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'hqYcnoD47j859fuaa7J8ekI9-gzGzoHsz',
+        appKey: 'J224xGFSYJ8UPxjYJY5y9Cu3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
