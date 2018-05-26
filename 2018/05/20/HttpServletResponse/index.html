@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="JUST">
 <meta property="og:description" content="HttpServletResponseHttpServletResponse （此后或简称 Response）对象表示服务器对客户端的响应，该对象是对响应报文的封装，包括响应行、响应头和响应体三部分。与 HttpServletRequest 对象相同，我们根据不同的功能来介绍这个该类的不同方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-20T13:13:45.721Z">
+<meta property="og:updated_time" content="2018-05-26T03:58:14.286Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HttpServletResponse">
 <meta name="twitter:description" content="HttpServletResponseHttpServletResponse （此后或简称 Response）对象表示服务器对客户端的响应，该对象是对响应报文的封装，包括响应行、响应头和响应体三部分。与 HttpServletRequest 对象相同，我们根据不同的功能来介绍这个该类的不同方法。">
@@ -440,9 +440,15 @@
 </ol>
 <p><strong>MyResServlet 的 doGet() 方法</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//浏览器支持的编码方式可以在请求报文中获取</span></span><br><span class="line">response.setHeader(<span class="string">"Content-Type"</span>,<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line"></span><br><span class="line">ServletOutputStream output = response.getOutputStream();</span><br><span class="line"></span><br><span class="line">String content = <span class="string">"&lt;h1&gt;一级标题&lt;/h1&gt;"</span> +</span><br><span class="line">    <span class="string">"&lt;p&gt;第一段内容&lt;/p&gt;"</span> +</span><br><span class="line">    <span class="string">"&lt;p&gt;第二段内容&lt;/p&gt;"</span>;</span><br><span class="line"></span><br><span class="line">output.write(content.getBytes(<span class="string">"utf-8"</span>));</span><br></pre></td></tr></table></figure>
-<h2 id="字符流-PrintWriter"><a href="#字符流-PrintWriter" class="headerlink" title="字符流 PrintWriter"></a>字符流 PrintWriter</h2><p>Response 的缓冲区默认编码为 ISO-8859-1，所以用字符流来输出中文时肯定会出现乱码的情况，需要</p>
+<h2 id="字符流-PrintWriter"><a href="#字符流-PrintWriter" class="headerlink" title="字符流 PrintWriter"></a>字符流 PrintWriter</h2><p>Response 的缓冲区默认编码为 ISO-8859-1，所以用字符流来输出中文时肯定会出现乱码的情况。</p>
+<p>解决这种情况有两个步骤：</p>
+<ol>
+<li>修改缓冲区编码；</li>
+<li>设置浏览器打开文本使用的编码方式。</li>
+</ol>
+<p>两个步骤设置为相同的编码方式即可（当然时支持中文的编码方式）。</p>
 <p><strong>MyResServlet 的 doGet() 方法</strong></p>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置缓冲区编码</span></span><br><span class="line">response.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置浏览器打开文本使用的编码方式</span></span><br><span class="line">response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/html;charset=UTF-8"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//前面两步可直接简写为</span></span><br><span class="line"><span class="comment">//response.setContentType("text/html;charset=UTF-8");</span></span><br><span class="line"></span><br><span class="line">PrintWriter writer = response.getWriter();</span><br><span class="line"></span><br><span class="line">String content = <span class="string">"&lt;h1&gt;一级标题&lt;/h1&gt;"</span> +</span><br><span class="line">    <span class="string">"&lt;p&gt;第一段内容&lt;/p&gt;"</span> +</span><br><span class="line">    <span class="string">"&lt;p&gt;第二段内容&lt;/p&gt;"</span>;</span><br><span class="line"></span><br><span class="line">writer.write(content);</span><br></pre></td></tr></table></figure>
       
     </div>
     
