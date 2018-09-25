@@ -262,6 +262,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/09/25/云服务器安装Java和Tomcat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="nullptr">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facivon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/25/云服务器安装Java和Tomcat/" itemprop="url">云服务器安装Java和Tomcat</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T20:11:36+08:00">
+                2018-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/25/云服务器安装Java和Tomcat/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/25/云服务器安装Java和Tomcat/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安装配置-Java"><a href="#安装配置-Java" class="headerlink" title="安装配置 Java"></a>安装配置 Java</h1><p>众所周知，使用 Java 进行开发需要安装<strong>开发人员工具包 JDK 和运行环境 JRE </strong>。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。</p>
+<h2 id="下载解压"><a href="#下载解压" class="headerlink" title="下载解压"></a>下载解压</h2><p>甲骨文提供的 <strong>jdk-10.0.2.tar.gz</strong> 包的下载地址为 <a href="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz，在" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz，在</a> opt 目录中执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-cookies --header <span class="string">"Cookie: oraclelicense=accept-securebackup-cookie;"</span> http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>wget 命令默认将文件下载到当前目录，而 opt 目录是 ubuntu 推荐的程序安装目录（相当于 windos 中的 C:\Program Files，不过使用包管理工具安装的程序不在此目录中。）</p>
+</li>
+<li><p>给 wget 命令添加了两个参数以骗过服务器让它以为我们正在使用浏览器下载文件。</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-10.0.2_linux-x64_bin.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h2><p>使用 vim 打开 存储环境变量的文件（希望您熟练 vim 操作）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>在文件末尾加上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set java </span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/java/jdk-10.0.2</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<p>注意 JAVA_HOME 的值是否正确。</p>
+<p>重新加载文件令其生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>可以使用如下命令检查是否安装成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@iZi02safjm0lbpZ:/<span class="comment"># java -version</span></span><br><span class="line">java version <span class="string">"10.0.2"</span> 2018-07-17</span><br><span class="line">Java(TM) SE Runtime Environment 18.3 (build 10.0.2+13)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.2+13, mixed mode)</span><br><span class="line">root@iZi02safjm0lbpZ:/<span class="comment"># javac -version</span></span><br><span class="line">javac 10.0.2</span><br></pre></td></tr></table></figure>
+<h1 id="安装配置-Tomcat"><a href="#安装配置-Tomcat" class="headerlink" title="安装配置 Tomcat"></a>安装配置 Tomcat</h1><p>同样在 /opt 目录下载 apache-tomcat-9.0.12.tar.gz 并解压：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-cookies --header <span class="string">"Cookie: oraclelicense=accept-securebackup-cookie;"</span> http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.12/bin/apache-tomcat-9.0.12.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf apache-tomcat-9.0.12.tar.gz</span><br></pre></td></tr></table></figure>
+<p>接下来需要告诉 tomcat <strong>jre 的路径</strong>，虽然按照第一部分的步骤安装 Java 之后 java 和 javac 指令已经可以在任何目录下执行，但是不知道为什么 tomcat 找不到 jre 的路径。</p>
+<p>使用 vim 打开 tomcat 安装目录下 /bin 中的 setclasspath.sh：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim setclasspath.sh</span><br></pre></td></tr></table></figure>
+<p>在文件起始位置添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/opt/jdk-10.0.2</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=/opt/jdk-10.0.2</span><br></pre></td></tr></table></figure>
+<p>然后执行 startup.sh 即可启动服务器，同时不要忘记开放防火墙的 8080 端口。</p>
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p>执行 tomcat 的启动脚本 startup.sh 在执行过程中有如下调用过程：</p>
+<ol>
+<li>startup.sh 调用 catalina.sh；</li>
+<li>catalina.sh 调用 setclasspath.sh。</li>
+</ol>
+<p>在调用过程中，如果未在环境变量中指明 jre 的路径（本文提到的配置 Java 方法实际上仅有 JDK，但是 java 命令确实可以执行）会首先在 startup.sh 中寻找是否有 JRE_HOME 的定义，如果没有再依次查询 catalina.sh 和 setclasspath.sh 。因此将 JRE_HOME 的定义放置再 setclasspath.sh 是<strong>终极解决方案</strong>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/09/10/好久不见/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1669,162 +1831,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/05/20/JAXP之DOM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="nullptr">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/facivon.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/20/JAXP之DOM/" itemprop="url">JAXP之DOM</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T20:39:56+08:00">
-                2018-05-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
-                    <span itemprop="name">Java Web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/05/20/JAXP之DOM/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/20/JAXP之DOM/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="DOM解析"><a href="#DOM解析" class="headerlink" title="DOM解析"></a>DOM解析</h1><p>JAXP 为 使用 Java 程序使用 DOM 方式解析 XML 文档提供了解决方案，这篇总结的主要内容是如何使用 JAXP 来解析 XML。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/20/JAXP之DOM/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1879,7 +1885,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1901,7 +1907,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

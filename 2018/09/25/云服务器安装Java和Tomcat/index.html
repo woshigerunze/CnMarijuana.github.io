@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ubuntu,Tomcat," />
 
 
 
@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="一不留神大学生活已经过去了一半，难免感触不少，于是写一篇对于大学生活前两年的总结。 请允许我先自我介绍一下，我是一名双非院校的物联网工程专业二年级在读学生，一个潜在的码农，一个“中等白”——毕竟自身水平还差的很远，称不上大白，但是又不想称作小白以至于否定了这两年的努力，于是用了“中等白”这个词来描述自己，希望有朝一日可以更进一步。">
+<meta name="description" content="安装配置 Java众所周知，使用 Java 进行开发需要安装开发人员工具包 JDK 和运行环境 JRE 。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。 下载解压甲骨文提供的 jdk-10.0.2.tar.gz 包的下载地址为 http://download.oracle.com/otn-pub/java/jdk/10.0.2+13">
+<meta name="keywords" content="ubuntu,Tomcat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="道阻且长，行则将至。">
-<meta property="og:url" content="https://cnmarijuana.github.io/2018/07/15/道阻且长，行则将至。/index.html">
+<meta property="og:title" content="云服务器安装Java和Tomcat">
+<meta property="og:url" content="https://cnmarijuana.github.io/2018/09/25/云服务器安装Java和Tomcat/index.html">
 <meta property="og:site_name" content="JUST">
-<meta property="og:description" content="一不留神大学生活已经过去了一半，难免感触不少，于是写一篇对于大学生活前两年的总结。 请允许我先自我介绍一下，我是一名双非院校的物联网工程专业二年级在读学生，一个潜在的码农，一个“中等白”——毕竟自身水平还差的很远，称不上大白，但是又不想称作小白以至于否定了这两年的努力，于是用了“中等白”这个词来描述自己，希望有朝一日可以更进一步。">
+<meta property="og:description" content="安装配置 Java众所周知，使用 Java 进行开发需要安装开发人员工具包 JDK 和运行环境 JRE 。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。 下载解压甲骨文提供的 jdk-10.0.2.tar.gz 包的下载地址为 http://download.oracle.com/otn-pub/java/jdk/10.0.2+13">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://cnmarijuana.github.io/2018/07/15/道阻且长，行则将至。/臂章.jpg">
-<meta property="og:image" content="https://cnmarijuana.github.io/2018/07/15/道阻且长，行则将至。/女朋友.jpg">
-<meta property="og:image" content="https://cnmarijuana.github.io/2018/07/15/道阻且长，行则将至。/justita.jpg">
-<meta property="og:updated_time" content="2018-07-14T19:08:16.936Z">
+<meta property="og:updated_time" content="2018-09-25T12:14:18.285Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="道阻且长，行则将至。">
-<meta name="twitter:description" content="一不留神大学生活已经过去了一半，难免感触不少，于是写一篇对于大学生活前两年的总结。 请允许我先自我介绍一下，我是一名双非院校的物联网工程专业二年级在读学生，一个潜在的码农，一个“中等白”——毕竟自身水平还差的很远，称不上大白，但是又不想称作小白以至于否定了这两年的努力，于是用了“中等白”这个词来描述自己，希望有朝一日可以更进一步。">
-<meta name="twitter:image" content="https://cnmarijuana.github.io/2018/07/15/道阻且长，行则将至。/臂章.jpg">
+<meta name="twitter:title" content="云服务器安装Java和Tomcat">
+<meta name="twitter:description" content="安装配置 Java众所周知，使用 Java 进行开发需要安装开发人员工具包 JDK 和运行环境 JRE 。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。 下载解压甲骨文提供的 jdk-10.0.2.tar.gz 包的下载地址为 http://download.oracle.com/otn-pub/java/jdk/10.0.2+13">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://cnmarijuana.github.io/2018/07/15/道阻且长，行则将至。/"/>
+  <link rel="canonical" href="https://cnmarijuana.github.io/2018/09/25/云服务器安装Java和Tomcat/"/>
 
 
 
 
 
-  <title>道阻且长，行则将至。 | JUST</title>
+  <title>云服务器安装Java和Tomcat | JUST</title>
   
 
 
@@ -266,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/07/15/道阻且长，行则将至。/">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/09/25/云服务器安装Java和Tomcat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nullptr">
@@ -283,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">道阻且长，行则将至。</h1>
+          <h1 class="post-title" itemprop="name headline">云服务器安装Java和Tomcat</h1>
         
 
         <div class="post-meta">
@@ -295,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-15T02:51:38+08:00">
-                2018-07-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T20:11:36+08:00">
+                2018-09-25
               </time>
             
 
@@ -306,28 +303,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随便聊聊/" itemprop="url" rel="index">
-                    <span itemprop="name">随便聊聊</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -336,8 +311,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/15/道阻且长，行则将至。/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/15/道阻且长，行则将至。/" itemprop="commentCount"></span>
+                <a href="/2018/09/25/云服务器安装Java和Tomcat/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/25/云服务器安装Java和Tomcat/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,39 +340,39 @@
       
 
       
-        <p>一不留神大学生活已经过去了一半，难免感触不少，于是写一篇对于大学生活前两年的总结。</p>
-<p>请允许我先自我介绍一下，我是一名双非院校的物联网工程专业二年级在读学生，一个潜在的码农，一个“中等白”——毕竟自身水平还差的很远，称不上大白，但是又不想称作小白以至于否定了这两年的努力，于是用了“中等白”这个词来描述自己，希望有朝一日可以更进一步。</p>
-<a id="more"></a>
-<h1 id="大一"><a href="#大一" class="headerlink" title="大一"></a>大一</h1><blockquote>
-<p>网瘾少年的自我救赎、国防教育拓展班、亲爱的女朋友</p>
-</blockquote>
-<p>2016 年 6 月 7 日下午，没有想象中的激动、也没有传说中剑客收刀入鞘的骄傲，只有一丝的无所适从和更多的网瘾——以至于我高考完第一天就在网吧玩到了凌晨两点。辛亏上大学买的笔记本电脑很渣，辛亏小牛村的特殊地理环境，不然大一一整年大多数时候我都会像那个暑假一样沉迷在各种游戏里。</p>
-<p>十五年前家父是西北一个小县城的初中物理老师兼任计算机老师，于是在那个初中生上计算机课需要套鞋套洗手的年代，还没上小学的我已经学会了他们上课要讲的内容：开关机、打开关闭文件和文件夹，甚至画图。辛亏这从小培养的兴趣，我在大一某一个忍受不了高延迟的游戏的晚上决定自学编程，记忆尤新的是，将网课视频中的 C 语言 Hello World 代码正确抄进 VC 6.0 并且编译运行就花了我 <em>五六个小时</em>。</p>
-<p>后来加入了学校里的几个学术科技类社团，参加了几次培训活动、加上看网课等，虽然磕磕绊绊，但是也算是慢慢步入正轨。到了大一下学期，阴差阳错加入一个学科竞赛小组，大家第一次碰面的时候分配工作，学长们问我想做什么，我支支吾吾半天说了句我现在还什么都不会，想学 Java 。现在想想，当时那个竞赛项目完全用不到 Java 程序员，也不需要一个菜鸟都算不上的小白，感谢学长没有把我踢出项目组，甚至不需要我关心项目进度，这个经历让我收获颇丰，甚至于后来接手了这个社团。</p>
-<p>不过我的大一更重要的两个关键字是<strong>国旗班</strong>和<strong>女朋友</strong>。</p>
-<p>为了仅有的几次能在全校人面前穿海军礼服升国旗，我加入了学校的国防教育拓展班国旗队，大多数时候都是早上五点半起床六点十分开始训练、每周四晚练体能，虽然训练很累，但是加入国防教育拓展班的经历绝对是我最怀念的。</p>
-<p><img src="/2018/07/15/道阻且长，行则将至。/臂章.jpg" width="60%" height="50%"> </p>
-<p>大一第二学期初，我和现在的女朋友确定关系，这是我二十年人生做的最正确的一个决定。她是我的高中同学，是一个笑起来很可爱而且性格很好的女生，不知道什么时候起悄悄走进了我的心里。不过由于一些不想再提的原因，我真正向她示爱的时候已经是大一第一学期结束了，到现在在一起已经 506 天了，虽然异地很辛苦，但是我和她都在很用心经营这段感情，我一直坚信我们最后一定能有个好的结果。<br><img src="/2018/07/15/道阻且长，行则将至。/女朋友.jpg" width="60%" height="50%"></p>
-<h1 id="大二"><a href="#大二" class="headerlink" title="大二"></a>大二</h1><blockquote>
-<p>物联网协会</p>
-</blockquote>
-<p>说出来你们可能不信，我的 QQ 空间应该是最精彩的那一类了。有一个在大二第一学期拿下 CCIE 的大佬，有一个国家级黑客大赛拿下全国第一的大佬，有一对在 520 当天一起拿到学科竞赛奖项的情侣（我能想到最浪漫的事就是和你一起拿奖？），有一个擅长英语、人美声甜、校级朗诵比赛拿奖的小姐姐，还有一个精通摄影的小姐姐。诸如此类，见识到其他人有多么优秀的时候我终于开始不断审视自我，开始有计划、有目的的学习，于是这一年我放弃了学生会和国旗班，只留下了一个学术科技类社团——物联网协会。</p>
-<p>物联网协会是我大一时参加培训次数最多的社团，不知道我何德何能最后居然成了新一任的会长。在担任会长的这一年里，我为新加入社团的大一新生讲基础的 C++ 语法、说我们曾经踩过的坑、介绍优秀的 IT 论坛等，在给新生进行培训时，我逐渐改掉了一些以前性格上的弱点，也深刻认识到自己的技术水平还远远不够。在每年一度本科生创新计划开始的时候，身为社团会长的我理所当然的成了社团申报的项目的负责人，不止要解决技术问题、还要处理一些文案、包括给项目组成员分工等工作对我来说都是新的难题，也都在促使我慢慢进步。</p>
-<p><img src="/2018/07/15/道阻且长，行则将至。/justita.jpg" width="30%" height="50%"></p>
-<h1 id="今后"><a href="#今后" class="headerlink" title="今后"></a>今后</h1><blockquote>
-<p>道阻且长，行则将至。</p>
-</blockquote>
-<p>这是下一个学期的小计划，发出来和大家交流、共同进步，希望半年后再回头总结时我不会对自己失望。</p>
+        <h1 id="安装配置-Java"><a href="#安装配置-Java" class="headerlink" title="安装配置 Java"></a>安装配置 Java</h1><p>众所周知，使用 Java 进行开发需要安装<strong>开发人员工具包 JDK 和运行环境 JRE </strong>。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。</p>
+<h2 id="下载解压"><a href="#下载解压" class="headerlink" title="下载解压"></a>下载解压</h2><p>甲骨文提供的 <strong>jdk-10.0.2.tar.gz</strong> 包的下载地址为 <a href="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz，在" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz，在</a> opt 目录中执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-cookies --header <span class="string">"Cookie: oraclelicense=accept-securebackup-cookie;"</span> http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz</span><br></pre></td></tr></table></figure>
 <ul>
-<li>学习数据结构</li>
-<li>每周至少一道 LeetCode</li>
-<li>完成自己的第一款 Web 作品</li>
-<li>加强 JS ，学习微信小程序开发</li>
-<li>能流畅使用 Linux 系统</li>
-<li>大三第一学期绩点高于 3.0</li>
-<li>每周至少用百词斩背三天单词</li>
-<li>每周至少跑一次三千米</li>
+<li><p>wget 命令默认将文件下载到当前目录，而 opt 目录是 ubuntu 推荐的程序安装目录（相当于 windos 中的 C:\Program Files，不过使用包管理工具安装的程序不在此目录中。）</p>
+</li>
+<li><p>给 wget 命令添加了两个参数以骗过服务器让它以为我们正在使用浏览器下载文件。</p>
+</li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-10.0.2_linux-x64_bin.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h2><p>使用 vim 打开 存储环境变量的文件（希望您熟练 vim 操作）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>在文件末尾加上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set java </span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/java/jdk-10.0.2</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<p>注意 JAVA_HOME 的值是否正确。</p>
+<p>重新加载文件令其生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>可以使用如下命令检查是否安装成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@iZi02safjm0lbpZ:/<span class="comment"># java -version</span></span><br><span class="line">java version <span class="string">"10.0.2"</span> 2018-07-17</span><br><span class="line">Java(TM) SE Runtime Environment 18.3 (build 10.0.2+13)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.2+13, mixed mode)</span><br><span class="line">root@iZi02safjm0lbpZ:/<span class="comment"># javac -version</span></span><br><span class="line">javac 10.0.2</span><br></pre></td></tr></table></figure>
+<h1 id="安装配置-Tomcat"><a href="#安装配置-Tomcat" class="headerlink" title="安装配置 Tomcat"></a>安装配置 Tomcat</h1><p>同样在 /opt 目录下载 apache-tomcat-9.0.12.tar.gz 并解压：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-cookies --header <span class="string">"Cookie: oraclelicense=accept-securebackup-cookie;"</span> http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.12/bin/apache-tomcat-9.0.12.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf apache-tomcat-9.0.12.tar.gz</span><br></pre></td></tr></table></figure>
+<p>接下来需要告诉 tomcat <strong>jre 的路径</strong>，虽然按照第一部分的步骤安装 Java 之后 java 和 javac 指令已经可以在任何目录下执行，但是不知道为什么 tomcat 找不到 jre 的路径。</p>
+<p>使用 vim 打开 tomcat 安装目录下 /bin 中的 setclasspath.sh：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim setclasspath.sh</span><br></pre></td></tr></table></figure>
+<p>在文件起始位置添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/opt/jdk-10.0.2</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=/opt/jdk-10.0.2</span><br></pre></td></tr></table></figure>
+<p>然后执行 startup.sh 即可启动服务器，同时不要忘记开放防火墙的 8080 端口。</p>
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p>执行 tomcat 的启动脚本 startup.sh 在执行过程中有如下调用过程：</p>
+<ol>
+<li>startup.sh 调用 catalina.sh；</li>
+<li>catalina.sh 调用 setclasspath.sh。</li>
+</ol>
+<p>在调用过程中，如果未在环境变量中指明 jre 的路径（本文提到的配置 Java 方法实际上仅有 JDK，但是 java 命令确实可以执行）会首先在 startup.sh 中寻找是否有 JRE_HOME 的定义，如果没有再依次查询 catalina.sh 和 setclasspath.sh 。因此将 JRE_HOME 的定义放置再 setclasspath.sh 是<strong>终极解决方案</strong>。</p>
 
       
     </div>
@@ -437,6 +412,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+          
+            <a href="/tags/Tomcat/" rel="tag"># Tomcat</a>
+          
+        </div>
+      
 
       
       
@@ -446,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/20/HttpServletResponse/" rel="next" title="HttpServletResponse">
-                <i class="fa fa-chevron-left"></i> HttpServletResponse
+              <a href="/2018/09/10/好久不见/" rel="next" title="好久不见">
+                <i class="fa fa-chevron-left"></i> 好久不见
               </a>
             
           </div>
@@ -455,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/10/LeetCode第20题/" rel="prev" title="LeetCode第20题">
-                LeetCode第20题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -613,7 +592,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#大一"><span class="nav-number">1.</span> <span class="nav-text">大一</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#大二"><span class="nav-number">2.</span> <span class="nav-text">大二</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#今后"><span class="nav-number">3.</span> <span class="nav-text">今后</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置-Java"><span class="nav-number">1.</span> <span class="nav-text">安装配置 Java</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载解压"><span class="nav-number">1.1.</span> <span class="nav-text">下载解压</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加环境变量"><span class="nav-number">1.2.</span> <span class="nav-text">添加环境变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置-Tomcat"><span class="nav-number">2.</span> <span class="nav-text">安装配置 Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解释"><span class="nav-number">2.1.</span> <span class="nav-text">解释</span></a></li></ol></li></ol></div>
             
 
           </div>
