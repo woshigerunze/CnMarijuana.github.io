@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="安装配置 Java众所周知，使用 Java 进行开发需要安装开发人员工具包 JDK 和运行环境 JRE 。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。 下载解压甲骨文提供的 jdk-10.0.2.tar.gz 包的下载地址为 http://download.oracle.com/otn-pub/java/jdk/10.0.2+13">
+<meta name="description" content="安装配置 Java众所周知，使用 Java 进行开发需要安装开发人员工具包 JDK 和运行环境 JRE 。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。">
 <meta name="keywords" content="ubuntu,Tomcat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="云服务器安装Java和Tomcat">
 <meta property="og:url" content="https://cnmarijuana.github.io/2018/09/25/云服务器安装Java和Tomcat/index.html">
 <meta property="og:site_name" content="JUST">
-<meta property="og:description" content="安装配置 Java众所周知，使用 Java 进行开发需要安装开发人员工具包 JDK 和运行环境 JRE 。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。 下载解压甲骨文提供的 jdk-10.0.2.tar.gz 包的下载地址为 http://download.oracle.com/otn-pub/java/jdk/10.0.2+13">
+<meta property="og:description" content="安装配置 Java众所周知，使用 Java 进行开发需要安装开发人员工具包 JDK 和运行环境 JRE 。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-25T12:14:18.285Z">
+<meta property="og:updated_time" content="2018-09-25T12:42:23.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云服务器安装Java和Tomcat">
-<meta name="twitter:description" content="安装配置 Java众所周知，使用 Java 进行开发需要安装开发人员工具包 JDK 和运行环境 JRE 。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。 下载解压甲骨文提供的 jdk-10.0.2.tar.gz 包的下载地址为 http://download.oracle.com/otn-pub/java/jdk/10.0.2+13">
+<meta name="twitter:description" content="安装配置 Java众所周知，使用 Java 进行开发需要安装开发人员工具包 JDK 和运行环境 JRE 。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。">
 
 
 
@@ -341,6 +341,7 @@
 
       
         <h1 id="安装配置-Java"><a href="#安装配置-Java" class="headerlink" title="安装配置 Java"></a>安装配置 Java</h1><p>众所周知，使用 Java 进行开发需要安装<strong>开发人员工具包 JDK 和运行环境 JRE </strong>。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。</p>
+<a id="more"></a>
 <h2 id="下载解压"><a href="#下载解压" class="headerlink" title="下载解压"></a>下载解压</h2><p>甲骨文提供的 <strong>jdk-10.0.2.tar.gz</strong> 包的下载地址为 <a href="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz，在" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz，在</a> opt 目录中执行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-cookies --header <span class="string">"Cookie: oraclelicense=accept-securebackup-cookie;"</span> http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz</span><br></pre></td></tr></table></figure>
 <ul>
@@ -373,6 +374,8 @@
 <li>catalina.sh 调用 setclasspath.sh。</li>
 </ol>
 <p>在调用过程中，如果未在环境变量中指明 jre 的路径（本文提到的配置 Java 方法实际上仅有 JDK，但是 java 命令确实可以执行）会首先在 startup.sh 中寻找是否有 JRE_HOME 的定义，如果没有再依次查询 catalina.sh 和 setclasspath.sh 。因此将 JRE_HOME 的定义放置再 setclasspath.sh 是<strong>终极解决方案</strong>。</p>
+<hr>
+<p>甲骨文提供的专用于云服务器的 serverjre-10.0.2_linux-x64_bin.tar 无法正确启动 tomcat。</p>
 
       
     </div>
