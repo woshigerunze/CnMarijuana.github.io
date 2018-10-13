@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -79,17 +79,23 @@
 
 
 
-<meta name="description" content="断更从博客创建至今 276 天，发布的文章仅有寥寥二十三篇，其中还断更近四个月。虽然一直都有写学习笔记的习惯，最勤奋的时候也有每周三篇的产量，但是自认为水平不足，发布的仅有四分之一左右，都是自认为通俗易懂且严谨的文章。 没曾想发布的这些竟成了我唯一保留下的学习笔记——没错之前在学习 Linux 操作系统时执行了那个充满破坏力的命令，发现后立刻中止但是为时已晚，全部的学习笔记、很多学习资料全没了，幸">
+<meta name="description" content="简介  Git 是一个分布式的版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。  ​                                                            ——百度百科  在开发之初，Git 的服务目标是帮助管理 Linux 内核开发，现在已经成为全球的开源社区和开放源码的软件的重要基石。">
+<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="好久不见">
-<meta property="og:url" content="https://cnmarijuana.github.io/2018/09/10/好久不见/index.html">
+<meta property="og:title" content="Git 简介">
+<meta property="og:url" content="https://cnmarijuana.github.io/2018/10/13/Git-简介/index.html">
 <meta property="og:site_name" content="JUST">
-<meta property="og:description" content="断更从博客创建至今 276 天，发布的文章仅有寥寥二十三篇，其中还断更近四个月。虽然一直都有写学习笔记的习惯，最勤奋的时候也有每周三篇的产量，但是自认为水平不足，发布的仅有四分之一左右，都是自认为通俗易懂且严谨的文章。 没曾想发布的这些竟成了我唯一保留下的学习笔记——没错之前在学习 Linux 操作系统时执行了那个充满破坏力的命令，发现后立刻中止但是为时已晚，全部的学习笔记、很多学习资料全没了，幸">
+<meta property="og:description" content="简介  Git 是一个分布式的版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。  ​                                                            ——百度百科  在开发之初，Git 的服务目标是帮助管理 Linux 内核开发，现在已经成为全球的开源社区和开放源码的软件的重要基石。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-10T14:14:31.968Z">
+<meta property="og:image" content="https://cnmarijuana.github.io/2018/10/13/Git-简介/Git%20记录文件快照.png">
+<meta property="og:image" content="https://cnmarijuana.github.io/2018/10/13/Git-简介/SVN%20记录文件差异.png">
+<meta property="og:image" content="https://cnmarijuana.github.io/2018/10/13/Git-简介/Git%20三个目录.jpg">
+<meta property="og:image" content="https://cnmarijuana.github.io/2018/10/13/Git-简介/文件状态的生命周期.png">
+<meta property="og:updated_time" content="2018-10-13T10:02:37.537Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="好久不见">
-<meta name="twitter:description" content="断更从博客创建至今 276 天，发布的文章仅有寥寥二十三篇，其中还断更近四个月。虽然一直都有写学习笔记的习惯，最勤奋的时候也有每周三篇的产量，但是自认为水平不足，发布的仅有四分之一左右，都是自认为通俗易懂且严谨的文章。 没曾想发布的这些竟成了我唯一保留下的学习笔记——没错之前在学习 Linux 操作系统时执行了那个充满破坏力的命令，发现后立刻中止但是为时已晚，全部的学习笔记、很多学习资料全没了，幸">
+<meta name="twitter:title" content="Git 简介">
+<meta name="twitter:description" content="简介  Git 是一个分布式的版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。  ​                                                            ——百度百科  在开发之初，Git 的服务目标是帮助管理 Linux 内核开发，现在已经成为全球的开源社区和开放源码的软件的重要基石。">
+<meta name="twitter:image" content="https://cnmarijuana.github.io/2018/10/13/Git-简介/Git%20记录文件快照.png">
 
 
 
@@ -119,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://cnmarijuana.github.io/2018/09/10/好久不见/"/>
+  <link rel="canonical" href="https://cnmarijuana.github.io/2018/10/13/Git-简介/"/>
 
 
 
 
 
-  <title>好久不见 | JUST</title>
+  <title>Git 简介 | JUST</title>
   
 
 
@@ -262,7 +268,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/09/10/好久不见/">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/10/13/Git-简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nullptr">
@@ -279,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">好久不见</h1>
+          <h1 class="post-title" itemprop="name headline">Git 简介</h1>
         
 
         <div class="post-meta">
@@ -291,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-10T20:02:27+08:00">
-                2018-09-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-13T17:59:38+08:00">
+                2018-10-13
               </time>
             
 
@@ -302,28 +308,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随便聊聊/" itemprop="url" rel="index">
-                    <span itemprop="name">随便聊聊</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -332,8 +316,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/09/10/好久不见/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/10/好久不见/" itemprop="commentCount"></span>
+                <a href="/2018/10/13/Git-简介/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/13/Git-简介/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -361,25 +345,68 @@
       
 
       
-        <h1 id="断更"><a href="#断更" class="headerlink" title="断更"></a>断更</h1><p>从博客创建至今 276 天，发布的文章仅有寥寥二十三篇，其中还断更近四个月。虽然一直都有写学习笔记的习惯，最勤奋的时候也有每周三篇的产量，但是自认为水平不足，发布的仅有四分之一左右，都是自认为通俗易懂且严谨的文章。</p>
-<p>没曾想发布的这些竟成了我唯一保留下的学习笔记——没错之前在学习 Linux 操作系统时执行了那个充满破坏力的命令，发现后立刻中止但是为时已晚，全部的学习笔记、很多学习资料全没了，幸好博客的本地文件还在，不然我怕是连写博客的动力都没有了。</p>
-<a id="more"></a>
-<h1 id="更名"><a href="#更名" class="headerlink" title="更名"></a>更名</h1><p>以前博客名为 CnMarijuana，Cn 表示中国，单词 Marijuana 直译罂粟、大烟，这与一个被人从初中叫到高中的外号有关（请不要误会，我是一个遵纪守法交了七年团费的共青团员。虽然我抽烟但是这个外号与我抽烟无关，这一点上总是被人误会，大多数时候我也懒得解释）。</p>
-<p>现更名为 nullptr ，这是 C++11 中加入的新的关键字，表示指针的未初始化状态。本想使用 Java 中的关键字 null 来起名，但是在博客的配置文件 <code>.yml</code> 中 null 也是一个关键字，于是使用 nullptr。</p>
-<p>对于一个引用，如果使用得当可以大大减少代码量，如果未初始化也可能导致异常，并且理论上有些引用可以指向任何 Object 。</p>
-<p>对于我，漫漫人生路还很漫长，以后到底是为发展社会主义做出贡献还是成为社会渣滓还没有定论，以后到底从事什么工作也没有定论，使用 null 来描述我当前的状态好像也勉强说得过去。</p>
-<h1 id="广告"><a href="#广告" class="headerlink" title="广告"></a>广告</h1><blockquote>
-<p>你有一个苹果，我有一个苹果，彼此交换一下，我们仍然是各有一个苹果；但你有一种思想，我有一种思想，彼此交换，我们就都有了两种思想，甚至更多。</p>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><blockquote>
+<p> Git 是一个分布式的版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。</p>
+<p> ​                                                            ——百度百科</p>
 </blockquote>
-<p>这是一个知识爆炸的时代，获取学习资源的门槛变得很低。但是人与人之间总是有信息差，有人开始拿信息差赚钱，比如在某智播客上免费的 Java SE 学习资源，在某些淘宝店可以卖二三十，还要打上“内部专享”、“全网最低价”的字样，因为特色国情，有些免费下载的软件和源码能在 CSDN 上开出一二十块钱的价格。如果是花钱买，说不定还能图个省心，避免一些流氓软件的侵害；可要是去那些所谓的下载站，可能一不留神电脑就要上演几大安全厂商决战光明顶。</p>
-<p>我相信每个人都有看到一些优质资源保存下来的习惯，那么为何不尝试分享这些东西，无论是资源还是经验，总有人需要它。</p>
-<p>这是一个用于分享的 QQ 群，欢迎大家：581207147。</p>
-<p>当然如果你愿意和大家一起分享，我希望你能遵守几个原则：</p>
-<ul>
-<li>只分享亲自学习使用过的；</li>
-<li>最好有学习笔记和总结；</li>
-<li>最好通过网盘分享链接的方式。</li>
+<p>在开发之初，Git 的服务目标是帮助管理 Linux 内核开发，现在已经成为全球的开源社区和开放源码的软件的重要基石。</p>
+<a id="more"></a>
+<h1 id="快照"><a href="#快照" class="headerlink" title="快照"></a>快照</h1><p>与其他版本管理工具不同，Git 记录的是文件快照而非文件变化。</p>
+<blockquote>
+<p>存储网络行业协会 SNIA（StorageNetworking Industry Association）对快照（Snapshot）的定义是：关于指定数据集合的一个完全可用拷贝，该拷贝包括相应数据在某个时间点（拷贝开始的时间点）的映像。快照可以是其所表示的数据的一个副本，也可以是数据的一个复制品。</p>
+</blockquote>
+<p>可以这样理解：对一张桌子拍一张照片，记录了桌子上所有物品的摆设位置、状态，之后无论桌上的物品被打乱到什么程度，都可以对照照片将其恢复原样。这张照片就是桌上物品的<strong>快照</strong>。</p>
+<p>SVN 等其他版本管理工具记录的是文件的变化，比如我们在一个已被管理的 txt 文件中添加了几个字符，SVN 就会记录下添加字符的内容。</p>
+<h2 id="Git-记录快照"><a href="#Git-记录快照" class="headerlink" title="Git 记录快照"></a>Git 记录快照</h2><p><img src="/2018/10/13/Git-简介/Git 记录文件快照.png" alt="Git 记录文件快照"></p>
+<p>使用 Git 管理 ABC 三个文件时：</p>
+<ol>
+<li>Version 1 时三个文件被创建，Git 会记录三个文件的快照；</li>
+<li>后续每个版本变动时仅记录变化文件的快照：<ul>
+<li>Version 2：记录快照 A1、C1；</li>
+<li>Version 3：记录快照 C2；</li>
+<li>Version 4：记录快照 A2、B1；</li>
+<li>Version 5：记录快照  B2、C3</li>
 </ul>
+</li>
+</ol>
+<h2 id="SVN-记录差异"><a href="#SVN-记录差异" class="headerlink" title="SVN 记录差异"></a>SVN 记录差异</h2><p><img src="/2018/10/13/Git-简介/SVN 记录文件差异.png" alt="SVN 记录差异"></p>
+<p>使用 SVN 管理 ABC 三个文件时：</p>
+<ol>
+<li>Version 1 时三个文件被创建，SVN 会记录下三个文件的所有内容；</li>
+<li>后续每个版本变动时仅记录变化文件的差异：<ul>
+<li>Version 2：记录 A 的差异 Δ1 和 C 的差异 Δ1；</li>
+<li>……</li>
+<li>Version 5：记录 B 的差异 Δ2 和 C 的差异 Δ3；</li>
+</ul>
+</li>
+</ol>
+<h1 id="Git-工作流程"><a href="#Git-工作流程" class="headerlink" title="Git 工作流程"></a>Git 工作流程</h1><p>要了解 Git 的工作流程需要先理解 Git 中<strong>三个目录</strong>和<strong>四种状态</strong>的概念。</p>
+<h2 id="三个目录"><a href="#三个目录" class="headerlink" title="三个目录"></a>三个目录</h2><p>Git 项目中有三个主要区域：</p>
+<p><img src="/2018/10/13/Git-简介/Git 三个目录.jpg" alt="三个目录"></p>
+<ul>
+<li>.git directory：Git 目录，保存了 Git 生成的数据和需要的资源；</li>
+<li>Working Directory：工作目录，是一个项目的全部内容；</li>
+<li>Staging Area：暂存区，一个名为 index（无后缀）的文件，保存着下次要提交的内容（提交是 Git 的一个工作流程）；<ul>
+<li>暂存区也被叫做索引，但是根据该区域中文件快照的性质来说称其未暂存区更符合国人的语言习惯。</li>
+</ul>
+</li>
+</ul>
+<h2 id="文件四种状态"><a href="#文件四种状态" class="headerlink" title="文件四种状态"></a>文件四种状态</h2><p><img src="/2018/10/13/Git-简介/文件状态的生命周期.png" alt="文件状态的生命周期"></p>
+<p>加上未被 Git 管理的状态，有四种文件状态需要您了解：</p>
+<ul>
+<li>Untracked：未被跟踪状态，Git 不会管理该文件的变化；</li>
+<li>Staged：已暂存状态，使用 Git 管理一个未跟踪文件时它会先变成已暂存状态，此时文件的快照会进入暂存区；</li>
+<li>Unmodified：未修改状态，在 Git 记录中没有变化的文件（Git 存储的快照和该文件对比后未发现改变）；</li>
+<li>Modified：已修改状态，在 Git 记录中发生变化的文件；</li>
+</ul>
+<h2 id="Git-工作流程-1"><a href="#Git-工作流程-1" class="headerlink" title="Git 工作流程"></a>Git 工作流程</h2><p>请先对以下工作流程有大致了解，看完本系列总结的下一篇后您就会对 Git 管理版本的流程完全了解。</p>
+<ol>
+<li>在工作区中修改文件；</li>
+<li>修改过的文件的快照会进入暂存区；</li>
+<li>提交更新后暂存区的内容会永久储存到 Git 仓库目录。</li>
+</ol>
+<hr>
+<p>本文插图来源网络，如果侵犯了您的利益，请与我联系，我会尽快替换相关内容。</p>
 
       
     </div>
@@ -419,6 +446,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
+        </div>
+      
 
       
       
@@ -428,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/10/LeetCode第20题/" rel="next" title="LeetCode第20题">
-                <i class="fa fa-chevron-left"></i> LeetCode第20题
+              <a href="/2018/10/13/MySQL-最小自定义安装教程/" rel="next" title="MySQL 最小自定义安装教程">
+                <i class="fa fa-chevron-left"></i> MySQL 最小自定义安装教程
               </a>
             
           </div>
@@ -438,8 +471,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/25/云服务器安装Java和Tomcat/" rel="prev" title="云服务器安装Java和Tomcat">
-                云服务器安装Java和Tomcat <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/13/Git-基本工作流程/" rel="prev" title="Git 基本工作流程">
+                Git 基本工作流程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -595,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#断更"><span class="nav-number">1.</span> <span class="nav-text">断更</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更名"><span class="nav-number">2.</span> <span class="nav-text">更名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#广告"><span class="nav-number">3.</span> <span class="nav-text">广告</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快照"><span class="nav-number">2.</span> <span class="nav-text">快照</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-记录快照"><span class="nav-number">2.1.</span> <span class="nav-text">Git 记录快照</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN-记录差异"><span class="nav-number">2.2.</span> <span class="nav-text">SVN 记录差异</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-工作流程"><span class="nav-number">3.</span> <span class="nav-text">Git 工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三个目录"><span class="nav-number">3.1.</span> <span class="nav-text">三个目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件四种状态"><span class="nav-number">3.2.</span> <span class="nav-text">文件四种状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-工作流程-1"><span class="nav-number">3.3.</span> <span class="nav-text">Git 工作流程</span></a></li></ol></li></ol></div>
             
 
           </div>

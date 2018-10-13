@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="断更从博客创建至今 276 天，发布的文章仅有寥寥二十三篇，其中还断更近四个月。虽然一直都有写学习笔记的习惯，最勤奋的时候也有每周三篇的产量，但是自认为水平不足，发布的仅有四分之一左右，都是自认为通俗易懂且严谨的文章。 没曾想发布的这些竟成了我唯一保留下的学习笔记——没错之前在学习 Linux 操作系统时执行了那个充满破坏力的命令，发现后立刻中止但是为时已晚，全部的学习笔记、很多学习资料全没了，幸">
+<meta name="description" content="基本工作流程上一篇中介绍了 Git 的基本工作流程中的三个步骤的每一个步骤名称和效果，本篇为您详细介绍每个步骤的效果和操作。">
+<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="好久不见">
-<meta property="og:url" content="https://cnmarijuana.github.io/2018/09/10/好久不见/index.html">
+<meta property="og:title" content="Git 基本工作流程">
+<meta property="og:url" content="https://cnmarijuana.github.io/2018/10/13/Git-基本工作流程/index.html">
 <meta property="og:site_name" content="JUST">
-<meta property="og:description" content="断更从博客创建至今 276 天，发布的文章仅有寥寥二十三篇，其中还断更近四个月。虽然一直都有写学习笔记的习惯，最勤奋的时候也有每周三篇的产量，但是自认为水平不足，发布的仅有四分之一左右，都是自认为通俗易懂且严谨的文章。 没曾想发布的这些竟成了我唯一保留下的学习笔记——没错之前在学习 Linux 操作系统时执行了那个充满破坏力的命令，发现后立刻中止但是为时已晚，全部的学习笔记、很多学习资料全没了，幸">
+<meta property="og:description" content="基本工作流程上一篇中介绍了 Git 的基本工作流程中的三个步骤的每一个步骤名称和效果，本篇为您详细介绍每个步骤的效果和操作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-10T14:14:31.968Z">
+<meta property="og:updated_time" content="2018-10-13T10:03:54.125Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="好久不见">
-<meta name="twitter:description" content="断更从博客创建至今 276 天，发布的文章仅有寥寥二十三篇，其中还断更近四个月。虽然一直都有写学习笔记的习惯，最勤奋的时候也有每周三篇的产量，但是自认为水平不足，发布的仅有四分之一左右，都是自认为通俗易懂且严谨的文章。 没曾想发布的这些竟成了我唯一保留下的学习笔记——没错之前在学习 Linux 操作系统时执行了那个充满破坏力的命令，发现后立刻中止但是为时已晚，全部的学习笔记、很多学习资料全没了，幸">
+<meta name="twitter:title" content="Git 基本工作流程">
+<meta name="twitter:description" content="基本工作流程上一篇中介绍了 Git 的基本工作流程中的三个步骤的每一个步骤名称和效果，本篇为您详细介绍每个步骤的效果和操作。">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://cnmarijuana.github.io/2018/09/10/好久不见/"/>
+  <link rel="canonical" href="https://cnmarijuana.github.io/2018/10/13/Git-基本工作流程/"/>
 
 
 
 
 
-  <title>好久不见 | JUST</title>
+  <title>Git 基本工作流程 | JUST</title>
   
 
 
@@ -262,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/09/10/好久不见/">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/10/13/Git-基本工作流程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nullptr">
@@ -279,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">好久不见</h1>
+          <h1 class="post-title" itemprop="name headline">Git 基本工作流程</h1>
         
 
         <div class="post-meta">
@@ -291,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-10T20:02:27+08:00">
-                2018-09-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-13T17:59:57+08:00">
+                2018-10-13
               </time>
             
 
@@ -302,28 +303,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随便聊聊/" itemprop="url" rel="index">
-                    <span itemprop="name">随便聊聊</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -332,8 +311,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/09/10/好久不见/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/10/好久不见/" itemprop="commentCount"></span>
+                <a href="/2018/10/13/Git-基本工作流程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/13/Git-基本工作流程/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -361,25 +340,49 @@
       
 
       
-        <h1 id="断更"><a href="#断更" class="headerlink" title="断更"></a>断更</h1><p>从博客创建至今 276 天，发布的文章仅有寥寥二十三篇，其中还断更近四个月。虽然一直都有写学习笔记的习惯，最勤奋的时候也有每周三篇的产量，但是自认为水平不足，发布的仅有四分之一左右，都是自认为通俗易懂且严谨的文章。</p>
-<p>没曾想发布的这些竟成了我唯一保留下的学习笔记——没错之前在学习 Linux 操作系统时执行了那个充满破坏力的命令，发现后立刻中止但是为时已晚，全部的学习笔记、很多学习资料全没了，幸好博客的本地文件还在，不然我怕是连写博客的动力都没有了。</p>
+        <h1 id="基本工作流程"><a href="#基本工作流程" class="headerlink" title="基本工作流程"></a>基本工作流程</h1><p>上一篇中介绍了 Git 的基本工作流程中的三个步骤的每一个步骤名称和效果，本篇为您详细介绍每个步骤的效果和操作。</p>
 <a id="more"></a>
-<h1 id="更名"><a href="#更名" class="headerlink" title="更名"></a>更名</h1><p>以前博客名为 CnMarijuana，Cn 表示中国，单词 Marijuana 直译罂粟、大烟，这与一个被人从初中叫到高中的外号有关（请不要误会，我是一个遵纪守法交了七年团费的共青团员。虽然我抽烟但是这个外号与我抽烟无关，这一点上总是被人误会，大多数时候我也懒得解释）。</p>
-<p>现更名为 nullptr ，这是 C++11 中加入的新的关键字，表示指针的未初始化状态。本想使用 Java 中的关键字 null 来起名，但是在博客的配置文件 <code>.yml</code> 中 null 也是一个关键字，于是使用 nullptr。</p>
-<p>对于一个引用，如果使用得当可以大大减少代码量，如果未初始化也可能导致异常，并且理论上有些引用可以指向任何 Object 。</p>
-<p>对于我，漫漫人生路还很漫长，以后到底是为发展社会主义做出贡献还是成为社会渣滓还没有定论，以后到底从事什么工作也没有定论，使用 null 来描述我当前的状态好像也勉强说得过去。</p>
-<h1 id="广告"><a href="#广告" class="headerlink" title="广告"></a>广告</h1><blockquote>
-<p>你有一个苹果，我有一个苹果，彼此交换一下，我们仍然是各有一个苹果；但你有一种思想，我有一种思想，彼此交换，我们就都有了两种思想，甚至更多。</p>
-</blockquote>
-<p>这是一个知识爆炸的时代，获取学习资源的门槛变得很低。但是人与人之间总是有信息差，有人开始拿信息差赚钱，比如在某智播客上免费的 Java SE 学习资源，在某些淘宝店可以卖二三十，还要打上“内部专享”、“全网最低价”的字样，因为特色国情，有些免费下载的软件和源码能在 CSDN 上开出一二十块钱的价格。如果是花钱买，说不定还能图个省心，避免一些流氓软件的侵害；可要是去那些所谓的下载站，可能一不留神电脑就要上演几大安全厂商决战光明顶。</p>
-<p>我相信每个人都有看到一些优质资源保存下来的习惯，那么为何不尝试分享这些东西，无论是资源还是经验，总有人需要它。</p>
-<p>这是一个用于分享的 QQ 群，欢迎大家：581207147。</p>
-<p>当然如果你愿意和大家一起分享，我希望你能遵守几个原则：</p>
+<h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>Git 使用<strong>仓库</strong>这一概念来管理和控制文件，所有在 Git 仓库中的文件都<strong>可以</strong>通过 Git 来管理。</p>
+<p>创建仓库的方式有两种，第一种是将现有的项目导入 Git，第二种是从服务器上克隆仓库。本篇总结主要介绍第一种方式：</p>
+<p>打开 Git Bush，进入项目目录（就是三个区域中的工作目录）后执行 <code>git init</code></p>
 <ul>
-<li>只分享亲自学习使用过的；</li>
-<li>最好有学习笔记和总结；</li>
-<li>最好通过网盘分享链接的方式。</li>
+<li>Git Bush 和 CMD 略有不同，在不同盘符切换时仍需使用 cd 命令；</li>
+<li>执行结束后会生成一个名为 .git 目录（该文件夹默认隐藏），其功能详细介绍在本系列学习总结上一篇中已详细介绍。</li>
 </ul>
+<h2 id="查看文件状态"><a href="#查看文件状态" class="headerlink" title="查看文件状态"></a>查看文件状态</h2><p>检查文件所处状态的命令是 <code>git status</code> 。在空仓库中执行这条命令效果如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">nothing to commit (create/copy files and use "git add" to track)</span><br></pre></td></tr></table></figure>
+<p>这样的输出表示工作目录为空，既工作目录下没有被追踪的文件。现在新建一个 test.txt 文件，然后再次执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use "git add &lt;file&gt;..." to include in what will be committed)</span><br><span class="line"></span><br><span class="line">        test.txt</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use "git add" to track)</span><br></pre></td></tr></table></figure>
+<p>可以看出有一个未追踪的 test.txt 文件。</p>
+<h2 id="跟踪文件"><a href="#跟踪文件" class="headerlink" title="跟踪文件"></a>跟踪文件</h2><p>此时 Git 仓库和暂存区都是空的，因为 Git 并没有追踪任何文件。需要注意的是 .git 文件夹此时并不为空，它保存了一些 Git 需要的资源，而 index 文件根本不存在。</p>
+<p>追踪是文件由 Untracked 状态变为 Staged 状态的过程，Git 会扫描文件获取快照后将其存入暂存区。</p>
+<p>使用 add 命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数 file 可以为一个文件或目录，如果是一个目录时会将该目录下所有文件跟踪；</li>
+<li><p>file 为一个文件时不可省略后缀名；</p>
+</li>
+<li><p>可使用占位符 <em> 来简写或一次跟踪多个文件，比如要跟踪项目中所有的 Java 源代码文件只需要执行 `git add </em>.java`；</p>
+</li>
+<li><p><code>git add .</code> 会将工作目录中所有文件都追踪。</p>
+</li>
+</ul>
+<p>在工作目录下新建一个 test.txt 文件来进行实验，追踪文件后可以使用 <code>git status</code> 命令来查看各文件状态。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use "git rm --cached &lt;file&gt;..." to unstage)</span><br><span class="line"></span><br><span class="line">        new file:   test.txt</span><br></pre></td></tr></table></figure>
+<p>Changes to be committed 就是指这些文件快照在暂存区了。</p>
+<h2 id="提交快照"><a href="#提交快照" class="headerlink" title="提交快照"></a>提交快照</h2><p>提交快照的过程是将文件快照从暂存区放入 git 目录的过程，经提交的文件状态会从以暂存变成未修改。</p>
+<p>执行<code>git commit</code> 命令来提交快照，执行后会打开系统默认的文本编辑器用于编辑一些提交的信息，而我设置了 Git 的默认文本编辑器为 Vim。</p>
+<p>默认的提交信息如下：按自己的意愿修改后退出编辑器，Git 就会将暂存区中的快照提交到 git 目录下，而修改过的提交信息也会被 Git 记录下来以便您区分这次提交进行了什么更改。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Please enter the commit message for your changes. Lines starting</span></span><br><span class="line"><span class="comment"># with '#' will be ignored, and an empty message aborts the commit.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#On branch master</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#Initial commit</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#Changes to be committed:</span></span><br><span class="line"><span class="comment">#        new file:   test.txt</span></span><br><span class="line"><span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p>执行 commit 命令并编辑提交信息后效果如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git commit</span><br><span class="line">[master (root-commit) f164586] On branch master</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 test.txt</span><br></pre></td></tr></table></figure>
+<h2 id="更改文件"><a href="#更改文件" class="headerlink" title="更改文件"></a>更改文件</h2><p>现在修改 test.txt 文件的内容，然后查看文件状态：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git status</span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use "git add &lt;file&gt;..." to update what will be committed)</span><br><span class="line">  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        modified:   test.txt</span><br><span class="line"></span><br><span class="line">no changes added to commit (use "git add" and/or "git commit -a")</span><br></pre></td></tr></table></figure>
+<p>Changes not staged for commit 表示该文件已修改但未暂存，使用 add 命令将其加入暂存区：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git add test.txt</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use "git reset HEAD &lt;file&gt;..." to unstage)</span><br><span class="line"></span><br><span class="line">        modified:   test.txt</span><br></pre></td></tr></table></figure>
+<p>与之前的跟踪文件部分执行 <code>git status</code> 的结果比较，发现同样是分类在 Changes not staged for commit 下，但是标记已由 new file 变成了 modified。</p>
+<hr>
+<p>本篇旨在介绍 Git 的基本工作流程，因此简化了使用 Git 时的诸多细节。关于这些细节介绍会在后续的学习总结中补充。</p>
 
       
     </div>
@@ -419,6 +422,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
+        </div>
+      
 
       
       
@@ -428,8 +437,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/10/LeetCode第20题/" rel="next" title="LeetCode第20题">
-                <i class="fa fa-chevron-left"></i> LeetCode第20题
+              <a href="/2018/10/13/Git-简介/" rel="next" title="Git 简介">
+                <i class="fa fa-chevron-left"></i> Git 简介
               </a>
             
           </div>
@@ -437,10 +446,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/25/云服务器安装Java和Tomcat/" rel="prev" title="云服务器安装Java和Tomcat">
-                云服务器安装Java和Tomcat <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -595,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#断更"><span class="nav-number">1.</span> <span class="nav-text">断更</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更名"><span class="nav-number">2.</span> <span class="nav-text">更名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#广告"><span class="nav-number">3.</span> <span class="nav-text">广告</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本工作流程"><span class="nav-number">1.</span> <span class="nav-text">基本工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建仓库"><span class="nav-number">1.1.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看文件状态"><span class="nav-number">1.2.</span> <span class="nav-text">查看文件状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跟踪文件"><span class="nav-number">1.3.</span> <span class="nav-text">跟踪文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交快照"><span class="nav-number">1.4.</span> <span class="nav-text">提交快照</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改文件"><span class="nav-number">1.5.</span> <span class="nav-text">更改文件</span></a></li></ol></li></ol></div>
             
 
           </div>
