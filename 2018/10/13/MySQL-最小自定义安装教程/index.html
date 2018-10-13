@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="简介MySQL 是一个轻量级的数据库管理软件，在轻量级 Web 应用程序应用广泛，然而由于 MySQL 的全英安装界面和并不人性化的设计，要完全正确安装并不容易，本篇介绍如何在 Windows 操作系统上进行 MySQL 的最小自定义安装。  最小：仅安装学习过程会使用到的软件； 自定义：MySQL 离线安装版会默认将全部组件安装在 C 盘，本文介绍了一种自定义安装路径的方法。  安装 MySQL">
+<meta name="description" content="简介MySQL 是一个轻量级的数据库管理软件，在轻量级 Web 应用程序应用广泛，然而由于 MySQL 的全英安装界面和并不人性化的设计，要完全正确安装并不容易，本篇介绍如何在 Windows 操作系统上进行 MySQL 的最小自定义安装。  最小：仅安装学习过程会使用到的软件； 自定义：MySQL 离线安装版会默认将全部组件安装在 C 盘，本文介绍了一种自定义安装路径的方法。">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 最小自定义安装教程">
 <meta property="og:url" content="https://cnmarijuana.github.io/2018/10/13/MySQL-最小自定义安装教程/index.html">
 <meta property="og:site_name" content="JUST">
-<meta property="og:description" content="简介MySQL 是一个轻量级的数据库管理软件，在轻量级 Web 应用程序应用广泛，然而由于 MySQL 的全英安装界面和并不人性化的设计，要完全正确安装并不容易，本篇介绍如何在 Windows 操作系统上进行 MySQL 的最小自定义安装。  最小：仅安装学习过程会使用到的软件； 自定义：MySQL 离线安装版会默认将全部组件安装在 C 盘，本文介绍了一种自定义安装路径的方法。  安装 MySQL">
+<meta property="og:description" content="简介MySQL 是一个轻量级的数据库管理软件，在轻量级 Web 应用程序应用广泛，然而由于 MySQL 的全英安装界面和并不人性化的设计，要完全正确安装并不容易，本篇介绍如何在 Windows 操作系统上进行 MySQL 的最小自定义安装。  最小：仅安装学习过程会使用到的软件； 自定义：MySQL 离线安装版会默认将全部组件安装在 C 盘，本文介绍了一种自定义安装路径的方法。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cnmarijuana.github.io/2018/10/13/MySQL-最小自定义安装教程/选择安装方式.png">
 <meta property="og:image" content="https://cnmarijuana.github.io/2018/10/13/MySQL-最小自定义安装教程/选择组件.png">
@@ -94,10 +94,10 @@
 <meta property="og:image" content="https://cnmarijuana.github.io/2018/10/13/MySQL-最小自定义安装教程/开始安装.png">
 <meta property="og:image" content="https://cnmarijuana.github.io/2018/10/13/MySQL-最小自定义安装教程/创建根用户密码.png">
 <meta property="og:image" content="https://cnmarijuana.github.io/2018/10/13/MySQL-最小自定义安装教程/应用配置.png">
-<meta property="og:updated_time" content="2018-10-13T00:59:34.241Z">
+<meta property="og:updated_time" content="2018-10-13T01:50:25.563Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 最小自定义安装教程">
-<meta name="twitter:description" content="简介MySQL 是一个轻量级的数据库管理软件，在轻量级 Web 应用程序应用广泛，然而由于 MySQL 的全英安装界面和并不人性化的设计，要完全正确安装并不容易，本篇介绍如何在 Windows 操作系统上进行 MySQL 的最小自定义安装。  最小：仅安装学习过程会使用到的软件； 自定义：MySQL 离线安装版会默认将全部组件安装在 C 盘，本文介绍了一种自定义安装路径的方法。  安装 MySQL">
+<meta name="twitter:description" content="简介MySQL 是一个轻量级的数据库管理软件，在轻量级 Web 应用程序应用广泛，然而由于 MySQL 的全英安装界面和并不人性化的设计，要完全正确安装并不容易，本篇介绍如何在 Windows 操作系统上进行 MySQL 的最小自定义安装。  最小：仅安装学习过程会使用到的软件； 自定义：MySQL 离线安装版会默认将全部组件安装在 C 盘，本文介绍了一种自定义安装路径的方法。">
 <meta name="twitter:image" content="https://cnmarijuana.github.io/2018/10/13/MySQL-最小自定义安装教程/选择安装方式.png">
 
 
@@ -353,6 +353,7 @@
 <li>最小：仅安装学习过程会使用到的软件；</li>
 <li>自定义：MySQL 离线安装版会默认将全部组件安装在 C 盘，本文介绍了一种自定义安装路径的方法。</li>
 </ul>
+<a id="more"></a>
 <h1 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h1><p>本文使用官方提供的 mysql-installer-community-8.0.11.0 来进行安装。</p>
 <p>运行 mysql-installer-community-8.0.11.0.exe 开始安装，下面<strong>依次介绍安装过程中需要注意的步骤。</strong></p>
 <h2 id="选择需要的组件和安装位置"><a href="#选择需要的组件和安装位置" class="headerlink" title="选择需要的组件和安装位置"></a>选择需要的组件和安装位置</h2><p>第一步为同意用户协议，勾选同意之后点击 <strong>next</strong> 进入下一步选择安装方式。</p>
