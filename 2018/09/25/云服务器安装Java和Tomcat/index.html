@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="安装配置 Java众所周知，使用 Java 进行开发需要安装开发人员工具包 JDK 和运行环境 JRE 。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。">
+<meta name="description" content="安装配置 Java在 Windos 操作系统上，甲骨文提供了安装版和免安装版两种方式来安装 Java，由于 Linux 操作系统的特点，大部分人在 Windos 上安装 Java 的经验无法复制，本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，所以本文介绍的方法可以用于在云服务器上搭建网站后台。">
 <meta name="keywords" content="ubuntu,Tomcat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="云服务器安装Java和Tomcat">
 <meta property="og:url" content="https://cnmarijuana.github.io/2018/09/25/云服务器安装Java和Tomcat/index.html">
 <meta property="og:site_name" content="JUST">
-<meta property="og:description" content="安装配置 Java众所周知，使用 Java 进行开发需要安装开发人员工具包 JDK 和运行环境 JRE 。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。">
+<meta property="og:description" content="安装配置 Java在 Windos 操作系统上，甲骨文提供了安装版和免安装版两种方式来安装 Java，由于 Linux 操作系统的特点，大部分人在 Windos 上安装 Java 的经验无法复制，本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，所以本文介绍的方法可以用于在云服务器上搭建网站后台。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-25T05:48:32.258Z">
+<meta property="og:updated_time" content="2018-10-12T13:54:45.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云服务器安装Java和Tomcat">
-<meta name="twitter:description" content="安装配置 Java众所周知，使用 Java 进行开发需要安装开发人员工具包 JDK 和运行环境 JRE 。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。">
+<meta name="twitter:description" content="安装配置 Java在 Windos 操作系统上，甲骨文提供了安装版和免安装版两种方式来安装 Java，由于 Linux 操作系统的特点，大部分人在 Windos 上安装 Java 的经验无法复制，本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，所以本文介绍的方法可以用于在云服务器上搭建网站后台。">
 
 
 
@@ -340,9 +340,9 @@
       
 
       
-        <h1 id="安装配置-Java"><a href="#安装配置-Java" class="headerlink" title="安装配置 Java"></a>安装配置 Java</h1><p>众所周知，使用 Java 进行开发需要安装<strong>开发人员工具包 JDK 和运行环境 JRE </strong>。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。</p>
+        <h1 id="安装配置-Java"><a href="#安装配置-Java" class="headerlink" title="安装配置 Java"></a>安装配置 Java</h1><p>在 Windos 操作系统上，甲骨文提供了安装版和免安装版两种方式来安装 Java，由于 Linux 操作系统的特点，大部分人在 Windos 上安装 Java 的经验无法复制，本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，所以本文介绍的方法可以用于在云服务器上搭建网站后台。</p>
 <a id="more"></a>
-<h2 id="下载解压"><a href="#下载解压" class="headerlink" title="下载解压"></a>下载解压</h2><p>甲骨文提供的 <strong>jdk-10.0.2.tar.gz</strong> 包的下载地址为 <a href="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz，在" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz，在</a> opt 目录中执行：</p>
+<h2 id="下载解压"><a href="#下载解压" class="headerlink" title="下载解压"></a>下载解压</h2><h3 id="使用-wget-命令下载"><a href="#使用-wget-命令下载" class="headerlink" title="使用 wget 命令下载"></a>使用 wget 命令下载</h3><p>甲骨文提供的 <strong>jdk-10.0.2.tar.gz</strong> 包的下载地址为 <a href="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz，在" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz，在</a> opt 目录中执行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-cookies --header <span class="string">"Cookie: oraclelicense=accept-securebackup-cookie;"</span> http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>wget 命令默认将文件下载到当前目录，而 opt 目录是 ubuntu 推荐的程序安装目录（相当于 windos 中的 C:\Program Files，不过使用包管理工具安装的程序不在此目录中。）</p>
@@ -350,8 +350,13 @@
 <li><p>给 wget 命令添加了两个参数以骗过服务器让它以为我们正在使用浏览器下载文件。</p>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-10.0.2_linux-x64_bin.tar.gz</span><br></pre></td></tr></table></figure>
-<h2 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h2><p>使用 vim 打开 存储环境变量的文件（希望您熟练 vim 操作）：</p>
+<h3 id="使用-tar-命令解压"><a href="#使用-tar-命令解压" class="headerlink" title="使用 tar 命令解压"></a>使用 tar 命令解压</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-10.0.2_linux-x64_bin.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h2><p>一般情况下 Linux 操作系统中有两个文件用于存储环境变量：</p>
+<ul>
+<li>/etc/profile：系统全局环境变量</li>
+<li>~/.bashrc：用户的私有环境变量</li>
+</ul>
+<p>权衡之后决定向用户私有环境变量中添加内容，使用 vim 打开 存储环境变量的文件（希望您熟练 vim 操作）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim ~/.bashrc</span><br></pre></td></tr></table></figure>
 <p>在文件末尾加上：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set java </span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/opt/jdk-10.0.2</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
@@ -359,13 +364,13 @@
 <p>重新加载文件令其生效：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
 <p>可以使用如下命令检查是否安装成功：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@iZi02safjm0lbpZ:/<span class="comment"># java -version</span></span><br><span class="line">java version <span class="string">"10.0.2"</span> 2018-07-17</span><br><span class="line">Java(TM) SE Runtime Environment 18.3 (build 10.0.2+13)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.2+13, mixed mode)</span><br><span class="line">root@iZi02safjm0lbpZ:/<span class="comment"># javac -version</span></span><br><span class="line">javac 10.0.2</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">javac -version</span><br></pre></td></tr></table></figure>
 <h1 id="安装配置-Tomcat"><a href="#安装配置-Tomcat" class="headerlink" title="安装配置 Tomcat"></a>安装配置 Tomcat</h1><p>同样在 /opt 目录下载 apache-tomcat-9.0.12.tar.gz 并解压：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-cookies --header <span class="string">"Cookie: oraclelicense=accept-securebackup-cookie;"</span> http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.12/bin/apache-tomcat-9.0.12.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf apache-tomcat-9.0.12.tar.gz</span><br></pre></td></tr></table></figure>
-<p>接下来需要告诉 tomcat <strong>jre 的路径</strong>，虽然按照第一部分的步骤安装 Java 之后 java 和 javac 指令已经可以在任何目录下执行，但是不知道为什么 tomcat 找不到 jre 的路径。</p>
+<p>接下来需要告诉 tomcat <strong>jre 的路径</strong>，否则 Tomcat 无法正常启动，即便运行 startup.sh 无异样也无法访问。</p>
 <p>使用 vim 打开 tomcat 安装目录下 /bin 中的 setclasspath.sh：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim setclasspath.sh</span><br></pre></td></tr></table></figure>
-<p>在文件起始位置添加：</p>
+<p>在文件<strong>起始位置</strong>添加：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/opt/jdk-10.0.2</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=/opt/jdk-10.0.2</span><br></pre></td></tr></table></figure>
 <p>然后执行 startup.sh 即可启动服务器，同时不要忘记开放防火墙的 8080 端口。</p>
 <h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p>执行 tomcat 的启动脚本 startup.sh 在执行过程中有如下调用过程：</p>
@@ -373,7 +378,7 @@
 <li>startup.sh 调用 catalina.sh；</li>
 <li>catalina.sh 调用 setclasspath.sh。</li>
 </ol>
-<p>在调用过程中，如果未在环境变量中指明 jre 的路径（本文提到的配置 Java 方法实际上仅有 JDK，但是 java 命令确实可以执行）会首先在 startup.sh 中寻找是否有 JRE_HOME 的定义，如果没有再依次查询 catalina.sh 和 setclasspath.sh 。因此将 JRE_HOME 的定义放置再 setclasspath.sh 是<strong>终极解决方案</strong>。</p>
+<p>在调用过程中，如果未在环境变量中指明 jre 的路径会首先在 startup.sh 中寻找是否有 JRE_HOME 的定义，如果没有再依次查询 catalina.sh 和 setclasspath.sh 。因此将 JRE_HOME 的定义放置再 setclasspath.sh 是<strong>终极解决方案</strong>。</p>
 <hr>
 <p>甲骨文提供的专用于云服务器的 serverjre-10.0.2_linux-x64_bin.tar 无法正确启动 tomcat。</p>
 
@@ -441,6 +446,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/13/MySQL-最小自定义安装教程/" rel="prev" title="MySQL 最小自定义安装教程">
+                MySQL 最小自定义安装教程 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -524,7 +533,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -546,7 +555,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -595,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置-Java"><span class="nav-number">1.</span> <span class="nav-text">安装配置 Java</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载解压"><span class="nav-number">1.1.</span> <span class="nav-text">下载解压</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加环境变量"><span class="nav-number">1.2.</span> <span class="nav-text">添加环境变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置-Tomcat"><span class="nav-number">2.</span> <span class="nav-text">安装配置 Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解释"><span class="nav-number">2.1.</span> <span class="nav-text">解释</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置-Java"><span class="nav-number">1.</span> <span class="nav-text">安装配置 Java</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载解压"><span class="nav-number">1.1.</span> <span class="nav-text">下载解压</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-wget-命令下载"><span class="nav-number">1.1.1.</span> <span class="nav-text">使用 wget 命令下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-tar-命令解压"><span class="nav-number">1.1.2.</span> <span class="nav-text">使用 tar 命令解压</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加环境变量"><span class="nav-number">1.2.</span> <span class="nav-text">添加环境变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置-Tomcat"><span class="nav-number">2.</span> <span class="nav-text">安装配置 Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解释"><span class="nav-number">2.1.</span> <span class="nav-text">解释</span></a></li></ol></li></ol></div>
             
 
           </div>

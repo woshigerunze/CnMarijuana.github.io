@@ -262,6 +262,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/10/13/MySQL-最小自定义安装教程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="nullptr">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facivon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/13/MySQL-最小自定义安装教程/" itemprop="url">MySQL 最小自定义安装教程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-13T08:52:30+08:00">
+                2018-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/13/MySQL-最小自定义安装教程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/13/MySQL-最小自定义安装教程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>MySQL 是一个轻量级的数据库管理软件，在轻量级 Web 应用程序应用广泛，然而由于 MySQL 的全英安装界面和并不人性化的设计，要完全正确安装并不容易，本篇介绍如何在 Windows 操作系统上进行 MySQL 的<strong>最小自定义</strong>安装。</p>
+<ul>
+<li>最小：仅安装学习过程会使用到的软件；</li>
+<li>自定义：MySQL 离线安装版会默认将全部组件安装在 C 盘，本文介绍了一种自定义安装路径的方法。</li>
+</ul>
+<h1 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h1><p>本文使用官方提供的 mysql-installer-community-8.0.11.0 来进行安装。</p>
+<p>运行 mysql-installer-community-8.0.11.0.exe 开始安装，下面<strong>依次介绍安装过程中需要注意的步骤。</strong></p>
+<h2 id="选择需要的组件和安装位置"><a href="#选择需要的组件和安装位置" class="headerlink" title="选择需要的组件和安装位置"></a>选择需要的组件和安装位置</h2><p>第一步为同意用户协议，勾选同意之后点击 <strong>next</strong> 进入下一步选择安装方式。</p>
+<p><img src="/2018/10/13/MySQL-最小自定义安装教程/选择安装方式.png" alt="选择安装方式"></p>
+<p>安装方式介绍：</p>
+<ul>
+<li><p>Developer Default：默认的开发人员方式，会将以下组件安装在 C:\Program Files 和 C:\Program Files(x86)</p>
+<ul>
+<li>MySQL Server：MySQL 服务器，也是我们学习使用的最主要工具；</li>
+<li>MySQL Shell：一个新的 MySQL 脚本软件，不过使用 CMD 即可完成全部操作；</li>
+<li>MySQL Router：一个可以提高应用程序和数据库交互速度的组件；</li>
+<li>MySQL Workbench：MySQL 的图形化操作界面；</li>
+<li>MySQL Connectors：MySQL 驱动，如果你的电脑上安装了 Java 或 Python，该组件的内容就是 JDBC 或Python DB-API；</li>
+<li>Examples and tutorials 和 Documentation：演示、教程和文档。</li>
+</ul>
+</li>
+<li><p>Custom：自定义安装方式，Developer Default 方式安装的部分组件对于我们来说可能使用不到，那么我们通过自定义方式将我们<strong>需要的功能安装到指定的位置</strong>。我们选择如下组件：MySQL Server、MySQL Workbench、MySQL Router 、 Examples and tutorials 和 Documentation（MySQL Router 是 Workbench 的必须组件）。</p>
+<p><img src="/2018/10/13/MySQL-最小自定义安装教程/选择组件.png" alt="选择组件"></p>
+</li>
+</ul>
+<p>左侧 Available Products 为可用组件，右侧为已选组件。将需要的组件选择后依次为每个组件选择安装位置：</p>
+<p>依次点击组件、Adcanced Options，在弹出的窗口中选择位置。</p>
+<p><img src="/2018/10/13/MySQL-最小自定义安装教程/选择组件安装位置.png" alt="选择组件安装位置"></p>
+<ul>
+<li>MySQL Server需要选择两个安装位置：<ul>
+<li>Install Directory 安装位置和 Data Directory 数据位置，我分别将其选择在 MySQL Server 和 MySQL Data 两个文件夹下</li>
+</ul>
+</li>
+<li>依次选择好所有组件的安装目录之后进入下一步，如果之前出现过黄色的警告，那么现在会多出一步解决路径冲突的问题，这是因为 MySQL 不希望你将组件安装在一个非空的文件夹，如果您确认警告中的路径为一个空文件夹直接无视即可。</li>
+</ul>
+<p><img src="/2018/10/13/MySQL-最小自定义安装教程/解决路径冲突.png" alt="路径冲突"></p>
+<h2 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h2><p>点击 <strong>Execute</strong> 开始安装即可：<img src="/2018/10/13/MySQL-最小自定义安装教程/开始安装.png" alt="开始安装"></p>
+<p><strong>注：</strong>在安装步骤之前可能会有 check requiremens 检查运行环境的步骤，会列出您电脑中缺少的组件，需要安装运行环境之后才能继续。</p>
+<h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><p>安装完成之后进行一些 MySQL 的基本配置，其他选项都不用改变直接 next 即可，在为 root 用户创建密码时输入您期望的密码即可。</p>
+<p><img src="/2018/10/13/MySQL-最小自定义安装教程/创建根用户密码.png" alt="创建root用户密码"></p>
+<p>创建好密码之后再点几次 next 进入应用配置界面，点击 Execute 开始执行即可。</p>
+<p><img src="/2018/10/13/MySQL-最小自定义安装教程/应用配置.png" alt="应用配置"></p>
+<p>到此安装全部完成，但是仍有一些配置性工作需要完成，本文不再赘述。</p>
+<hr>
+<p>MySQL Installer 是 MySQL 提供的管理工具，在第一次点击 MySQL 安装包时自动安装，您可以在任何时候使用该工具来为您的 MySQL 添加或删除组件。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/09/25/云服务器安装Java和Tomcat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -342,7 +516,7 @@
 
       
         
-          <h1 id="安装配置-Java"><a href="#安装配置-Java" class="headerlink" title="安装配置 Java"></a>安装配置 Java</h1><p>众所周知，使用 Java 进行开发需要安装<strong>开发人员工具包 JDK 和运行环境 JRE </strong>。 本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，可以使用本文的方法在云服务器中搭建。</p>
+          <h1 id="安装配置-Java"><a href="#安装配置-Java" class="headerlink" title="安装配置 Java"></a>安装配置 Java</h1><p>在 Windos 操作系统上，甲骨文提供了安装版和免安装版两种方式来安装 Java，由于 Linux 操作系统的特点，大部分人在 Windos 上安装 Java 的经验无法复制，本文采用下载甲骨文提供的 tar.gz 包的方法实现，全程使用命令行工具，所以本文介绍的方法可以用于在云服务器上搭建网站后台。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/25/云服务器安装Java和Tomcat/#more" rel="contents">
@@ -1647,162 +1821,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://cnmarijuana.github.io/2018/05/20/JAXP之SAX/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="nullptr">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/facivon.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/20/JAXP之SAX/" itemprop="url">JAXP之SAX</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T20:40:09+08:00">
-                2018-05-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
-                    <span itemprop="name">Java Web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/05/20/JAXP之SAX/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/20/JAXP之SAX/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>JAXP 同样为 SAX 解析 XML 提供了解决方案，位于 javax.xml.parsers 包中，SAXparser 和 SAXparserFactory 两个类就是用于获取 XML 的 SAX 解析器的。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/20/JAXP之SAX/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1857,7 +1875,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1879,7 +1897,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
