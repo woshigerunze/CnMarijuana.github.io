@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="JUST">
 <meta property="og:description" content="HttpServletRequest 和 HttpServletResponse 是 Servlet 技术中用于处理 Http 请求和响应的类。 HttpServletRequestHttpServletRequest （此后或简称 Resquest）对象表示客户端的请求，当客户端通过 HTTP 协议访问服务器时，会对请求信息（请求报文）中的所有内容都进行封装，该对象包括请求的地址，请求的参数，提">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-20T13:12:56.205Z">
+<meta property="og:updated_time" content="2018-10-21T09:54:41.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HttpServletRequest">
 <meta name="twitter:description" content="HttpServletRequest 和 HttpServletResponse 是 Servlet 技术中用于处理 Http 请求和响应的类。 HttpServletRequestHttpServletRequest （此后或简称 Resquest）对象表示客户端的请求，当客户端通过 HTTP 协议访问服务器时，会对请求信息（请求报文）中的所有内容都进行封装，该对象包括请求的地址，请求的参数，提">
@@ -397,7 +397,7 @@
 <p>前两个部分的内容分别对应 Http 请求报文中的请求行和请求体，这部分内容则不同——因为 Get 请求方式提交的请求报文中请求参数并不位于请求体，而是与请求行中的资源路径在一起。</p>
 <ul>
 <li>String getParameter(String name)：以 String 形式返回请求参数的值，如果该参数不存在则返回 null，这个方法只能使用在仅有一个值的请求参数；</li>
-<li>String[] getParameterValues(String name)：以 String[] 形式返回请求参数的值，如果参数不同在则返回 null ；</li>
+<li>String[] getParameterValues(String name)：以 String[] 形式返回请求参数的值，如果参数不存在则返回 null ；</li>
 <li>Map getParameterMap()：返回所有请求参数和对应的值。</li>
 </ul>
 <p>首先为了模拟客户端向服务器提交请求，我们需要编写一个包含表单的 html 网页，直接在项目的 Web 目录下新建一个名为 login.html 的文件，然后修改内容：</p>
